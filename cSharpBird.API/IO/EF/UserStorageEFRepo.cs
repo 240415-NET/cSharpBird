@@ -33,6 +33,22 @@ public class UserStorageEFRepo : IUserStorageEF
         }
         _context.SaveChanges();
     }
+    public void StoreSalt(string salt, Guid UserId)
+    {
+        //used to initially store salt at user creation
+        using SqlConnection connection = new SqlConnection (_connectionstring);
+
+        connection.Open();
+        
+        string cmdText = "INSERT INTO salt (userId,salt) VALUES (@userId,@salt);";
+        using SqlCommand cmd = new SqlCommand(cmdText,connection);
+
+        cmd.Parameters.AddWithValue("@userId",UserId);
+        cmd.Parameters.AddWithValue("@salt",salt);
+
+        cmd.ExecuteNonQuery();
+        connection.Close();
+    }
     public string GetSalt(User user)
     {
         //retrieves salt to compare against sign-in
