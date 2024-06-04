@@ -8,7 +8,7 @@ public class Checklist
     public Guid userId {get;set;}
     public string locationName {get; set;}
     public DateTime checklistDateTime {get; set;}
-    public List<Bird> birds {get;set;}
+    public List<Bird> birds {get;set;} //currently every entry in the CSV files
     public float distance {get;set;}
     public int duration {get;set;}
     public bool stationary {get;set;}

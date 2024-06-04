@@ -44,6 +44,8 @@ public class cSharpBirdTest
 
         Assert.True(result);
     }
+
+    //Eligible to be excised -- test only passes under JSON
     [Theory]
     [InlineData("defaultName","notPassword")]
     public void VerifyPassword_False(string testName,string testPW)
@@ -53,6 +55,7 @@ public class cSharpBirdTest
 
         Assert.False(result);
     }
+    //Eligible to be excised -- test only passes under JSON
     [Theory]
     [InlineData("defaultName","password")]
     public void VerifyPassword_True(string testName,string testPW)
@@ -62,6 +65,7 @@ public class cSharpBirdTest
 
         Assert.True(result);
     }
+    //Eligible to be excised -- test only passes under JSON
     [Theory]
     [InlineData("defaultName")]
     public void UserDupe_True(string testName)
