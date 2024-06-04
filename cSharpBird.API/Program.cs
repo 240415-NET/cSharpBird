@@ -1,3 +1,6 @@
+using cSharpBird.API;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 string connectionString = File.ReadAllText(@"C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt");
 
-builder.Services.AddDbContext<TrackMyStuffContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<cSharpBirdContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
 

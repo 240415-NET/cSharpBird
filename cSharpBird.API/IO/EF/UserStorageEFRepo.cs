@@ -33,61 +33,25 @@ public class UserStorageEFRepo : IUserStorageEF
         }
         _context.SaveChanges();
     }
-    public void StoreSalt(string salt, Guid UserId)
+    public async void StoreSalt(string salt, Guid UserId)
     {
-        //used to initially store salt at user creation
-        using SqlConnection connection = new SqlConnection (_connectionstring);
-
-        connection.Open();
-        
-        string cmdText = "INSERT INTO salt (userId,salt) VALUES (@userId,@salt);";
-        using SqlCommand cmd = new SqlCommand(cmdText,connection);
-
-        cmd.Parameters.AddWithValue("@userId",UserId);
-        cmd.Parameters.AddWithValue("@salt",salt);
-
-        cmd.ExecuteNonQuery();
-        connection.Close();
+        Salt _salt = new Salt (UserId,salt);
+        _context.Salts.Add(_salt);
+        await _context.SaveChangesAsync();
     }
-    public string GetSalt(User user)
+    public async Task<string?> GetSalt(User user)
     {
-        //retrieves salt to compare against sign-in
-        using SqlConnection connection = new SqlConnection (_connectionstring);
-        string salt = "";
-
-        connection.Open();
-        
-        string cmdText = "Select salt FROM salt WHERE userId = @userId;";
-        using SqlCommand cmd = new SqlCommand(cmdText,connection);
-
-        cmd.Parameters.AddWithValue("@userId",user.userId);
-        cmd.Parameters.AddWithValue("@salt",salt);
-
-        using SqlDataReader reader = cmd.ExecuteReader();
-
-        while(reader.Read())
+        Salt? salt = await _context.Salts.FirstOrDefaultAsync(salt => salt.userId == user.userId);
+        return salt.salt;
+    }
+    public async void UpdateSalt(string salt, Guid UserId)
+    {
+        Salt _salt = new Salt (UserId,salt);
+        Salt? currentSalt = await _context.Salts.FirstOrDefaultAsync(salt => salt.userId == _salt.userId);
+        if (currentSalt != null)
         {
-           salt = reader.GetString(0);
+            currentSalt.salt = _salt.salt;
         }
-
-        connection.Close();
-
-        return salt;
-    }
-    public void UpdateSalt(string salt, Guid UserId)
-    {
-        //updates salt for a given user at password change
-        using SqlConnection connection = new SqlConnection (_connectionstring);
-
-        connection.Open();
-
-        string cmdText = "UPDATE salt SET salt = @salt WHERE userId = @userId;";
-        using SqlCommand cmd = new SqlCommand(cmdText,connection);
-
-        cmd.Parameters.AddWithValue("@userId",UserId);
-        cmd.Parameters.AddWithValue("@salt",salt);
-
-        cmd.ExecuteNonQuery();
-        connection.Close();
+        _context.SaveChanges();
     }
 }

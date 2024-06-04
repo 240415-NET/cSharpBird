@@ -18,6 +18,6 @@ public interface IUserStorageEF
 
     public void StoreSalt(string salt, Guid UserId);
     
-    public string GetSalt(User user);
+    public Task<string?> GetSalt(User user);
     public void UpdateSalt(string salt, Guid UserId);
 }
