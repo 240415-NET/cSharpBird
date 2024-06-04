@@ -53,7 +53,7 @@ public class CryptoController
     public static bool VerifyPassword(string password, User user)
     {
         //retrieves salt and compares hashes
-        string salt = UserController.GetSalt(user);
+        string salt = UserController.GetSalt(user).Result;
 
         var comparisonHash = Rfc2898DeriveBytes.Pbkdf2(
             Encoding.UTF8.GetBytes(password),

@@ -93,6 +93,7 @@ public class ChecklistController
         //calls interface to delete unneeded list
         AccessChecklistFile.DeleteChecklist(checklist);
     }
+    /*
     public static void Print(string userInput,Checklist checklist)
     {
         //called to print checklist ot a text file
@@ -104,7 +105,7 @@ public class ChecklistController
         string printLine = "";
 
         //gets current user for file name
-        User user = UserController.ReadCurrentUser();
+        //User user = UserController.ReadCurrentUser();
         //determines what data to use in file name
         if (userInput == null || userInput == "")
         {
@@ -142,5 +143,5 @@ public class ChecklistController
             Console.Clear();
             //EntryChecklist.ViewAndAppend(checklist);
         }
-    }
+    }*/
 }

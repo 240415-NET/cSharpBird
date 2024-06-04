@@ -160,7 +160,7 @@ public class UserSQL : IAccessUserFile
         User user = new User();
         try
         {
-            user = UserController.ReadCurrentUser();
+            //user = UserController.ReadCurrentUser();
 
             Guid badUID = new Guid("00000000-0000-0000-0000-000000000000");
             if (user.userId == badUID){

@@ -5,61 +5,31 @@ using System.IO;
 using System.Text.RegularExpressions;
 public class UserController
 {
-    public static IAccessUserFile AccessUser = new UserSQL();
-    public static List<User> GetFullUserList()
+    //public static IUserStorageEF AccessUser = new UserStorageEFRepo();
+    private readonly IUserStorageEF _userStorage;
+    public UserController (IUserStorageEF efRepoFromBuilder)
     {
-        List<User> userList = AccessUser.GetFullUserList();
-        return userList;
+        _userStorage = efRepoFromBuilder;
     }
-    public static void WriteUser(User user)
+    public static Task<User?> CreateUserInDbAsync (User newUserFromService)
     {
-        AccessUser.WriteUser(user);
+        return AccessUser.CreateUserInDbAsync(newUserFromService);
+    }
+    public static Task<User?> GetUserFromDbUsername (string usernameToFind)
+    {
+        return AccessUser.GetUserFromDbUsername(usernameToFind);
     }
     public static void WriteUpdatedUser(User updatedUser)
     {
         AccessUser.WriteUpdatedUser(updatedUser);
     }
-    public static void WriteCurrentUser(User user)
-    {
-        AccessUser.WriteCurrentUser(user);
-    }
-    public static User ReadCurrentUser()
-    {
-        //Console.WriteLine("Call to UC RCU");
-        User currentSession = AccessUser.ReadCurrentUser();
-        return currentSession;
-    }
-    public static void ClearCurrentUser()
-    {
-        AccessUser.ClearCurrentUser();
-    }
-    public static User FindUser(string user)
-    {
-        //User foundUser = UserStorageEFRepo.GetUserFromDbUsername(user);
-        return null;
-    }
-    public static void changeEmail(User user)
-    {
-        User.changeEmail(user);        
-    }
-    public static void changeName(User user)
-    {
-        User.changeName(user);
-    }
-    public static bool ValidUserSession()
-    {
-        //Console.WriteLine("Call to UC VUS");
-        bool valid = AccessUser.ValidUserSession();
-        return valid;
-    }
     public static void StoreSalt(string salt, Guid UserId)
     {
         AccessUser.StoreSalt(salt,UserId);
-    }
-    public static string GetSalt(User user)
+    }    
+    public static Task<string?> GetSalt(User user)
     {
-        string currentSession = AccessUser.GetSalt(user);
-        return currentSession;
+        return AccessUser.GetSalt(user);
     }
     public static void UpdateSalt(string salt, Guid UserId)
     {
