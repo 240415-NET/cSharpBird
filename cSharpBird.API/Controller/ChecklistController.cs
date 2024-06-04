@@ -131,16 +131,16 @@ public class ChecklistController
                     i++;
                 }
             }
-            UserInterface.WriteColorsLine("{=Green}File successfully saved!{/} Your checklist is here:\n"+pathFile+"\nPress any key to return to prior menu");
+            //UserInterface.WriteColorsLine("{=Green}File successfully saved!{/} Your checklist is here:\n"+pathFile+"\nPress any key to return to prior menu");
             Console.ReadKey();
             Console.Clear();
         }
         else
         {
-            UserInterface.WriteColorsLine("{=Red}File not saved!{/} Please add some birds to print your checklist. Press any key to add birds.");
+            //UserInterface.WriteColorsLine("{=Red}File not saved!{/} Please add some birds to print your checklist. Press any key to add birds.");
             Console.ReadKey();
             Console.Clear();
-            EntryChecklist.ViewAndAppend(checklist);
+            //EntryChecklist.ViewAndAppend(checklist);
         }
     }
 }

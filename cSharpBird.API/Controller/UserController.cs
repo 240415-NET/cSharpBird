@@ -35,8 +35,8 @@ public class UserController
     }
     public static User FindUser(string user)
     {
-        User foundUser = User.FindUser(user);
-        return foundUser;
+        //User foundUser = UserStorageEFRepo.GetUserFromDbUsername(user);
+        return null;
     }
     public static void changeEmail(User user)
     {
