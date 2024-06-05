@@ -1,6 +1,10 @@
 using Microsoft.Identity.Client;
 using System.Text.RegularExpressions;
-
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace cSharpBird.API;
 
@@ -10,11 +14,6 @@ public class UserService : IUserService
     public UserService (IUserStorageEF efRepoFromBuilder)
     {
         _userStorage = efRepoFromBuilder;
-    }
-    private readonly ICryptoController _cryptoController;
-    public UserService (ICryptoController cryptoControllerFromBuilder)
-    {
-        _cryptoController = cryptoControllerFromBuilder;
     }
     public async Task<User> CreateNewUserAsync(User newUserSent)
     {
@@ -79,7 +78,7 @@ public class UserService : IUserService
     }
     public void UpdatePassword (string password1, User user)
     {
-        user.hashedPW = _cryptoController.HashPassword(user.userId,password1);
+        user.hashedPW = HashPassword(user.userId,password1);
         WriteUpdatedUser(user);
     }
     public bool ValidEmail (string email)
@@ -125,5 +124,66 @@ public class UserService : IUserService
             Console.WriteLine($"Name updated to {newName}");
             WriteUpdatedUser(user);
         }
+    }
+    
+    //Crypto portion follows
+    const int keySize = 64;
+    const int iterations = 250000;
+    public string InitHashPassword(Guid UserId, string password)
+    {
+        //salts and hashes given password on user creation
+        byte[] salt = RandomNumberGenerator.GetBytes(keySize);
+        StoreSalt(salt,UserId);
+
+        var hash = Rfc2898DeriveBytes.Pbkdf2(
+            Encoding.UTF8.GetBytes(password),
+            salt,
+            iterations,
+            HashAlgorithmName.SHA512,
+            keySize
+        );
+        return Convert.ToHexString(hash);
+    }
+    public void StoreSalt(byte[] salt, Guid UserId)
+    {
+        //stores user salt as a hex value separate from hashed passwords
+        string hexSalt = Convert.ToHexString(salt);
+        StoreSalt(hexSalt,UserId);
+    }
+    public string HashPassword(Guid UserId, string password)
+    {
+        //salts and hashes given password for an existing user
+        byte[] salt = RandomNumberGenerator.GetBytes(keySize);
+        UpdateSalt(salt,UserId);
+
+        var hash = Rfc2898DeriveBytes.Pbkdf2(
+            Encoding.UTF8.GetBytes(password),
+            salt,
+            iterations,
+            HashAlgorithmName.SHA512,
+            keySize
+        );
+        return Convert.ToHexString(hash);
+    }
+    public void UpdateSalt(byte[] salt, Guid UserId)
+    {
+        //stores user salt as a hex value separate from hashed passwords
+        string hexSalt = Convert.ToHexString(salt);
+        UpdateSalt(hexSalt,UserId);
+    }
+    public bool VerifyPassword(string password, User user)
+    {
+        //retrieves salt and compares hashes
+        string salt = GetSalt(user).Result;
+
+        var comparisonHash = Rfc2898DeriveBytes.Pbkdf2(
+            Encoding.UTF8.GetBytes(password),
+            Convert.FromHexString(salt),
+            iterations,
+            HashAlgorithmName.SHA512,
+            keySize
+        );
+
+        return CryptographicOperations.FixedTimeEquals(comparisonHash,Convert.FromHexString(user.hashedPW));
     }
 }

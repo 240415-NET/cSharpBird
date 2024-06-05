@@ -13,4 +13,13 @@ public interface IUserService
     public bool ValidEmail (string email);
     public void changeEmail(User user);
     public void changeName(User user);
+    
+    //Crypto portion below
+    const int keySize = 64;
+    const int iterations = 250000;
+    public string InitHashPassword(Guid UserId, string password);
+    public void StoreSalt(byte[] salt, Guid UserId);
+    public string HashPassword(Guid UserId, string password);
+    public void UpdateSalt(byte[] salt, Guid UserId);
+    public bool VerifyPassword(string password, User user);
 }
