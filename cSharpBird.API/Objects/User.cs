@@ -11,6 +11,7 @@ public class User
     public string userName {get; set;}
     public string displayName {get; set;}
     public string hashedPW {get; set;}
+    private readonly ICryptoController CryptoController = new CryptoController();
     public User() {}
 
     public User(string _userName,string password)

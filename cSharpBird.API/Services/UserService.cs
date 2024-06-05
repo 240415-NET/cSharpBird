@@ -22,7 +22,7 @@ public class UserService : IUserService
         {
             throw new Exception("Email cannot be blank");
         }
-        if (UserController.ValidEmail(newUserSent.userName) == false)
+        if (ValidEmail(newUserSent.userName) == false)
         {
             throw new Exception("Invalid email");
         }
@@ -100,7 +100,7 @@ public class UserService : IUserService
     {
         Console.WriteLine("What would you like to change your email to?");
         string newEmail = Console.ReadLine().Trim();
-        if (!UserController.ValidEmail(newEmail))
+        if (!ValidEmail(newEmail))
             Console.WriteLine("Email not updated");
         else
         {
