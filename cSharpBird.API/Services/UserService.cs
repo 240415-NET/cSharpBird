@@ -60,26 +60,27 @@ public class UserService : IUserService
         else
             return false;
     }
-    public void WriteUpdatedUser (User updatedUser)
+    public Task<User?> WriteUpdatedUser (User updatedUser)
     {
-        _userStorage.WriteUpdatedUser(updatedUser);
+        return _userStorage.WriteUpdatedUser(updatedUser);
     }
-    public void StoreSalt (string salt, Guid UserId)
+    public Task<Guid?> StoreSalt (string salt, Guid UserId)
     {
-        _userStorage.StoreSalt(salt,UserId);
+        return _userStorage.StoreSalt(salt,UserId);
     }
     public Task<string?> GetSalt(User user)
     {
         return _userStorage.GetSalt(user);
     }
-    public void UpdateSalt (string salt,Guid userId)
+    public Task<Guid?> UpdateSalt (string salt,Guid userId)
     {
-        _userStorage.UpdateSalt(salt,userId);
+        return _userStorage.UpdateSalt(salt,userId);
     }
-    public void UpdatePassword (string password1, User user)
+    public async Task<User?> UpdatePassword (string password1, User user)
     {
         user.hashedPW = HashPassword(user.userId,password1);
-        WriteUpdatedUser(user);
+        await WriteUpdatedUser(user);
+        return user;
     }
     public bool ValidEmail (string email)
     {
@@ -99,31 +100,26 @@ public class UserService : IUserService
             return false;
         }
     }
-    public void changeEmail(User user)
+    public async Task<User?> changeEmail(User user, string newEmail)
     {
-        Console.WriteLine("What would you like to change your email to?");
-        string newEmail = Console.ReadLine().Trim();
         if (!ValidEmail(newEmail))
-            Console.WriteLine("Email not updated");
+            throw new Exception ("Invalid email");
         else
         {
             user.userName = newEmail;
-            Console.WriteLine($"Email updated to {newEmail}");
-            WriteUpdatedUser(user);
+            await WriteUpdatedUser(user);
         }        
+        return user;
     }
-    public void changeName(User user)
+    public async Task<User?> changeName(User user, string newName)
     {
-        Console.WriteLine("What would you like to change your display name to?");
-        string newName = Console.ReadLine().Trim();
         if (String.IsNullOrEmpty(newName))
-            Console.WriteLine("Name not updated");
+            throw new Exception ("Invalid name");
         else
         {
-            user.displayName = newName;
-            Console.WriteLine($"Name updated to {newName}");
-            WriteUpdatedUser(user);
+            await WriteUpdatedUser(user);
         }
+        return user;
     }
     
     //Crypto portion follows
@@ -144,11 +140,11 @@ public class UserService : IUserService
         );
         return Convert.ToHexString(hash);
     }
-    public void StoreSalt(byte[] salt, Guid UserId)
+    public async Task<Guid?> StoreSalt(byte[] salt, Guid UserId)
     {
         //stores user salt as a hex value separate from hashed passwords
         string hexSalt = Convert.ToHexString(salt);
-        StoreSalt(hexSalt,UserId);
+        return await StoreSalt(hexSalt,UserId);
     }
     public string HashPassword(Guid UserId, string password)
     {
@@ -165,11 +161,11 @@ public class UserService : IUserService
         );
         return Convert.ToHexString(hash);
     }
-    public void UpdateSalt(byte[] salt, Guid UserId)
+    public async Task<Guid?> UpdateSalt(byte[] salt, Guid UserId)
     {
         //stores user salt as a hex value separate from hashed passwords
         string hexSalt = Convert.ToHexString(salt);
-        UpdateSalt(hexSalt,UserId);
+        return await UpdateSalt(hexSalt,UserId);
     }
     public bool VerifyPassword(string password, User user)
     {
