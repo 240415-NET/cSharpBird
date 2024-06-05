@@ -31,7 +31,7 @@ public class UserStorageEFRepo : IUserStorageEF
             existingUser.displayName = updatedUser.displayName;
             existingUser.hashedPW = updatedUser.hashedPW;
         }
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
     public async void StoreSalt(string salt, Guid UserId)
     {
