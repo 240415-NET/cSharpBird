@@ -9,7 +9,7 @@ public class User
     [Key]
     public Guid userId {get; set;}
     public string userName {get; set;}
-    public string displayName {get; set;}
+    public string? displayName {get; set;}
     public string hashedPW {get; set;}
     private readonly IUserService _userService;
     public User (IUserService userServiceFromBuilder)

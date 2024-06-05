@@ -22,7 +22,7 @@ public class UserStorageEFRepo : IUserStorageEF
         User? foundUser = await _context.Users.FirstOrDefaultAsync(user => user.userName == usernameToFind);
         return foundUser;
     }
-    public async void WriteUpdatedUser (User updatedUser)
+    public async Task<User?> WriteUpdatedUser (User updatedUser)
     {
         User? existingUser = await _context.Users.FirstOrDefaultAsync(user => user.userId == updatedUser.userId);
         if (existingUser != null)
@@ -32,19 +32,21 @@ public class UserStorageEFRepo : IUserStorageEF
             existingUser.hashedPW = updatedUser.hashedPW;
         }
         await _context.SaveChangesAsync();
+        return existingUser;
     }
-    public async void StoreSalt(string salt, Guid UserId)
+    public async Task<Guid?> StoreSalt(string salt, Guid UserId)
     {
         Salt _salt = new Salt (UserId,salt);
         _context.Salts.Add(_salt);
         await _context.SaveChangesAsync();
+        return UserId;
     }
     public async Task<string?> GetSalt(User user)
     {
         Salt? salt = await _context.Salts.FirstOrDefaultAsync(salt => salt.userId == user.userId);
         return salt.salt;
     }
-    public async void UpdateSalt(string salt, Guid UserId)
+    public async Task<Guid?> UpdateSalt(string salt, Guid UserId)
     {
         Salt _salt = new Salt (UserId,salt);
         Salt? currentSalt = await _context.Salts.FirstOrDefaultAsync(salt => salt.userId == _salt.userId);
@@ -53,5 +55,6 @@ public class UserStorageEFRepo : IUserStorageEF
             currentSalt.salt = _salt.salt;
         }
         _context.SaveChanges();
+        return UserId;
     }
 }
