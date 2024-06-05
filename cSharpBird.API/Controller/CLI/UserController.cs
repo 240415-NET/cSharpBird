@@ -6,6 +6,8 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 
+//DEPRECATED
+
 public class UserController : ControllerBase
 {
     //public static IUserStorageEF AccessUser = new UserStorageEFRepo();
