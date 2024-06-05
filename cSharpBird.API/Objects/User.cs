@@ -11,10 +11,10 @@ public class User
     public string userName {get; set;}
     public string displayName {get; set;}
     public string hashedPW {get; set;}
-    private readonly ICryptoController _cryptoController;
-    public User (ICryptoController cryptoControllerFromBuilder)
+    private readonly IUserService _userService;
+    public User (IUserService userServiceFromBuilder)
     {
-        _cryptoController = cryptoControllerFromBuilder;
+        _userService = userServiceFromBuilder;
     }
     public User() {}
 
@@ -23,7 +23,7 @@ public class User
         userId = Guid.NewGuid(); 
         userName = _userName;
         displayName = "";
-        hashedPW = _cryptoController.InitHashPassword(userId,password);
+        hashedPW = _userService.InitHashPassword(userId,password);
     }
     public User(Guid _userId, string _userName, string _displayName, string _hashedPW)
     {
