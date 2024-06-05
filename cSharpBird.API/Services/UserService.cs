@@ -11,7 +11,7 @@ public class UserService : IUserService
     }
     public async Task<User> CreateNewUserAsync(User newUserSent)
     {
-        if (UserExists(newUserSent.userName) == true)
+        if (UserExists(newUserSent.userName).Result == true)
         {
             throw new Exception("Email already in use");
         }
@@ -46,9 +46,9 @@ public class UserService : IUserService
             throw new Exception(e.Message);
         }
     }
-    public bool UserExists(string userName)
+    public async Task<bool> UserExists(string userName)
     {
-        User searchedUser = UserController.GetUserFromDbUsername(userName).Result;
+        User searchedUser = await UserController.GetUserFromDbUsername(userName).Result;
         if (userName == searchedUser.userName)
             return true;
         else

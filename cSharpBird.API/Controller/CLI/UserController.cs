@@ -2,40 +2,43 @@ namespace cSharpBird.API;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-public class UserController
+using Microsoft.AspNetCore.Mvc;
+
+public class UserController : ControllerBase
 {
     //public static IUserStorageEF AccessUser = new UserStorageEFRepo();
-    private readonly IUserStorageEF _userStorage;
+    private readonly IUserStorageEF AccessUser;
     public UserController (IUserStorageEF efRepoFromBuilder)
     {
-        _userStorage = efRepoFromBuilder;
+        AccessUser = efRepoFromBuilder;
     }
-    public static Task<User?> CreateUserInDbAsync (User newUserFromService)
+    public async Task<User?> CreateUserInDbAsync (User newUserFromService)
     {
-        return AccessUser.CreateUserInDbAsync(newUserFromService);
+        return await AccessUser.CreateUserInDbAsync(newUserFromService);
     }
-    public static Task<User?> GetUserFromDbUsername (string usernameToFind)
+    public async Task<User> GetUserFromDbUsername (string usernameToFind)
     {
-        return AccessUser.GetUserFromDbUsername(usernameToFind);
+        return AccessUser.GetUserFromDbUsername(usernameToFind).Result;
     }
-    public static void WriteUpdatedUser(User updatedUser)
+    public async void WriteUpdatedUser(User updatedUser)
     {
         AccessUser.WriteUpdatedUser(updatedUser);
     }
-    public static void StoreSalt(string salt, Guid UserId)
+    public async void StoreSalt(string salt, Guid UserId)
     {
         AccessUser.StoreSalt(salt,UserId);
     }    
-    public static Task<string?> GetSalt(User user)
+    public async Task<string?> GetSalt(User user)
     {
-        return AccessUser.GetSalt(user);
+        return AccessUser.GetSalt(user).Result;
     }
-    public static void UpdateSalt(string salt, Guid UserId)
+    public async void UpdateSalt(string salt, Guid UserId)
     {
         AccessUser.UpdateSalt(salt,UserId);
     }
-    public static void UpdatePassword(string password1,User user)
+    public async void UpdatePassword(string password1,User user)
     {
         //overwrites the old password and salt with a new one as given by a verified user
         string hashedPW = "";
