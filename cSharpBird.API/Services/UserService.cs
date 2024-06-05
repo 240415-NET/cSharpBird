@@ -11,7 +11,11 @@ public class UserService : IUserService
     {
         _userStorage = efRepoFromBuilder;
     }
-    private readonly ICryptoController CryptoController = new CryptoController();
+    private readonly ICryptoController _cryptoController;
+    public UserService (ICryptoController cryptoControllerFromBuilder)
+    {
+        _cryptoController = cryptoControllerFromBuilder;
+    }
     public async Task<User> CreateNewUserAsync(User newUserSent)
     {
         if (UserExists(newUserSent.userName).Result == true)
@@ -75,7 +79,7 @@ public class UserService : IUserService
     }
     public void UpdatePassword (string password1, User user)
     {
-        user.hashedPW = CryptoController.HashPassword(user.userId,password1);
+        user.hashedPW = _cryptoController.HashPassword(user.userId,password1);
         WriteUpdatedUser(user);
     }
     public bool ValidEmail (string email)
