@@ -49,8 +49,11 @@ public class WebUserController : ControllerBase
         {
             User signInAttempt = _userService.GetUserByUsernameAsync(userSignIn.userName).Result;
             if (signInAttempt == null)
-                throw new Exception (e.Message);
-            return Ok(newUser);
+                return NotFound("Incorrect username or password");
+            else if((bool)_userService.VerifyPassword(userSignIn.rawPassword,signInAttempt).Result)
+                return Ok(signInAttempt);
+            else
+                return NotFound("Incorrect username or password");
         }
         catch (Exception e)
         {
