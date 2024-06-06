@@ -19,7 +19,22 @@ public class UserStorageEFRepo : IUserStorageEF
     }
     public async Task<User?> GetUserFromDbUsername (string usernameToFind)
     {
+        Console.WriteLine("Called GetUserFromDb");
         User? foundUser = await _context.Users.FirstOrDefaultAsync(user => user.userName == usernameToFind);
+        if (foundUser != null)
+            Console.WriteLine(foundUser.userName);
+        else
+            Console.WriteLine("User is null");
+        return foundUser;
+    }
+    public async Task<User?> GetUserFromDbGuid (Guid userIdToFind)
+    {
+        Console.WriteLine("Called GetUserFromDb");
+        User? foundUser = await _context.Users.FirstOrDefaultAsync(user => user.userId == userIdToFind);
+        if (foundUser != null)
+            Console.WriteLine(foundUser.userId);
+        else
+            Console.WriteLine("User is null");
         return foundUser;
     }
     public async Task<User?> WriteUpdatedUser (User updatedUser)

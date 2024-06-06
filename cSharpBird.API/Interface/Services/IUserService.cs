@@ -17,9 +17,9 @@ public interface IUserService
     //Crypto portion below
     const int keySize = 64;
     const int iterations = 250000;
-    public string InitHashPassword(Guid UserId, string password);
+    public Task<string?> InitHashPassword(Guid UserId, string password);
     public Task<Guid?> StoreSalt(byte[] salt, Guid UserId);
-    public string HashPassword(Guid UserId, string password);
+    public Task<string?> HashPassword(Guid UserId, string password);
     public Task<Guid?> UpdateSalt(byte[] salt, Guid UserId);
-    public bool VerifyPassword(string password, User user);
+    public Task<bool?> VerifyPassword(string password, User user);
 }

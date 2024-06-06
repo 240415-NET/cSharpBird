@@ -17,6 +17,8 @@ public class UserService : IUserService
     }
     public async Task<User> CreateNewUserAsync(User newUserSent)
     {
+        Console.WriteLine("Create User method called");
+        Console.WriteLine("Calling User Exists");
         if (UserExists(newUserSent.userName).Result == true)
         {
             throw new Exception("Email already in use");
@@ -54,31 +56,35 @@ public class UserService : IUserService
     }
     public async Task<bool> UserExists(string userName)
     {
-        User searchedUser = _userStorage.GetUserFromDbUsername(userName).Result;
-        if (userName == searchedUser.userName)
+        Console.WriteLine("Successful call to UserExists");
+        User? searchedUser = _userStorage.GetUserFromDbUsername(userName).Result;
+        Console.WriteLine("searched for user");
+        if (searchedUser == null)
+            return false;
+        else if (userName == searchedUser.userName)
             return true;
         else
             return false;
     }
-    public Task<User?> WriteUpdatedUser (User updatedUser)
+    public async Task<User?> WriteUpdatedUser (User updatedUser)
     {
-        return _userStorage.WriteUpdatedUser(updatedUser);
+        return await _userStorage.WriteUpdatedUser(updatedUser);
     }
-    public Task<Guid?> StoreSalt (string salt, Guid UserId)
+    public async Task<Guid?> StoreSalt (string salt, Guid UserId)
     {
-        return _userStorage.StoreSalt(salt,UserId);
+        return await _userStorage.StoreSalt(salt,UserId);
     }
-    public Task<string?> GetSalt(User user)
+    public async Task<string?> GetSalt(User user)
     {
-        return _userStorage.GetSalt(user);
+        return await _userStorage.GetSalt(user);
     }
-    public Task<Guid?> UpdateSalt (string salt,Guid userId)
+    public async Task<Guid?> UpdateSalt (string salt,Guid userId)
     {
-        return _userStorage.UpdateSalt(salt,userId);
+        return await _userStorage.UpdateSalt(salt,userId);
     }
     public async Task<User?> UpdatePassword (string password1, User user)
     {
-        user.hashedPW = HashPassword(user.userId,password1);
+        user.hashedPW = HashPassword(user.userId,password1).Result;
         await WriteUpdatedUser(user);
         return user;
     }
@@ -125,11 +131,11 @@ public class UserService : IUserService
     //Crypto portion follows
     const int keySize = 64;
     const int iterations = 250000;
-    public string InitHashPassword(Guid UserId, string password)
+    public async Task<string?> InitHashPassword(Guid UserId, string password)
     {
         //salts and hashes given password on user creation
         byte[] salt = RandomNumberGenerator.GetBytes(keySize);
-        StoreSalt(salt,UserId);
+        await StoreSalt(salt,UserId);
 
         var hash = Rfc2898DeriveBytes.Pbkdf2(
             Encoding.UTF8.GetBytes(password),
@@ -146,11 +152,11 @@ public class UserService : IUserService
         string hexSalt = Convert.ToHexString(salt);
         return await StoreSalt(hexSalt,UserId);
     }
-    public string HashPassword(Guid UserId, string password)
+    public async Task<string?> HashPassword(Guid UserId, string password)
     {
         //salts and hashes given password for an existing user
         byte[] salt = RandomNumberGenerator.GetBytes(keySize);
-        UpdateSalt(salt,UserId);
+        await UpdateSalt(salt,UserId);
 
         var hash = Rfc2898DeriveBytes.Pbkdf2(
             Encoding.UTF8.GetBytes(password),
@@ -167,10 +173,11 @@ public class UserService : IUserService
         string hexSalt = Convert.ToHexString(salt);
         return await UpdateSalt(hexSalt,UserId);
     }
-    public bool VerifyPassword(string password, User user)
+    public async Task<bool?> VerifyPassword(string password, User user)
     {
         //retrieves salt and compares hashes
-        string salt = GetSalt(user).Result;
+        string salt = "";
+        salt = GetSalt(user).Result;
 
         var comparisonHash = Rfc2898DeriveBytes.Pbkdf2(
             Encoding.UTF8.GetBytes(password),

@@ -6,6 +6,7 @@ public interface IUserStorageEF
 {
     public Task<User?> CreateUserInDbAsync (User newUserFromService);
     public Task<User?> GetUserFromDbUsername (string usernameToFind);
+    public Task<User?> GetUserFromDbGuid (Guid userIdToFind);
     public Task<User?> WriteUpdatedUser(User updatedUser);
     public Task<Guid?> StoreSalt(string salt, Guid UserId);    
     public Task<string?> GetSalt(User user);

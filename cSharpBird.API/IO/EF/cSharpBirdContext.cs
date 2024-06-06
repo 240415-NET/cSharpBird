@@ -12,11 +12,13 @@ public class cSharpBirdContext : DbContext
     public cSharpBirdContext() {}
     public cSharpBirdContext(DbContextOptions options) : base (options) {}
 
-    protected void ModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Bird>().UseTpcMappingStrategy().ToTable("Birds");
         modelBuilder.Entity<Checklist>().UseTpcMappingStrategy().ToTable("Checklists");
         modelBuilder.Entity<User>().UseTpcMappingStrategy().ToTable("Users");
         modelBuilder.Entity<Salt>().UseTpcMappingStrategy().ToTable("Salts");
+
+        modelBuilder.UseCollation("SQL_Latin1_General_CP1_CS_AS");
     }
 }
