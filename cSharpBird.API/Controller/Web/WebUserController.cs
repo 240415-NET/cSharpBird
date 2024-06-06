@@ -14,13 +14,14 @@ public class WebUserController : ControllerBase
     {
         _userService = userServiceFromBuilder;
     }
-    [HttpPost("Users/SignIn")]
+    [HttpPost("Users/Create")]
     //Guess we're changing this to a DTO...
-    public async Task<ActionResult<User>> PostNewUser (SignIn createUser)
+    public async Task<ActionResult<User>> PostNewUser (string combinedUser)
     {
+        string[] createUser = combinedUser.Split(",");
         try
         {
-            User newUser = new User(createUser.userName, createUser.rawPassword);
+            User newUser = new User(createUser[0], createUser[1]);
             await _userService.CreateNewUserAsync(newUser);
             return Ok(newUser);
         }
