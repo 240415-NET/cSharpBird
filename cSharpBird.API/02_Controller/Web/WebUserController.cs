@@ -15,7 +15,6 @@ public class WebUserController : ControllerBase
         _userService = userServiceFromBuilder;
     }
     [HttpPost("Users/Create")]
-    //Guess we're changing this to a DTO...
     public async Task<ActionResult<User>> PostNewUser (UserCreate possibleUser)
     {
         Guid tempGuid = Guid.NewGuid();
@@ -41,6 +40,21 @@ public class WebUserController : ControllerBase
         catch (Exception e)
         {
             return NotFound(e.Message);
+        }
+    }
+    [HttpPost("Users/SignIn")]
+    public async Task<ActionResult<User>> SignInUser (SignIn userSignIn)
+    {
+        try
+        {
+            User signInAttempt = _userService.GetUserByUsernameAsync(userSignIn.userName).Result;
+            if (signInAttempt == null)
+                throw new Exception (e.Message);
+            return Ok(newUser);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
         }
     }
 }
