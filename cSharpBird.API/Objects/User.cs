@@ -18,12 +18,12 @@ public class User
     }
     public User() {}
 
-    public User(string _userName,string password)
+    public User(string _userName,string _hashedPW)
     {
         userId = Guid.NewGuid(); 
         userName = _userName;
         displayName = "";
-        hashedPW = _userService.InitHashPassword(userId,password);
+        hashedPW = _hashedPW;
     }
     public User(Guid _userId, string _userName, string _displayName, string _hashedPW)
     {
