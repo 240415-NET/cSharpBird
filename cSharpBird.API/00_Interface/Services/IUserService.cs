@@ -4,6 +4,7 @@ public interface IUserService
 {
     public Task<User> CreateNewUserAsync(User newUserSent);
     public Task<User> GetUserByUsernameAsync(string usernameToFind);
+    public Task<User> GetUserByGuidAsync (Guid userId);
     public Task<bool> UserExists(string userName);
     public Task<User?> WriteUpdatedUser (User updatedUser);
     public Task<Guid?> StoreSalt (string salt, Guid UserId);

@@ -60,4 +60,26 @@ public class WebUserController : ControllerBase
             return BadRequest(e.Message);
         }
     }
+    [HttpPost("Users/UpdateUser")]
+    public async Task<ActionResult<User>> UpdateUser (UserChange UserChanges)
+    {
+        try
+        {
+            User updatedUser = _userService.GetUserByGuidAsync(UserChanges.userId).Result;
+            if (updatedUser != null)
+            {
+                if (UserChanges.email != null)
+                    await _userService.changeEmail(updatedUser,UserChanges.email);
+                if (UserChanges.userName != null)
+                    await _userService.changeName(updatedUser,UserChanges.userName);
+                if (UserChanges.rawPassword != null)
+                    await _userService.UpdatePassword(UserChanges.rawPassword,updatedUser);
+            }
+            return Ok(updatedUser);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }
