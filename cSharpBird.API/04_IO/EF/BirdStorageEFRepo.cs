@@ -27,13 +27,24 @@ public class BirdStorageEFRepo : IBirdStorageEF
 
         return birdList;
     }
-    public async void WriteBirdsForChecklist(Checklist checklist)
+    public async Task<Checklist> WriteBirdsForChecklist(Checklist checklist)
     {
-
+        foreach (var bird in checklist.birds)
+        {
+            _context.Birds.Add(bird);
+        }
+        await _context.SaveChangesAsync();
+        return checklist;
     }
-    public void UpdateBirdsForChecklist(Checklist checklist)
+    public async Task<Checklist> UpdateBirdsForChecklist(Checklist checklist)
     {
-
+        foreach (var bird in checklist.birds)
+        {
+            if (bird.numSeen > 0 || bird.bbc != null || bird.bNotes != null)
+                _context.Birds.Add(bird);
+        }
+        await _context.SaveChangesAsync();
+        return checklist;
     }
     public Task<List<Bird>?> ReadBirdsForChecklist(Guid checklistID)
     {

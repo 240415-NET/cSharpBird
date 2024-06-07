@@ -11,9 +11,11 @@ namespace cSharpBird.API;
 public class ChecklistService : IChecklistService
 {
     private readonly IChecklistStorageEF _checklistStorage;
-    public ChecklistService (IChecklistStorageEF efRepoFromBuilder)
+    private readonly IBirdStorageEF _birdStorage;
+    public ChecklistService (IChecklistStorageEF efRepoFromBuilder, IBirdStorageEF efRepoFromBuilder2)
     {
         _checklistStorage = efRepoFromBuilder;
+        _birdStorage = efRepoFromBuilder2;
     }
     //This may be redundant if we can continue to pull in the list of birds via the CSV file
     public async Task<Checklist> CreateNewChecklistAsync (Checklist newChecklist)
@@ -26,6 +28,7 @@ public class ChecklistService : IChecklistService
     }
     public async Task<Checklist> WriteChecklistAsync (Checklist newList)
     {
+        await _birdStorage.WriteBirdsForChecklist(newList);
         return await _checklistStorage.WriteChecklistAsync(newList);
     }
     public async Task<Checklist> WriteUpdatedListAsync(Checklist updatedChecklist)

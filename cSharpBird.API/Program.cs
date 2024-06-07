@@ -16,6 +16,9 @@ builder.Services.AddScoped<IUserStorageEF, UserStorageEFRepo>();
 builder.Services.AddScoped<IChecklistService, ChecklistService>();
 builder.Services.AddScoped<IChecklistStorageEF, ChecklistStorageEFRepo>();
 
+builder.Services.AddScoped<IBirdService, BirdService>();
+builder.Services.AddScoped<IBirdStorageEF, BirdStorageEFRepo>();
+
 string connectionString = File.ReadAllText(@"C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt");
 
 builder.Services.AddDbContext<cSharpBirdContext>(options => options.UseSqlServer(connectionString));
