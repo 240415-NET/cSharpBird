@@ -11,11 +11,11 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
     {
         _context = contextFromBuilder;
     }
-    public async Task<List<Checklist?>?> GetListsAsync(User searchUser)
+    public async Task<List<Checklist?>?> GetListsAsync(Guid searchUser)
     {
         List<Checklist> userChecklists = new List<Checklist>();
         var uChecklists = from c in _context.Checklists select c;
-        uChecklists = uChecklists.Where(c => c.userId.Equals(searchUser.userId));
+        uChecklists = uChecklists.Where(c => c.userId.Equals(searchUser));
         userChecklists = uChecklists.ToList();
         return userChecklists;
     }    

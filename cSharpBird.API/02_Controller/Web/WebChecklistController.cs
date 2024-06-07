@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -14,7 +15,7 @@ public class WebChecklistController : ControllerBase
     {
         _checklistService = checklistServiceFromBuilder;
     }
-    [HttpPost("Checklists/Create")]
+    [HttpPost("Checklists/CreateToday")]
     public async Task<ActionResult<Checklist>> PostNewChecklistToday(ChecklistCreate checklistBits)
     {
         try
@@ -28,4 +29,32 @@ public class WebChecklistController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-}
+    [HttpPost("Checklists/Create")]
+    public async Task<ActionResult<Checklist>> PostNewChecklistHistoric(ChecklistCreate checklistBits)
+    {
+        try
+        {
+            Checklist newChecklist = new Checklist (checklistBits.userId, checklistBits.locationName, checklistBits.checklistDateTime);
+            await _checklistService.WriteChecklistAsync(newChecklist);
+            return Ok(newChecklist);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+    [HttpGet("Checklists/ListChecklist")]
+    public async Task<ActionResult<List<Checklist>>> ListUserChecklists (Guid userId)
+    {
+        try
+        {
+            List<Checklist> userChecklists = new List<Checklist>();
+            userChecklists = await _checklistService.GetChecklistsAsync(userId);
+            return Ok(userChecklists);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+} 

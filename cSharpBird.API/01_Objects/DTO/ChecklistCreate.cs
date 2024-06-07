@@ -8,6 +8,6 @@ public class ChecklistCreate
 {
     public Guid userId {get; set;}
     public string locationName {get; set;}
-    public DateTime? checklistDateTime {get; set;}    
+    public string checklistDateTime {get; set;}    
     public ChecklistCreate () {}
 }

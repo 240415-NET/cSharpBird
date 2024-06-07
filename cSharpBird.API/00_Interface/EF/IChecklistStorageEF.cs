@@ -6,7 +6,7 @@ using System.Text.Json;
 
 public interface IChecklistStorageEF
 {
-    public Task<List<Checklist?>?> GetListsAsync(User searchUser);    
+    public Task<List<Checklist?>?> GetListsAsync(Guid searchUser);    
     public Task<Checklist> WriteChecklistAsync(Checklist newList);
 
     public Task<Checklist> WriteUpdatedListAsync(Checklist updatedList);

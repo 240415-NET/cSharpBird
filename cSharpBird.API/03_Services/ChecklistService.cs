@@ -20,9 +20,9 @@ public class ChecklistService : IChecklistService
     {
         return newChecklist;
     }
-    public async Task<List<Checklist>> GetChecklistsAsync (User user)
+    public async Task<List<Checklist>> GetChecklistsAsync (Guid userId)
     {
-        return await _checklistStorage.GetListsAsync(user);
+        return await _checklistStorage.GetListsAsync(userId);
     }
     public async Task<Checklist> WriteChecklistAsync (Checklist newList)
     {
