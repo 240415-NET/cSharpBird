@@ -32,6 +32,10 @@ public class ChecklistService : IChecklistService
     {
         return await _checklistStorage.WriteUpdatedListAsync(updatedChecklist);
     }
+    public async Task<Checklist?> ReadChecklistFromGuidAsync(Guid checklistId)
+    {
+        return await _checklistStorage.ReadChecklistFromGuidAsync(checklistId);
+    }
     public async Task<bool> DeleteChecklistAsync (Checklist deleteChecklist)
     {
         return await _checklistStorage.DeleteChecklistAsync(deleteChecklist);

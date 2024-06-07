@@ -42,6 +42,11 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
         await _context.SaveChangesAsync();
         return existingChecklist;
     }
+    public async Task<Checklist> ReadChecklistFromGuidAsync (Guid checklistId)
+    {
+        Checklist? existingChecklist = await _context.Checklists.FirstOrDefaultAsync(c => c.checklistID == checklistId);
+        return existingChecklist;
+    }
     public async Task<bool> DeleteChecklistAsync(Checklist deleteChecklist)
     {
         //Gonna wait for Jonathan to solve this one

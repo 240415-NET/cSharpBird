@@ -57,4 +57,18 @@ public class WebChecklistController : ControllerBase
             return BadRequest(e.Message);
         }
     }
+    [HttpGet("Checklists/ListBirds")]
+    public async Task<ActionResult<List<Bird>>> ListChecklistBirds (Guid checklistId)
+    {
+        try
+        {
+            Checklist currChecklist = await _checklistService.ReadChecklistFromGuidAsync(checklistId);
+            List<Bird> birdsChecklist = currChecklist.birds;
+            return Ok(birdsChecklist);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 } 
