@@ -15,9 +15,10 @@ public class ChecklistService : IChecklistService
     {
         _checklistStorage = efRepoFromBuilder;
     }
+    //This may be redundant if we can continue to pull in the list of birds via the CSV file
     public async Task<Checklist> CreateNewChecklistAsync (Checklist newChecklist)
     {
-
+        return newChecklist;
     }
     public async Task<List<Checklist>> GetChecklistsAsync (User user)
     {
@@ -25,7 +26,7 @@ public class ChecklistService : IChecklistService
     }
     public async Task<Checklist> WriteChecklistAsync (Checklist newList)
     {
-        return await _checklistStorage.WriteChecklist(newList);
+        return await _checklistStorage.WriteChecklistAsync(newList);
     }
     public async Task<Checklist> WriteUpdatedListAsync(Checklist updatedChecklist)
     {

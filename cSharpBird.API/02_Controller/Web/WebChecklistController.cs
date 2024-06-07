@@ -9,21 +9,19 @@ using Microsoft.AspNetCore.Mvc;
 [ApiController]
 public class WebChecklistController : ControllerBase
 {
-    private readonly IUserService _userService;
-    public WebChecklistController (IUserService userServiceFromBuilder)
+    private readonly IChecklistService _checklistService;
+    public WebChecklistController (IChecklistService checklistServiceFromBuilder)
     {
-        _userService = userServiceFromBuilder;
+        _checklistService = checklistServiceFromBuilder;
     }
     [HttpPost("Checklists/Create")]
-    public async Task<ActionResult<User>> PostNewChecklist (UserCreate possibleUser)
+    public async Task<ActionResult<Checklist>> PostNewChecklistToday(ChecklistCreate checklistBits)
     {
-        Guid tempGuid = Guid.NewGuid();
-        var hashedPW = await _userService.InitHashPassword(tempGuid, possibleUser.rawPassword);
         try
         {
-            User newChecklist = new Checklist;
-            await _userService.CreateNewUserAsync(newUser);
-            return Ok(newUser);
+            Checklist newChecklist = new Checklist (checklistBits.userId, checklistBits.locationName);
+            await _checklistService.WriteChecklistAsync(newChecklist);
+            return Ok(newChecklist);
         }
         catch (Exception e)
         {
