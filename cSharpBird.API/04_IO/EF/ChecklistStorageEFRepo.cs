@@ -11,7 +11,7 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
     {
         _context = contextFromBuilder;
     }
-    public async Task<List<Checklist>?> GetLists(User searchUser)
+    public async Task<List<Checklist?>?> GetListsAsync(User searchUser)
     {
         List<Checklist> userChecklists = new List<Checklist>();
         var uChecklists = from c in _context.Checklists select c;
@@ -19,14 +19,14 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
         userChecklists = uChecklists.ToList();
         return userChecklists;
     }    
-    public async Task<Checklist> WriteChecklist(Checklist newList)
+    public async Task<Checklist> WriteChecklistAsync(Checklist newList)
     {
         _context.Checklists.Add(newList);
         await _context.SaveChangesAsync();
         return newList;
     }
 
-    public async Task<Checklist> WriteUpdatedList(Checklist updatedList)
+    public async Task<Checklist> WriteUpdatedListAsync(Checklist updatedList)
     {
         Checklist? existingChecklist = await _context.Checklists.FirstOrDefaultAsync(c => c.checklistID == updatedList.checklistID);
         if (existingChecklist != null)
@@ -42,7 +42,7 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
         await _context.SaveChangesAsync();
         return existingChecklist;
     }
-    public async Task<bool> DeleteChecklist(Checklist deleteChecklist)
+    public async Task<bool> DeleteChecklistAsync(Checklist deleteChecklist)
     {
         //Gonna wait for Jonathan to solve this one
         Checklist toBeDeleted = deleteChecklist;

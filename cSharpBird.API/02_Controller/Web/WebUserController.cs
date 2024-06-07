@@ -68,11 +68,11 @@ public class WebUserController : ControllerBase
             User updatedUser = _userService.GetUserByGuidAsync(UserChanges.userId).Result;
             if (updatedUser != null)
             {
-                if (UserChanges.email != null)
+                if (UserChanges.email != null || UserChanges.email != "")
                     await _userService.changeEmail(updatedUser,UserChanges.email);
-                if (UserChanges.userName != null)
+                if (UserChanges.userName != null || UserChanges.userName != "")
                     await _userService.changeName(updatedUser,UserChanges.userName);
-                if (UserChanges.rawPassword != null)
+                if (UserChanges.rawPassword != null || UserChanges.rawPassword != "")
                     await _userService.UpdatePassword(UserChanges.rawPassword,updatedUser);
             }
             return Ok(updatedUser);
