@@ -26,6 +26,10 @@ public class Checklist
         List<Bird> birds = BirdController.GetFullBirdList();
         stationary = false;
         cNotes = "";
+        foreach (Bird bird in birds)
+        {
+            Console.WriteLine("Bird");
+        }
     }
     public Checklist(Guid _userId, string _locationName, string _checklistDateTime)
     {
