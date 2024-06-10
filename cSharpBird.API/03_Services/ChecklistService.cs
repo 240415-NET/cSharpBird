@@ -28,8 +28,11 @@ public class ChecklistService : IChecklistService
     }
     public async Task<Checklist> WriteChecklistAsync (Checklist newList)
     {
+        Console.WriteLine("Calling to bird storage");
         await _birdStorage.WriteBirdsForChecklist(newList);
-        return await _checklistStorage.WriteChecklistAsync(newList);
+        Console.WriteLine("Calling to checklist storage");
+        await _checklistStorage.WriteChecklistAsync(newList);
+        return newList;
     }
     public async Task<Checklist> WriteUpdatedListAsync(Checklist updatedChecklist)
     {

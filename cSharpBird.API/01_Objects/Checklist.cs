@@ -23,7 +23,7 @@ public class Checklist
         userId = _userId;
         locationName = _locationName;
         checklistDateTime = DateTime.Today;
-        List<Bird> birds = BirdController.GetFullBirdList();
+        List<Bird> birds = GetFullBirdList();
         stationary = false;
         cNotes = "";
         foreach (Bird bird in birds)
@@ -37,7 +37,7 @@ public class Checklist
         userId = _userId;
         locationName = _locationName;
         checklistDateTime = DateTime.Parse(_checklistDateTime);
-        List<Bird> birds = BirdController.GetFullBirdList();
+        List<Bird> birds = GetFullBirdList();
         stationary = false;
         cNotes = "";
     }
@@ -47,11 +47,26 @@ public class Checklist
         userId = _userId;
         locationName = _locationName;
         checklistDateTime = _checklistDateTime;
-        List<Bird> birds = BirdController.GetFullBirdList();
+        List<Bird> birds = GetFullBirdList();
         birds = _birds;
         distance = _distance;
         duration = _duration;
         stationary = _stationary;
         cNotes = _cNotes;
+    }
+    public List<Bird> GetFullBirdList()
+    {
+        string bandCode = "";
+        string speciesName = "";
+        string path = "data\\BirdCSV\\";
+        string pathFile = path + "USGSBBL.csv";
+        List<Bird> birdList = new List<Bird>();
+        birdList = File.ReadAllLines(pathFile)
+            .Select(line => line.Split(','))
+            .Select(x => new Bird{
+                bandCode = x[0],
+                speciesName = x[1]
+            }).ToList();
+        return birdList;
     }
 }

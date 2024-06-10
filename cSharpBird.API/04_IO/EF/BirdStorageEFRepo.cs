@@ -29,11 +29,21 @@ public class BirdStorageEFRepo : IBirdStorageEF
     }
     public async Task<Checklist> WriteBirdsForChecklist(Checklist checklist)
     {
-        foreach (var bird in checklist.birds)
+        Console.WriteLine("Successful call to bird storage");
+        //List<Bird> saveBirds = checklist.birds;
+        /*for (int i = 0; i < saveBirds.Count; i++)
         {
-            _context.Birds.Add(bird);
-        }
+            _context.Birds.Add(saveBirds[i]);
+            Console.WriteLine("Entered for loop");
+       }*/
+       //Console.WriteLine(checklist.birds[0].bandCode);
+       foreach (Bird bird in checklist.birds)
+       {
+            //_context.Birds.Add(bird);
+            Console.WriteLine(bird.bandCode);
+       }
         await _context.SaveChangesAsync();
+        Console.WriteLine("Successful exit of forloop");
         return checklist;
     }
     public async Task<Checklist> UpdateBirdsForChecklist(Checklist checklist)

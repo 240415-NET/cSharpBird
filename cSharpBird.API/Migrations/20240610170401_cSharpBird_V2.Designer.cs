@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using cSharpBird.API;
 
@@ -11,9 +12,11 @@ using cSharpBird.API;
 namespace cSharpBird.API.Migrations
 {
     [DbContext(typeof(cSharpBirdContext))]
-    partial class cSharpBirdContextModelSnapshot : ModelSnapshot
+    [Migration("20240610170401_cSharpBird_V2")]
+    partial class cSharpBird_V2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
