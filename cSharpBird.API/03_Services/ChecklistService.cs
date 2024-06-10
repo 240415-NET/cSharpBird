@@ -29,6 +29,10 @@ public class ChecklistService : IChecklistService
     public async Task<Checklist> WriteChecklistAsync (Checklist newList)
     {
         Console.WriteLine("Calling to bird storage");
+        //foreach (Bird bird in newList.birds)
+        //{
+        //    Console.WriteLine(bird.bandCode);
+        //}
         await _birdStorage.WriteBirdsForChecklist(newList);
         Console.WriteLine("Calling to checklist storage");
         await _checklistStorage.WriteChecklistAsync(newList);

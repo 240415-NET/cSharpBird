@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 public class Bird
 {
     [Key]
-    public Guid randomBird {get; set;}
+    public Guid randomBirdId {get; set;}
     public string bandCode {get; set;}
     public string speciesName {get; set;}
 
@@ -18,13 +18,13 @@ public class Bird
     public Bird() {}
     public Bird(string _bandCode, string _speciesName)
     {
-        randomBird = new Guid();
+        randomBirdId = new Guid();
         bandCode = _bandCode;
         speciesName = _speciesName;
     }
     public Bird(string _bandCode, string _speciesName, int _numSeen, string _bbc, string _bNotes)
     {
-        randomBird = new Guid();
+        randomBirdId = new Guid();
         bandCode = _bandCode;
         speciesName = _speciesName;
         numSeen = _numSeen;

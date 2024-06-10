@@ -28,7 +28,7 @@ public class Checklist
         cNotes = "";
         foreach (Bird bird in birds)
         {
-            Console.WriteLine("Bird");
+            Console.WriteLine(bird.bandCode);
         }
     }
     public Checklist(Guid _userId, string _locationName, string _checklistDateTime)
