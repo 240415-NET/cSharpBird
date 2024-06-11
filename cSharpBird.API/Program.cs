@@ -1,3 +1,4 @@
+using cSharpBird.Api;
 using cSharpBird.API;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,7 @@ builder.Services.AddScoped<IChecklistStorageEF, ChecklistStorageEFRepo>();
 builder.Services.AddScoped<IBirdService, BirdService>();
 builder.Services.AddScoped<IBirdStorageEF, BirdStorageEFRepo>();
 
-string connectionString = File.ReadAllText(@"C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt");
+string connectionString = ConnectionStringHelper.GetConnectionString();
 
 builder.Services.AddDbContext<cSharpBirdContext>(options => options.UseSqlServer(connectionString));
 

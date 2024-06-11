@@ -15,9 +15,16 @@ public class WebBirdController : ControllerBase
     {
         _birdService = birdServiceFromBuilder;
     }
+    [HttpPut("Birds/AddBird")]
+    public async Task<ActionResult<Bird>> AddBirdAsync (BirdUpdate info)
+    {
+        Bird newBird = new Bird(info.speciesName,(int)info.numSeen,info.checklistId);
+        await _birdService.AddBirdToChecklistAsync(newBird);
+        return newBird;
+    }
     [HttpPatch("Birds/ListChange")]
     public async Task<ActionResult<Bird>> UpdateBirdAsync (BirdUpdate info)
     {
-        return null;
+        return await _birdService.UpdateBirdOnChecklistAsync(info);
     }
 }

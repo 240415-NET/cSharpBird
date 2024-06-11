@@ -62,4 +62,17 @@ public class BirdStorageEFRepo : IBirdStorageEF
         await _context.SaveChangesAsync();
         return checklist;
     }
+    public async Task<Bird> IndividualWriteBirdForChecklist (Bird bird)
+    {
+        _context.Birds.Add(bird);
+        await _context.SaveChangesAsync();
+        return bird;
+    }
+    public async Task<Bird> IndividualUpdateBirdForChecklist (BirdUpdate info)
+    {
+        Bird bird = await _context.Birds.FirstOrDefaultAsync(c => c.checklistId == info.checklistId && c.speciesName == info.speciesName); 
+        _context.Update(bird);
+        await _context.SaveChangesAsync();
+        return bird;
+    }
 }

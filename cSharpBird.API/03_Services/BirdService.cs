@@ -32,4 +32,12 @@ public class BirdService : IBirdService
             valid = false;
         return valid;
     }
+    public async Task<Bird> AddBirdToChecklistAsync (Bird newBird)
+    {
+        return await _birdStorage.IndividualWriteBirdForChecklist(newBird);
+    }
+    public async Task<Bird> UpdateBirdOnChecklistAsync (BirdUpdate info)
+    {
+        return await _birdStorage.IndividualUpdateBirdForChecklist(info);
+    }
 }

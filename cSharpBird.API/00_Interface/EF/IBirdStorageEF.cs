@@ -11,4 +11,6 @@ public interface IBirdStorageEF
     public Task<Checklist> UpdateBirdsForChecklist(Checklist checklist);
     public Task<List<Bird>?> ReadBirdsForChecklist(Guid checklistID);
     public Task<Checklist> DeleteBirdsForChecklist(Checklist checklist);
+    public Task<Bird> IndividualWriteBirdForChecklist (Bird bird);
+    public Task<Bird> IndividualUpdateBirdForChecklist (BirdUpdate info);
 }
