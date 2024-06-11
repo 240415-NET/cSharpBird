@@ -8,7 +8,7 @@ public interface IBirdStorageEF
 {
     //public List<Bird> GetFullBirdList();
     //public Task<Checklist> WriteBirdsForChecklist(Checklist checklist);
-    //public Task<Checklist> UpdateBirdsForChecklist(Checklist checklist);
+    public Task<Checklist> UpdateBirdsForChecklist(Checklist checklist);
     public Task<List<Bird>?> ReadBirdsForChecklist(Guid checklistID);
     public Task<Checklist> DeleteBirdsForChecklist(Checklist checklist);
     public Task<Bird> IndividualWriteBirdForChecklist (Bird bird);

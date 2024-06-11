@@ -35,7 +35,7 @@ public class BirdStorageEFRepo : IBirdStorageEF
         }
         await _context.SaveChangesAsync();
         return checklist;
-    }
+    }*/
     public async Task<Checklist> UpdateBirdsForChecklist(Checklist checklist)
     {
         foreach (var bird in checklist.birds)
@@ -44,7 +44,7 @@ public class BirdStorageEFRepo : IBirdStorageEF
         }
         await _context.SaveChangesAsync();
         return checklist;
-    }*/
+    }
     public Task<List<Bird>?> ReadBirdsForChecklist(Guid checklistID)
     {
         List<Bird> checklistBirds = new List<Bird>();
