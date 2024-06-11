@@ -9,26 +9,13 @@ public class Bird
 {
     [Key]
     public Guid randomBirdId {get; set;}
-    public string bandCode {get; set;}
     public string speciesName {get; set;}
-
     public int numSeen {get; set;}
-    public string? bbc {get;set;}
-    public string? bNotes {get;set;}
     public Bird() {}
-    public Bird(string _bandCode, string _speciesName)
+    public Bird(string _speciesName, int _numSeen)
     {
         randomBirdId = new Guid();
-        bandCode = _bandCode;
-        speciesName = _speciesName;
-    }
-    public Bird(string _bandCode, string _speciesName, int _numSeen, string _bbc, string _bNotes)
-    {
-        randomBirdId = new Guid();
-        bandCode = _bandCode;
         speciesName = _speciesName;
         numSeen = _numSeen;
-        bbc = _bbc;
-        bNotes = _bNotes;
     }
 }

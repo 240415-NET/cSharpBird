@@ -10,11 +10,7 @@ public class Checklist
     public Guid userId {get;set;}
     public string locationName {get; set;}
     public DateTime checklistDateTime {get; set;}
-    public List<Bird> birds {get;set;} = new();//currently every entry in the CSV files
-    public float distance {get;set;}
-    public int duration {get;set;}
-    public bool stationary {get;set;}
-    public string cNotes {get;set;}
+    public List<Bird>? birds {get;set;} = new();//currently every entry in the CSV files
     public Checklist() {}
 
     public Checklist(Guid _userId, string _locationName)
@@ -23,13 +19,6 @@ public class Checklist
         userId = _userId;
         locationName = _locationName;
         checklistDateTime = DateTime.Today;
-        List<Bird> birds = GetFullBirdList();
-        stationary = false;
-        cNotes = "";
-        foreach (Bird bird in birds)
-        {
-            Console.WriteLine(bird.bandCode);
-        }
     }
     public Checklist(Guid _userId, string _locationName, string _checklistDateTime)
     {
@@ -37,10 +26,8 @@ public class Checklist
         userId = _userId;
         locationName = _locationName;
         checklistDateTime = DateTime.Parse(_checklistDateTime);
-        List<Bird> birds = GetFullBirdList();
-        stationary = false;
-        cNotes = "";
     }
+    /*
     public Checklist(Guid _checklistID, Guid _userId, string _locationName, DateTime _checklistDateTime, List<Bird> _birds, float _distance, int _duration, bool _stationary, string _cNotes)
     {
         checklistID = _checklistID;
@@ -68,5 +55,5 @@ public class Checklist
                 speciesName = x[1]
             }).ToList();
         return birdList;
-    }
+    }*/
 }
