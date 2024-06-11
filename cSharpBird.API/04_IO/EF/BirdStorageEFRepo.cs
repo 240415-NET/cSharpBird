@@ -71,6 +71,8 @@ public class BirdStorageEFRepo : IBirdStorageEF
     public async Task<Bird> IndividualUpdateBirdForChecklist (BirdUpdate info)
     {
         Bird bird = await _context.Birds.FirstOrDefaultAsync(c => c.checklistId == info.checklistId && c.speciesName == info.speciesName); 
+        Console.WriteLine(bird.speciesName);
+        Console.WriteLine(bird.randomBirdId);
         _context.Update(bird);
         await _context.SaveChangesAsync();
         return bird;
