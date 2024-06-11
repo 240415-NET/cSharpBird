@@ -34,10 +34,6 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
             existingChecklist.checklistDateTime = updatedList.checklistDateTime;
             existingChecklist.locationName = updatedList.locationName;
             existingChecklist.birds = updatedList.birds;
-            existingChecklist.distance = updatedList.distance;
-            existingChecklist.duration = updatedList.duration;
-            existingChecklist.stationary = updatedList.stationary;
-            existingChecklist.cNotes = updatedList.cNotes;
         }
         await _context.SaveChangesAsync();
         return existingChecklist;

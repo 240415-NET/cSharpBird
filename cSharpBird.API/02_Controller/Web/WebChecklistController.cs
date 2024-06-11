@@ -21,10 +21,6 @@ public class WebChecklistController : ControllerBase
         try
         {
             Checklist newChecklist = new Checklist (checklistBits.userId, checklistBits.locationName);
-            foreach (Bird bird in newChecklist.birds)
-            {
-                Console.WriteLine(bird.bandCode);
-            }
             await _checklistService.WriteChecklistAsync(newChecklist);
             return Ok(newChecklist);
         }

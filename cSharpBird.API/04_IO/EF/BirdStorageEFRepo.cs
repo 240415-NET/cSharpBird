@@ -11,7 +11,7 @@ public class BirdStorageEFRepo : IBirdStorageEF
     {
         _context = contextFromBuilder;
     }
-    public List<Bird> GetFullBirdList()
+    /*public List<Bird> GetFullBirdList()
     {
         string bandCode = "";
         string speciesName = "";
@@ -26,39 +26,32 @@ public class BirdStorageEFRepo : IBirdStorageEF
             }).ToList();
 
         return birdList;
-    }
+    }*/
     public async Task<Checklist> WriteBirdsForChecklist(Checklist checklist)
     {
-        Console.WriteLine("Successful call to bird storage");
-        //List<Bird> saveBirds = checklist.birds;
-        /*for (int i = 0; i < saveBirds.Count; i++)
+        foreach (Bird bird in checklist.birds)
         {
-            _context.Birds.Add(saveBirds[i]);
-            Console.WriteLine("Entered for loop");
-       }*/
-       //Console.WriteLine(checklist.birds[0].bandCode);
-       foreach (Bird bird in checklist.birds)
-       {
-            //_context.Birds.Add(bird);
-            Console.WriteLine(bird.bandCode);
-       }
+            _context.Birds.Add(bird);
+        }
         await _context.SaveChangesAsync();
-        Console.WriteLine("Successful exit of forloop");
         return checklist;
     }
     public async Task<Checklist> UpdateBirdsForChecklist(Checklist checklist)
     {
         foreach (var bird in checklist.birds)
         {
-            if (bird.numSeen > 0 || bird.bbc != null || bird.bNotes != null)
-                _context.Birds.Add(bird);
+            _context.Birds.Add(bird);
         }
         await _context.SaveChangesAsync();
         return checklist;
     }
     public Task<List<Bird>?> ReadBirdsForChecklist(Guid checklistID)
     {
-        return Task.FromResult(GetFullBirdList());
+        List<Bird> checklistBirds = new List<Bird>();
+        var cBirds = from c in _context.Birds select c;
+        cBirds = cBirds.Where(c => c.checklistId.Equals(checklistID));
+        checklistBirds = cBirds.ToList();
+        return Task.FromResult(checklistBirds);
     }
     public void DeleteBirdsForChecklist(Checklist checklist)
     {

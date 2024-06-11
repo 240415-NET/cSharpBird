@@ -11,11 +11,13 @@ public class Bird
     public Guid randomBirdId {get; set;}
     public string speciesName {get; set;}
     public int numSeen {get; set;}
+    public Guid checklistId {get; set;}
     public Bird() {}
-    public Bird(string _speciesName, int _numSeen)
+    public Bird(string _speciesName, int _numSeen, Guid _checklistId)
     {
         randomBirdId = new Guid();
         speciesName = _speciesName;
         numSeen = _numSeen;
+        checklistId = _checklistId;
     }
 }

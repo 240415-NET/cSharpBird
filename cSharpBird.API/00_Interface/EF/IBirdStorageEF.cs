@@ -6,7 +6,7 @@ using System.Text.Json;
 
 public interface IBirdStorageEF
 {
-    public List<Bird> GetFullBirdList();
+    //public List<Bird> GetFullBirdList();
     public Task<Checklist> WriteBirdsForChecklist(Checklist checklist);
     public Task<Checklist> UpdateBirdsForChecklist(Checklist checklist);
     public Task<List<Bird>?> ReadBirdsForChecklist(Guid checklistID);
