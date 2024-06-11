@@ -33,14 +33,20 @@ public class ChecklistService : IChecklistService
     }
     public async Task<Checklist> WriteUpdatedListAsync(Checklist updatedChecklist)
     {
-        return await _checklistStorage.WriteUpdatedListAsync(updatedChecklist);
+        await _checklistStorage.WriteUpdatedListAsync(updatedChecklist);
+        await _birdStorage.UpdateBirdsForChecklist(updatedChecklist);
+        return updatedChecklist;
     }
     public async Task<Checklist?> ReadChecklistFromGuidAsync(Guid checklistId)
     {
-        return await _checklistStorage.ReadChecklistFromGuidAsync(checklistId);
+        Checklist foundChecklist = await _checklistStorage.ReadChecklistFromGuidAsync(checklistId);
+        foundChecklist.birds = await _birdStorage.ReadBirdsForChecklist(checklistId);
+        return foundChecklist;        
     }
     public async Task<bool> DeleteChecklistAsync (Checklist deleteChecklist)
     {
-        return await _checklistStorage.DeleteChecklistAsync(deleteChecklist);
+        await _checklistStorage.DeleteChecklistAsync(deleteChecklist);
+        await _birdStorage.DeleteBirdsForChecklist(deleteChecklist);
+        return true;
     }
 }

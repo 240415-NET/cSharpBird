@@ -40,7 +40,7 @@ public class BirdStorageEFRepo : IBirdStorageEF
     {
         foreach (var bird in checklist.birds)
         {
-            _context.Birds.Add(bird);
+            _context.Birds.Update(bird);
         }
         await _context.SaveChangesAsync();
         return checklist;
@@ -53,8 +53,13 @@ public class BirdStorageEFRepo : IBirdStorageEF
         checklistBirds = cBirds.ToList();
         return Task.FromResult(checklistBirds);
     }
-    public void DeleteBirdsForChecklist(Checklist checklist)
+    public async Task<Checklist> DeleteBirdsForChecklist(Checklist checklist)
     {
-
+        foreach (Bird bird in checklist.birds)
+        {
+            _context.Remove(bird);
+        }
+        await _context.SaveChangesAsync();
+        return checklist;
     }
 }

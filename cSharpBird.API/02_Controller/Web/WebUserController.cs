@@ -30,7 +30,7 @@ public class WebUserController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    [HttpPost("Users/{usernameToFind}")]
+    [HttpGet("Users/{usernameToFind}")]
     public async Task<ActionResult<User>> GetUserByUserName (string usernameToFind)
     {
         try
