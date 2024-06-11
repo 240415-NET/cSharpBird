@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using cSharpBird.API;
 
@@ -11,9 +12,11 @@ using cSharpBird.API;
 namespace cSharpBird.API.Migrations
 {
     [DbContext(typeof(cSharpBirdContext))]
-    partial class cSharpBirdContextModelSnapshot : ModelSnapshot
+    [Migration("20240610170401_cSharpBird_V2")]
+    partial class cSharpBird_V2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,11 +28,21 @@ namespace cSharpBird.API.Migrations
 
             modelBuilder.Entity("cSharpBird.API.Bird", b =>
                 {
-                    b.Property<Guid>("randomBirdId")
+                    b.Property<Guid>("randomBird")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("checklistId")
+                    b.Property<string>("bNotes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bandCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bbc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("checklistID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("numSeen")
@@ -39,9 +52,9 @@ namespace cSharpBird.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("randomBirdId");
+                    b.HasKey("randomBird");
 
-                    b.HasIndex("checklistId");
+                    b.HasIndex("checklistID");
 
                     b.ToTable("Birds", (string)null);
 
@@ -54,12 +67,25 @@ namespace cSharpBird.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("cNotes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("checklistDateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<float>("distance")
+                        .HasColumnType("real");
+
+                    b.Property<int>("duration")
+                        .HasColumnType("int");
 
                     b.Property<string>("locationName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("stationary")
+                        .HasColumnType("bit");
 
                     b.Property<Guid>("userId")
                         .HasColumnType("uniqueidentifier");
@@ -116,9 +142,7 @@ namespace cSharpBird.API.Migrations
                 {
                     b.HasOne("cSharpBird.API.Checklist", null)
                         .WithMany("birds")
-                        .HasForeignKey("checklistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("checklistID");
                 });
 
             modelBuilder.Entity("cSharpBird.API.Checklist", b =>

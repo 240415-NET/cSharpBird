@@ -30,7 +30,7 @@ public class WebUserController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    [HttpPost("Users/{usernameToFind}")]
+    [HttpGet("Users/{usernameToFind}")]
     public async Task<ActionResult<User>> GetUserByUserName (string usernameToFind)
     {
         try
@@ -49,8 +49,33 @@ public class WebUserController : ControllerBase
         {
             User signInAttempt = _userService.GetUserByUsernameAsync(userSignIn.userName).Result;
             if (signInAttempt == null)
-                throw new Exception (e.Message);
-            return Ok(newUser);
+                return NotFound("Incorrect username or password");
+            else if((bool)_userService.VerifyPassword(userSignIn.rawPassword,signInAttempt).Result)
+                return Ok(signInAttempt);
+            else
+                return NotFound("Incorrect username or password");
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+    [HttpPost("Users/UpdateUser")]
+    public async Task<ActionResult<User>> UpdateUser (UserChange UserChanges)
+    {
+        try
+        {
+            User updatedUser = _userService.GetUserByGuidAsync(UserChanges.userId).Result;
+            if (updatedUser != null)
+            {
+                if (UserChanges.email != null || UserChanges.email != "")
+                    await _userService.changeEmail(updatedUser,UserChanges.email);
+                if (UserChanges.userName != null || UserChanges.userName != "")
+                    await _userService.changeName(updatedUser,UserChanges.userName);
+                if (UserChanges.rawPassword != null || UserChanges.rawPassword != "")
+                    await _userService.UpdatePassword(UserChanges.rawPassword,updatedUser);
+            }
+            return Ok(updatedUser);
         }
         catch (Exception e)
         {

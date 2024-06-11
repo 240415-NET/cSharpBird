@@ -11,22 +11,22 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
     {
         _context = contextFromBuilder;
     }
-    public async Task<List<Checklist>?> GetLists(User searchUser)
+    public async Task<List<Checklist?>?> GetListsAsync(Guid searchUser)
     {
         List<Checklist> userChecklists = new List<Checklist>();
         var uChecklists = from c in _context.Checklists select c;
-        uChecklists = uChecklists.Where(c => c.userId.Equals(searchUser.userId));
+        uChecklists = uChecklists.Where(c => c.userId.Equals(searchUser));
         userChecklists = uChecklists.ToList();
         return userChecklists;
     }    
-    public async Task<Checklist> WriteChecklist(Checklist newList)
+    public async Task<Checklist> WriteChecklistAsync(Checklist newList)
     {
         _context.Checklists.Add(newList);
         await _context.SaveChangesAsync();
         return newList;
     }
 
-    public async Task<Checklist> WriteUpdatedList(Checklist updatedList)
+    public async Task<Checklist> WriteUpdatedListAsync(Checklist updatedList)
     {
         Checklist? existingChecklist = await _context.Checklists.FirstOrDefaultAsync(c => c.checklistID == updatedList.checklistID);
         if (existingChecklist != null)
@@ -34,15 +34,16 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
             existingChecklist.checklistDateTime = updatedList.checklistDateTime;
             existingChecklist.locationName = updatedList.locationName;
             existingChecklist.birds = updatedList.birds;
-            existingChecklist.distance = updatedList.distance;
-            existingChecklist.duration = updatedList.duration;
-            existingChecklist.stationary = updatedList.stationary;
-            existingChecklist.cNotes = updatedList.cNotes;
         }
         await _context.SaveChangesAsync();
         return existingChecklist;
     }
-    public async Task<bool> DeleteChecklist(Checklist deleteChecklist)
+    public async Task<Checklist> ReadChecklistFromGuidAsync (Guid checklistId)
+    {
+        Checklist? existingChecklist = await _context.Checklists.FirstOrDefaultAsync(c => c.checklistID == checklistId);
+        return existingChecklist;
+    }
+    public async Task<bool> DeleteChecklistAsync(Checklist deleteChecklist)
     {
         //Gonna wait for Jonathan to solve this one
         Checklist toBeDeleted = deleteChecklist;

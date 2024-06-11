@@ -1,0 +1,1138 @@
+BBWD,Black-bellied Whistling-Duck
+FUWD,Fulvous Whistling-Duck
+EMGO,Emperor Goose
+SNGO,Snow Goose
+ROGO,Ross's Goose
+GRGO,Graylag Goose
+GWFG,Greater White-fronted Goose
+LWFG,Lesser White-fronted Goose
+TABG,Taiga Bean-Goose
+TUBG,Tundra Bean-Goose
+PFGO,Pink-footed Goose
+BRAN,Brant
+BARG,Barnacle Goose
+CACG,Cackling Goose
+CANG,Canada Goose
+HAGO,Hawaiian Goose
+MUSW,Mute Swan
+TRUS,Trumpeter Swan
+TUSW,Tundra Swan
+WHOS,Whooper Swan
+EGGO,Egyptian Goose
+COMS,Common Shelduck
+MUDU,Muscovy Duck
+WODU,Wood Duck
+BATE,Baikal Teal
+GARG,Garganey
+BWTE,Blue-winged Teal
+CITE,Cinnamon Teal
+NSHO,Northern Shoveler
+GADW,Gadwall
+FADU,Falcated Duck
+EUWI,Eurasian Wigeon
+AMWI,American Wigeon
+LAYD,Laysan Duck
+HAWD,Hawaiian Duck
+ESBD,Eastern Spot-billed Duck
+MALL,Mallard
+MEDU,Mexican Duck
+ABDU,American Black Duck
+MODU,Mottled Duck
+WCHP,White-cheeked Pintail
+NOPI,Northern Pintail
+GWTE,Green-winged Teal
+CANV,Canvasback
+REDH,Redhead
+COMP,Common Pochard
+RNDU,Ring-necked Duck
+TUDU,Tufted Duck
+GRSC,Greater Scaup
+LESC,Lesser Scaup
+STEI,Steller's Eider
+LABD,Labrador Duck
+SPEI,Spectacled Eider
+KIEI,King Eider
+COEI,Common Eider
+HADU,Harlequin Duck
+SUSC,Surf Scoter
+WWSC,White-winged Scoter
+STSC,Stejneger's Scoter
+COSC,Common Scoter
+BLSC,Black Scoter
+LTDU,Long-tailed Duck
+BUFF,Bufflehead
+COGO,Common Goldeneye
+BAGO,Barrow's Goldeneye
+SMEW,Smew
+HOME,Hooded Merganser
+COME,Common Merganser
+RBME,Red-breasted Merganser
+MADU,Masked Duck
+RUDU,Ruddy Duck
+PLCH,Plain Chachalaca
+MOUQ,Mountain Quail
+NOBO,Northern Bobwhite
+SCQU,Scaled Quail
+CAQU,California Quail
+GAQU,Gambel's Quail
+MONQ,Montezuma Quail
+WITU,Wild Turkey
+RUGR,Ruffed Grouse
+SPGR,Spruce Grouse
+WIPT,Willow Ptarmigan
+ROPT,Rock Ptarmigan
+WTPT,White-tailed Ptarmigan
+GRSG,Greater Sage-Grouse
+GUSG,Gunnison Sage-Grouse
+DUGR,Dusky Grouse
+SOGR,Sooty Grouse
+STGR,Sharp-tailed Grouse
+GRPC,Greater Prairie-Chicken
+LEPC,Lesser Prairie-Chicken
+GRAP,Gray Partridge
+RNEP,Ring-necked Pheasant
+KAPH,Kalij Pheasant
+INPE,Indian Peafowl
+GRAF,Gray Francolin
+BLFR,Black Francolin
+REJU,Red Junglefowl
+HISN,Himalayan Snowcock
+CHUK,Chukar
+ERFR,Erckel's Spurfowl (Francolin)
+AMFL,American Flamingo
+LEGR,Least Grebe
+PBGR,Pied-billed Grebe
+HOGR,Horned Grebe
+RNGR,Red-necked Grebe
+EAGR,Eared Grebe
+WEGR,Western Grebe
+CLGR,Clark's Grebe
+CBSA,Chestnut-bellied Sandgrouse
+ROPI,Rock Pigeon
+CWPI,Common Wood-Pigeon (Wood Pigeon)
+SNPI,Scaly-naped Pigeon
+WCPI,White-crowned Pigeon
+RBPI,Red-billed Pigeon
+BTPI,Band-tailed Pigeon
+ORTD,Oriental Turtle-Dove
+EUTD,European Turtle-Dove
+EUCD,Eurasian Collared-Dove
+SPDO,Spotted Dove
+ZEBD,Zebra Dove
+PAPI,Passenger Pigeon
+INDO,Inca Dove
+CGDO,Common Ground Dove
+RGDO,Ruddy Ground Dove
+RUQD,Ruddy Quail-Dove
+KWQD,Key West Quail-Dove
+WTDO,White-tipped Dove
+WWDO,White-winged Dove
+ZEND,Zenaida Dove
+MODO,Mourning Dove
+SBAN,Smooth-billed Ani
+GBAN,Groove-billed Ani
+GRRO,Greater Roadrunner
+COCU,Common Cuckoo
+ORCU,Oriental Cuckoo
+DBCU,Dark-billed Cuckoo
+YBCU,Yellow-billed Cuckoo
+MACU,Mangrove Cuckoo
+BBCU,Black-billed Cuckoo
+LENI,Lesser Nighthawk
+CONI,Common Nighthawk
+ANNI,Antillean Nighthawk
+COPA,Common Pauraque
+COPO,Common Poorwill
+CWWI,Chuck-will's-widow
+BCNI,Buff-collared Nightjar
+EWPW,Eastern Whip-poor-will
+MWPW,Mexican Whip-poor-will
+GRNI,Gray Nightjar
+BLSW,Black Swift
+WCSW,White-collared Swift
+CHSW,Chimney Swift
+VASW,Vaux's Swift
+WTNE,White-throated Needletail
+MASW,Mariana Swiftlet
+COSW,Common Swift
+FTSW,Pacific (Fork-tailed) Swift
+WTSW,White-throated Swift
+ANPS,Antillean Palm Swift (Palm-Swift)
+MEVI,Mexican Violetear
+GNBM,Green-breasted Mango
+RIHU,Rivoli's Hummingbird
+PCST,Plain-capped Starthroat
+ATMG,Amethyst-throated Mountain-gem
+BTMG,Blue-throated Mountain-gem
+LUHU,Lucifer Hummingbird
+RTHU,Ruby-throated Hummingbird
+BCHU,Black-chinned Hummingbird
+BAWO,Bahama Woodstar
+ANHU,Anna's Hummingbird
+COHU,Costa's Hummingbird
+CAHU,Calliope Hummingbird
+RUHU,Rufous Hummingbird
+ALHU,Allen's Hummingbird
+BTHU,Broad-tailed Hummingbird
+BUHU,Bumblebee Hummingbird
+BBIH,Broad-billed Hummingbird
+WEHU,White-eared Hummingbird
+XAHU,Xantus's Hummingbird
+VCHU,Violet-crowned Hummingbird
+BEHU,Berylline Hummingbird
+CIHU,Cinnamon Hummingbird
+BBEH,Buff-bellied Hummingbird
+SPRA,Spotted Rail
+PBCR,Paint-billed Crake
+RNWR,Rufous-necked Wood-Rail
+RIRA,Ridgway's Rail
+KIRA,King Rail
+CLRA,Clapper Rail
+VIRA,Virginia Rail
+CORC,Corn Crake
+SORA,Sora
+COGA,Common Gallinule
+COMO,Eurasian (Common) Moorhen
+EUCO,Eurasian Coot
+HACO,Hawaiian Coot
+AMCO,American Coot
+PUGA,Purple Gallinule
+PUSW,Gray-headed (Purple) Swamphen
+YERA,Yellow Rail
+BLRA,Black Rail
+LARA,Laysan Rail
+HARA,Hawaiian Rail
+SUNG,Sungrebe
+LIMP,Limpkin
+SACR,Sandhill Crane
+CCRA,Common Crane
+HOCR,Hooded Crane
+WHCR,Whooping Crane
+DSTK,Double-striped Thick-knee
+BWST,Black-winged Stilt
+BNST,Black-necked Stilt
+AMAV,American Avocet
+EUOY,Eurasian Oystercatcher
+AMOY,American Oystercatcher
+BLOY,Black Oystercatcher
+NOLA,Northern Lapwing
+SOLA,Southern Lapwing
+BBPL,Black-bellied Plover
+EUGP,European Golden-Plover
+AMGP,American Golden-Plover
+PAGP,Pacific Golden-Plover
+EUDO,Eurasian Dotterel
+KILL,Killdeer
+CRPL,Common Ringed Plover
+SEPL,Semipalmated Plover
+PIPL,Piping Plover
+LRPL,Little Ringed Plover
+LSAP,Siberian (Lesser) Sand-Plover
+GSAP,Greater Sand-Plover
+WIPL,Wilson's Plover
+COPL,Collared Plover
+MOPL,Mountain Plover
+SNPL,Snowy Plover
+KEPL,Kentish Plover
+NOJA,Northern Jacana
+UPSA,Upland Sandpiper
+BTCU,Bristle-thighed Curlew
+WHIM,Whimbrel
+LICU,Little Curlew
+ESCU,Eskimo Curlew
+LBCU,Long-billed Curlew
+FECU,Far Eastern Curlew
+SBCU,Slender-billed Curlew
+EUCU,Eurasian Curlew
+BTGO,Bar-tailed Godwit
+BLTG,Black-tailed Godwit
+HUGO,Hudsonian Godwit
+MAGO,Marbled Godwit
+RUTU,Ruddy Turnstone
+BLTU,Black Turnstone
+GRKN,Great Knot
+REKN,Red Knot
+SURF,Surfbird
+RUFF,Ruff
+BBIS,Broad-billed Sandpiper
+SPTS,Sharp-tailed Sandpiper
+STSA,Stilt Sandpiper
+CUSA,Curlew Sandpiper
+TEST,Temminck's Stint
+LTST,Long-toed Stint
+SBSA,Spoon-billed Sandpiper
+RNST,Red-necked Stint
+SAND,Sanderling
+DUNL,Dunlin
+ROSA,Rock Sandpiper
+PUSA,Purple Sandpiper
+BASA,Baird's Sandpiper
+LIST,Little Stint
+LESA,Least Sandpiper
+WRSA,White-rumped Sandpiper
+BBSA,Buff-breasted Sandpiper
+PESA,Pectoral Sandpiper
+SESA,Semipalmated Sandpiper
+WESA,Western Sandpiper
+SBDO,Short-billed Dowitcher
+LBDO,Long-billed Dowitcher
+JASN,Jack Snipe
+EUWO,Eurasian Woodcock
+AMWO,American Woodcock
+SOSN,Solitary Snipe
+PTSN,Pin-tailed Snipe
+COSN,Common Snipe
+WISN,Wilson's Snipe
+TESA,Terek Sandpiper
+COSA,Common Sandpiper
+SPSA,Spotted Sandpiper
+GRSA,Green Sandpiper
+SOSA,Solitary Sandpiper
+GTTA,Gray-tailed Tattler
+WATA,Wandering Tattler
+LEYE,Lesser Yellowlegs
+WILL,Willet
+SPRE,Spotted Redshank
+COMG,Common Greenshank
+GRYE,Greater Yellowlegs
+CREH,Common Redshank
+WOSA,Wood Sandpiper
+MASA,Marsh Sandpiper
+WIPH,Wilson's Phalarope
+RNPH,Red-necked Phalarope
+REPH,Red Phalarope
+ORPR,Oriental Pratincole
+GRSK,Great Skua
+SPSK,South Polar Skua
+POJA,Pomarine Jaeger
+PAJA,Parasitic Jaeger
+LTJA,Long-tailed Jaeger
+DOVE,Dovekie
+COMU,Common Murre
+TBMU,Thick-billed Murre
+RAZO,Razorbill
+GRAU,Great Auk
+BLGU,Black Guillemot
+PIGU,Pigeon Guillemot
+LBMU,Long-billed Murrelet
+MAMU,Marbled Murrelet
+KIMU,Kittlitz's Murrelet
+SCMU,Scripps's Murrelet
+GUMU,Guadalupe Murrelet
+CRMU,Craveri's Murrelet
+ANMU,Ancient Murrelet
+CAAU,Cassin's Auklet
+PAAU,Parakeet Auklet
+LEAU,Least Auklet
+WHAU,Whiskered Auklet
+CRAU,Crested Auklet
+RHAU,Rhinoceros Auklet
+ATPU,Atlantic Puffin
+HOPU,Horned Puffin
+TUPU,Tufted Puffin
+STGU,Swallow-tailed Gull
+BLKI,Black-legged Kittiwake
+RLKI,Red-legged Kittiwake
+IVGU,Ivory Gull
+SAGU,Sabine's Gull
+BOGU,Bonaparte's Gull
+GHGU,Gray-hooded Gull
+BHGU,Black-headed Gull
+LIGU,Little Gull
+ROGU,Ross's Gull
+LAGU,Laughing Gull
+FRGU,Franklin's Gull
+PAGU,Pallas's Gull
+BEGU,Belcher's Gull
+BTGU,Black-tailed Gull
+HEEG,Heermann's Gull
+COGU,Common Gull
+SBIG,Short-billed Gull
+RBGU,Ring-billed Gull
+WEGU,Western Gull
+YFGU,Yellow-footed Gull
+CAGU,California Gull
+HERG,Herring Gull
+YLGU,Yellow-legged Gull
+ICGU,Iceland Gull
+LBBG,Lesser Black-backed Gull
+SBAG,Slaty-backed Gull
+GWGU,Glaucous-winged Gull
+GLGU,Glaucous Gull
+GBBG,Great Black-backed Gull
+KEGU,Kelp Gull
+BRNO,Brown Noddy
+BLNO,Black Noddy
+BGNO,Blue-gray Noddy
+WHTT,White Tern
+SOTE,Sooty Tern
+GBAT,Gray-backed Tern
+BRTE,Bridled Tern
+ALTE,Aleutian Tern
+LITE,Little Tern
+LETE,Least Tern
+LBTE,Large-billed Tern
+GBTE,Gull-billed Tern
+CATE,Caspian Tern
+INTE,Inca Tern
+BLTE,Black Tern
+WWTE,White-winged Tern
+WHST,Whiskered Tern
+ROST,Roseate Tern
+COTE,Common Tern
+ARTE,Arctic Tern
+FOTE,Forster's Tern
+ROYT,Royal Tern
+GCTE,Great Crested Tern
+SATE,Sandwich Tern
+ELTE,Elegant Tern
+BLSK,Black Skimmer
+WTTR,White-tailed Tropicbird
+RBTR,Red-billed Tropicbird
+RTTR,Red-tailed Tropicbird
+RTLO,Red-throated Loon
+ARLO,Arctic Loon
+PALO,Pacific Loon
+COLO,Common Loon
+YBLO,Yellow-billed Loon
+YNAL,Atlantic Yellow-nosed (Yellow-nosed) Albatross
+WCAL,White-capped Albatross
+CHAL,Chatham Albatross
+SAAL,Salvin's Albatross
+BBAL,Black-browed Albatross
+LMAL,Light-mantled Albatross
+WAAL,[Antipodean] (Wandering) Albatross
+LAAL,Laysan Albatross
+BFAL,Black-footed Albatross
+STAL,Short-tailed Albatross
+WISP,Wilson's Storm-Petrel
+WFSP,White-faced Storm-Petrel
+BBSP,Black-bellied Storm-Petrel
+EUSP,European Storm-Petrel
+FTSP,Fork-tailed Storm-Petrel
+RISP,Ringed Storm-Petrel
+SSTP,Swinhoe's Storm-Petrel
+LESP,Leach's Storm-Petrel
+TOSP,Townsend's Storm-Petrel
+AISP,Ainley's Storm-Petrel
+ASSP,Ashy Storm-Petrel
+BSTP,Band-rumped Storm-Petrel
+WRSP,Wedge-rumped Storm-Petrel
+BLSP,Black Storm-Petrel
+TRSP,Tristram's Storm-Petrel
+LSTP,Least Storm-Petrel
+NOGP,Northern Giant-Petrel
+NOFU,Northern Fulmar
+GFPE,Gray-faced Petrel
+PRPE,Providence Petrel
+KEPE,Kermadec Petrel
+TRPE,Trindade Petrel
+HEPE,Herald Petrel
+MUPE,Murphy's Petrel
+MOPE,Mottled Petrel
+BEPE,Bermuda Petrel
+BCPE,Black-capped Petrel
+JFPE,Juan Fernandez Petrel
+HAPE,Hawaiian Petrel
+WNPE,White-necked Petrel
+BOPE,Bonin Petrel
+BWPE,Black-winged Petrel
+FEPE,Fea's Petrel
+ZIPE,Zino's Petrel
+COPE,Cook's Petrel
+STPE,Stejneger's Petrel
+TAPE,Tahiti Petrel
+BUPE,Bulwer's Petrel
+JOPE,Jouanin's Petrel
+WCPE,White-chinned Petrel
+PAPE,Parkinson's Petrel
+STRS,Streaked Shearwater
+CORS,Cory's Shearwater
+CVSH,Cape Verde Shearwater
+WTSH,Wedge-tailed Shearwater
+BULS,Buller's Shearwater
+STTS,Short-tailed Shearwater
+SOSH,Sooty Shearwater
+GRSH,Great Shearwater
+PFSH,Pink-footed Shearwater
+FFSH,Flesh-footed Shearwater
+CHSH,Christmas Shearwater
+MASH,Manx Shearwater
+NESH,Newell's Shearwater
+BRYS,Bryan's Shearwater
+BVSH,Black-vented Shearwater
+AUSH,Audubon's Shearwater
+BASH,Barolo Shearwater
+JABI,Jabiru
+WOST,Wood Stork
+LEFR,Lesser Frigatebird
+MAFR,Magnificent Frigatebird
+GREF,Great Frigatebird
+MABO,Masked Booby
+NABO,Nazca Booby
+BFBO,Blue-footed Booby
+BRBO,Brown Booby
+RFBO,Red-footed Booby
+NOGA,Northern Gannet
+ANHI,Anhinga
+BRAC,Brandt's Cormorant
+RFCO,Red-faced Cormorant
+PECO,Pelagic Cormorant
+GRCO,Great Cormorant
+DCCO,Double-crested Cormorant
+NECO,Neotropic Cormorant
+AWPE,American White Pelican
+BRPE,Brown Pelican
+AMBI,American Bittern
+YEBI,Yellow Bittern
+LEBI,Least Bittern
+BTTH,Bare-throated Tiger-Heron
+GBHE,Great Blue Heron
+GRAH,Gray Heron
+GREG,Great Egret
+INEG,Medium (Intermediate) Egret
+CHEG,Chinese Egret
+LIEG,Little Egret
+WERH,Western Reef-Heron
+SNEG,Snowy Egret
+LBHE,Little Blue Heron
+TRHE,Tricolored Heron
+REEG,Reddish Egret
+CAEG,Western Cattle (Cattle) Egret
+CHPH,Chinese Pond-Heron
+GRHE,Green Heron
+BCNH,Black-crowned Night Heron (Night-Heron)
+YCNH,Yellow-crowned Night Heron (Night-Heron)
+WHIB,White Ibis
+SCIB,Scarlet Ibis
+GLIB,Glossy Ibis
+WFIB,White-faced Ibis
+ROSP,Roseate Spoonbill
+CACO,California Condor
+BLVU,Black Vulture
+TUVU,Turkey Vulture
+OSPR,Osprey
+WTKI,White-tailed Kite
+HBKI,Hook-billed Kite
+STKI,Swallow-tailed Kite
+GOEA,Golden Eagle
+DTKI,Double-toothed Kite
+NOHA,Northern Harrier
+WMHA,Western Marsh Harrier
+CHIS,Chinese Sparrowhawk
+SSHA,Sharp-shinned Hawk
+COHA,Cooper's Hawk
+AGOS,American Goshawk
+BLAK,Black Kite
+BAEA,Bald Eagle
+WTEA,White-tailed Eagle
+STSE,Steller's Sea-Eagle
+MIKI,Mississippi Kite
+CRHA,Crane Hawk
+SNKI,Snail Kite
+COBH,Common Black Hawk
+GBHA,Great Black Hawk
+ROHA,Roadside Hawk
+HASH,Harris's Hawk
+WTHA,White-tailed Hawk
+GRHA,Gray Hawk
+RSHA,Red-shouldered Hawk
+BWHA,Broad-winged Hawk
+HAWH,Hawaiian Hawk
+STHA,Short-tailed Hawk
+SWHA,Swainson's Hawk
+ZTHA,Zone-tailed Hawk
+RTHA,Red-tailed Hawk
+RLHA,Rough-legged Hawk
+FEHA,Ferruginous Hawk
+LLBU,Long-legged Buzzard
+BANO,Barn Owl
+ORSO,Oriental Scops-Owl
+FLOW,Flammulated Owl
+WHSO,Whiskered Screech-Owl
+WESO,Western Screech-Owl
+EASO,Eastern Screech-Owl
+GHOW,Great Horned Owl
+SNOW,Snowy Owl
+NHOW,Northern Hawk Owl
+NOPO,Northern Pygmy-Owl
+FEPO,Ferruginous Pygmy-Owl
+ELOW,Elf Owl
+BUOW,Burrowing Owl
+SPOW,Spotted Owl
+BADO,Barred Owl
+MOOW,Mottled Owl
+GGOW,Great Gray Owl
+LEOW,Long-eared Owl
+STOW,Stygian Owl
+SEOW,Short-eared Owl
+BOOW,Boreal Owl
+NSWO,Northern Saw-whet Owl
+NOBB,Northern Boobook
+ELTR,Elegant Trogon
+EAQU,Eared Quetzal
+EHOO,Eurasian Hoopoe
+RIKI,Ringed Kingfisher
+BEKI,Belted Kingfisher
+AMKI,Amazon Kingfisher
+GKIN,Green Kingfisher
+EUWR,Eurasian Wryneck
+LEWO,Lewis's Woodpecker
+RHWO,Red-headed Woodpecker
+ACWO,Acorn Woodpecker
+GIWO,Gila Woodpecker
+GFWO,Golden-fronted Woodpecker
+RBWO,Red-bellied Woodpecker
+WISA,Williamson's Sapsucker
+YBSA,Yellow-bellied Sapsucker
+RNSA,Red-naped Sapsucker
+RBSA,Red-breasted Sapsucker
+ATTW,American Three-toed Woodpecker
+BBWO,Black-backed Woodpecker
+GSWO,Great Spotted Woodpecker
+DOWO,Downy Woodpecker
+NUWO,Nuttall's Woodpecker
+LBWO,Ladder-backed Woodpecker
+RCWO,Red-cockaded Woodpecker
+HAWO,Hairy Woodpecker
+WHWO,White-headed Woodpecker
+ARWO,Arizona Woodpecker
+NOFL,Northern Flicker
+GIFL,Gilded Flicker
+PIWO,Pileated Woodpecker
+IBWO,Ivory-billed Woodpecker
+COFF,Collared Forest-Falcon
+CRCA,Crested Caracara
+EUKE,Eurasian Kestrel
+AMKE,American Kestrel
+RFFA,Red-footed Falcon
+MERL,Merlin
+EHOB,Eurasian Hobby
+APFA,Aplomado Falcon
+BAFA,Bat Falcon
+GYRF,Gyrfalcon
+PEFA,Peregrine Falcon
+PRFA,Prairie Falcon
+MOPA,Monk Parakeet
+CAPA,Carolina Parakeet
+NAPA,Nanday Parakeet
+GREP,Green Parakeet
+MIPA,Mitred Parakeet
+RMPA,Red-masked Parakeet
+TBPA,Thick-billed Parrot
+WWPA,White-winged Parakeet
+YCPA,Yellow-chevroned Parakeet
+RCPA,Red-crowned Parrot
+LCPA,Lilac-crowned Parrot
+RRPA,Rose-ringed Parakeet
+RFLO,Rosy-faced Lovebird
+MATI,Masked Tityra
+GCBE,Gray-collared Becard
+RTBE,Rose-throated Becard
+NOBT,Northern Beardless-Tyrannulet
+GREL,Greenish Elaenia
+SBEL,Small-billed Elaenia
+WCEL,White-crested Elaenia
+DCFL,Dusky-capped Flycatcher
+ATFL,Ash-throated Flycatcher
+NUFL,Nutting's Flycatcher
+GCFL,Great Crested Flycatcher
+BCFL,Brown-crested Flycatcher
+LSFL,La Sagra's Flycatcher
+GKIS,Great Kiskadee
+SOFL,Social Flycatcher
+SBFL,Sulphur-bellied Flycatcher
+PIRF,Piratic Flycatcher
+VAFL,Variegated Flycatcher
+CSFL,Crowned Slaty Flycatcher
+TRKI,Tropical Kingbird
+COKI,Couch's Kingbird
+CAKI,Cassin's Kingbird
+TBKI,Thick-billed Kingbird
+WEKI,Western Kingbird
+EAKI,Eastern Kingbird
+GRAK,Gray Kingbird
+LOKI,Loggerhead Kingbird
+STFL,Scissor-tailed Flycatcher
+FTFL,Fork-tailed Flycatcher
+TUFL,Tufted Flycatcher
+OSFL,Olive-sided Flycatcher
+GRPE,Greater Pewee
+WEWP,Western Wood-Pewee
+EAWP,Eastern Wood-Pewee
+CUPE,Cuban Pewee
+YBFL,Yellow-bellied Flycatcher
+ACFL,Acadian Flycatcher
+ALFL,Alder Flycatcher
+WIFL,Willow Flycatcher
+LEFL,Least Flycatcher
+HAFL,Hammond's Flycatcher
+GRFL,Gray Flycatcher
+DUFL,Dusky Flycatcher
+PINF,Pine Flycatcher
+WEFL,Western Flycatcher
+BBFL,Buff-breasted Flycatcher
+BLPH,Black Phoebe
+EAPH,Eastern Phoebe
+SAPH,Say's Phoebe
+VEFL,Vermilion Flycatcher
+BCVI,Black-capped Vireo
+WEVI,White-eyed Vireo
+TBVI,Thick-billed Vireo
+CUVI,Cuban Vireo
+BEVI,Bell's Vireo
+GRVI,Gray Vireo
+HUVI,Hutton's Vireo
+YTVI,Yellow-throated Vireo
+CAVI,Cassin's Vireo
+BHVI,Blue-headed Vireo
+PLVI,Plumbeous Vireo
+PHVI,Philadelphia Vireo
+WAVI,Warbling Vireo
+REVI,Red-eyed Vireo
+YGVI,Yellow-green Vireo
+BWVI,Black-whiskered Vireo
+YUVI,Yucatan Vireo
+KAEL,Kauai Elepaio
+OAEL,Oahu Elepaio
+HAEL,Hawaii Elepaio
+BROS,Brown Shrike
+RBSH,Red-backed Shrike
+LOSH,Loggerhead Shrike
+NSHR,Northern Shrike
+CAJA,Canada Jay
+BRJA,Brown Jay
+GRJA,Green Jay
+PIJA,Pinyon Jay
+STJA,Steller's Jay
+BLJA,Blue Jay
+FLSJ,Florida Scrub-Jay
+ISSJ,Island Scrub-Jay
+CASJ,California Scrub-Jay
+WOSJ,Woodhouse's Scrub-Jay
+MEJA,Mexican Jay
+CLNU,Clark's Nutcracker
+BBMA,Black-billed Magpie
+YBMA,Yellow-billed Magpie
+EUJA,Eurasian Jackdaw
+AMCR,American Crow
+TACR,Tamaulipas Crow
+FICR,Fish Crow
+HCRO,Hawaiian Crow
+CHRA,Chihuahuan Raven
+CORA,Common Raven
+VERD,Verdin
+CACH,Carolina Chickadee
+BCCH,Black-capped Chickadee
+MOCH,Mountain Chickadee
+MECH,Mexican Chickadee
+CBCH,Chestnut-backed Chickadee
+BOCH,Boreal Chickadee
+GHCH,Gray-headed Chickadee
+BRTI,Bridled Titmouse
+OATI,Oak Titmouse
+JUTI,Juniper Titmouse
+TUTI,Tufted Titmouse
+BCTI,Black-crested Titmouse
+EUSK,Eurasian Skylark
+HOLA,Horned Lark
+TBWA ,Thick-billed Warbler
+ICWA,Icterine Warbler
+MILL,Millerbird
+SEWA,Sedge Warbler
+BREW,Blyth's Reed Warbler
+MGRW,Middendorff's Grasshopper Warbler
+PGWA,Pallas's Grasshopper Warbler
+LANW,Lanceolated Warbler
+RIWA ,River Warbler
+BANS,Bank Swallow
+TRES,Tree Swallow
+BAHS,Bahama Swallow
+VGSW,Violet-green Swallow
+MANS,Mangrove Swallow
+BAWS,Blue-and-white Swallow
+NRWS,Northern Rough-winged Swallow
+BCMA,Brown-chested Martin
+PUMA,Purple Martin
+SOMA,Southern Martin
+GYBM,Gray-breasted Martin
+CUMA,Cuban Martin
+BARS,Barn Swallow
+COHM,Siberian House-Martin
+CLSW,Cliff Swallow
+CASW,Cave Swallow
+BUSH,Bushtit
+JABW,Japanese Bush Warbler (Bush-Warbler)
+WILW,Willow Warbler
+CCHI,Common Chiffchaff
+WOWA,Wood Warbler
+DUWA,Dusky Warbler
+PLEW,Pallas's Leaf Warbler
+YBWA,Yellow-browed Warbler
+ARWA,Arctic Warbler
+KLWA,Kamchatka Leaf Warbler
+RVBU,Red-vented Bulbul
+RWBU,Red-whiskered Bulbul
+LEWH,Lesser Whitethroat
+WREN,Wrentit
+WAWE,Warbling White-eye
+GNLA,Greater Necklaced Laughingthrush
+HWAM,Chinese Hwamei (Hwamei)
+RBLE,Red-billed Leiothrix
+RCKI,Ruby-crowned Kinglet
+GCKI,Golden-crowned Kinglet
+BOWA,Bohemian Waxwing
+CEDW,Cedar Waxwing
+GRSF,Gray Silky-flycatcher
+PHAI,Phainopepla
+KAOO,Kauai Oo
+OAOO,Oahu Oo
+BIOO,Bishop's Oo
+HAOO,Hawaii Oo
+KIOE,Kioea
+RBNU,Red-breasted Nuthatch
+WBNU,White-breasted Nuthatch
+PYNU,Pygmy Nuthatch
+BHNU,Brown-headed Nuthatch
+BRCR,Brown Creeper
+BGGN,Blue-gray Gnatcatcher
+BTGN,Black-tailed Gnatcatcher
+CAGN,California Gnatcatcher
+BCGN,Black-capped Gnatcatcher
+ROWR,Rock Wren
+CANW,Canyon Wren
+SIWR,Sinaloa Wren
+CACW,Cactus Wren
+BEWR,Bewick's Wren
+CARW,Carolina Wren
+HOWR,House Wren
+PAWR,Pacific Wren
+WIWR,Winter Wren
+SEWR,Sedge Wren
+MAWR,Marsh Wren
+BLMO,Blue Mockingbird
+GRCA,Gray Catbird
+CBTH,Curve-billed Thrasher
+BRTH,Brown Thrasher
+LBTH,Long-billed Thrasher
+BETH,Bendire's Thrasher
+CATH,California Thrasher
+LCTH,LeConte's Thrasher
+CRTH,Crissal Thrasher
+SATH,Sage Thrasher
+BAMO,Bahama Mockingbird
+NOMO,Northern Mockingbird
+EUST,European Starling
+COMY,Common Myna
+AMDI,American Dipper
+EABL,Eastern Bluebird
+WEBL,Western Bluebird
+MOBL,Mountain Bluebird
+TOSO,Townsend's Solitaire
+BBSO,Brown-backed Solitaire
+KAMA,Kamao
+AMAU,Amaui
+OLOM,Olomao
+OMAO,Omao
+PUAI,Puaiohi
+OBNT,Orange-billed Nightingale-Thrush
+BHNT,Black-headed Nightingale-Thrush
+VEER,Veery
+GCTH,Gray-cheeked Thrush
+BITH,Bicknell's Thrush
+SWTH,Swainson's Thrush
+HETH,Hermit Thrush
+WOTH,Wood Thrush
+MITH,Mistle Thrush
+EUBB,Eurasian Blackbird
+EYTH,Eyebrowed Thrush
+DUTH,Dusky Thrush
+NATH,Naumann's Thrush
+FIEL,Fieldfare
+REDW,Redwing
+SOTH,Song Thrush
+CCTH,Clay-colored Thrush
+WTTH,White-throated Thrush
+RBRO,Rufous-backed Robin
+AMRO,American Robin
+RLTH,Red-legged Thrush
+VATH,Varied Thrush
+AZTH,Aztec Thrush
+GSFL,Gray-streaked Flycatcher
+ABFL,Asian Brown Flycatcher
+SPFL,Spotted Flycatcher
+DSFL,Dark-sided Flycatcher
+WRSH,White-rumped Shama
+EURO,European Robin
+SBRO,Siberian Blue Robin
+RTRO,Rufous-tailed Robin
+BLUE,Bluethroat
+SIRU,Siberian Rubythroat
+RFBL,Red-flanked Bluetail
+NAFL,Narcissus Flycatcher
+MUFL,Mugimaki Flycatcher
+TAFL,Taiga Flycatcher
+CRET,Common Redstart
+RTRT,Rufous-tailed Rock-Thrush (Rock-thrush)
+ASST,Amur (Asian) Stonechat
+NOWH,Northern Wheatear
+PIWH,Pied Wheatear
+OLWA,Olive Warbler
+AFSI,African Silverbill
+JASP,Java Sparrow
+SBMU,Scaly-breasted Munia
+TRMU,Tricolored Munia
+CHMU,Chestnut Munia
+REAV,Red Avadavat
+COMW,Common Waxbill
+SIAC,Siberian Accentor
+HOSP,House Sparrow
+ETSP,Eurasian Tree Sparrow
+EYWA,Eastern Yellow Wagtail
+CIWA,Citrine Wagtail
+GRAW,Gray Wagtail
+WHWA,White Wagtail
+TRPI,Tree Pipit
+OBPI,Olive-backed Pipit
+PEPI,Pechora Pipit
+RTPI,Red-throated Pipit
+AMPI,American Pipit
+SPPI,Sprague's Pipit
+CCHA,Common Chaffinch
+BRAM,Brambling
+EVGR,Evening Grosbeak
+HAWF,Hawfinch
+CORO,Common Rosefinch
+PARO,Pallas's Rosefinch
+POUL,Poo-uli
+AKIK,Akikiki
+OAAL,Oahu Alauahio
+KAKA,Kakawahie
+MAAL,Maui Alauahio
+PALI,Palila
+LAFI,Laysan Finch
+NIFI,Nihoa Finch
+KOGR,Kona Grosbeak
+LEKF,Lesser Koa-Finch
+GRKF,Greater Koa-Finch
+UAIH,Ula-ai-hawane
+AKOH,Akohekohe
+LAYH,Laysan Honeycreeper
+APAP,Apapane
+IIWI,Iiwi
+HAMA,Hawaii Mamo
+BLMA,Black Mamo
+OU,Ou
+LANH,Lanai Hookbill
+MAPA,Maui Parrotbill
+KANU,Kauai Nukupuu
+OANU,Oahu Nukupuu
+MANU,Maui Nukupuu
+AKIA,Akiapolaau
+LEAK,Lesser Akialoa
+KAAK,Kauai Akialoa
+OAKI,Oahu Akialoa
+MNAK,Maui-nui Akialoa
+ANIA,Anianiau
+HAAM,Hawaii Amakihi
+OAAM,Oahu Amakihi
+KAAM,Kauai Amakihi
+GRAM,Greater Amakihi
+HCRE,Hawaii Creeper
+AKEK,Akekee
+OAKE,Oahu Akepa
+MAAK,Maui Akepa
+HAAK,Hawaii Akepa
+PIGR,Pine Grosbeak
+EUBU,Eurasian Bullfinch
+ASRF,Asian Rosy-Finch
+GCRF,Gray-crowned Rosy-Finch
+BLRF,Black Rosy-Finch
+BCRF,Brown-capped Rosy-Finch
+HOFI,House Finch
+PUFI,Purple Finch
+CAFI,Cassin's Finch
+ORGR,Oriental Greenfinch
+YFCA,Yellow-fronted Canary
+CORE,Common Redpoll
+HORE,Hoary Redpoll
+RECR,Red Crossbill
+CACR,Cassia Crossbill
+WWCR,White-winged Crossbill
+EGOL,European Goldfinch
+EUSI,Eurasian Siskin
+PISI,Pine Siskin
+LEGO,Lesser Goldfinch
+LAGO,Lawrence's Goldfinch
+AGOL,American Goldfinch
+ISCA,Island Canary
+LALO,Lapland Longspur
+CCLO,Chestnut-collared Longspur
+SMLO,Smith's Longspur
+TBLO,Thick-billed Longspur
+SNBU,Snow Bunting
+MKBU,McKay's Bunting
+PIBU,Pine Bunting
+YBWB,Yellow-browed Bunting
+LIBU,Little Bunting
+RUBU,Rustic Bunting
+YTBU,Yellow-throated Bunting
+YBSB,Yellow-breasted Bunting
+GRBU,Gray Bunting
+PALB,Pallas's Bunting
+REBU,Reed Bunting
+RWSP,Rufous-winged Sparrow
+BOSP,Botteri's Sparrow
+CASP,Cassin's Sparrow
+BACS,Bachman's Sparrow
+GRSP,Grasshopper Sparrow
+OLSP,Olive Sparrow
+FSSP,Five-striped Sparrow
+BTSP,Black-throated Sparrow
+LASP,Lark Sparrow
+LARB,Lark Bunting
+CHSP,Chipping Sparrow
+CCSP,Clay-colored Sparrow
+BCSP,Black-chinned Sparrow
+FISP,Field Sparrow
+BRSP,Brewer's Sparrow
+WOSP,Worthen's Sparrow
+FOSP,Fox Sparrow
+ATSP,American Tree Sparrow
+DEJU,Dark-eyed Junco
+YEJU,Yellow-eyed Junco
+WCSP,White-crowned Sparrow
+GCSP,Golden-crowned Sparrow
+HASP,Harris's Sparrow
+WTSP,White-throated Sparrow
+BESP,Bell's Sparrow
+SABS,Sagebrush Sparrow
+VESP,Vesper Sparrow
+LCSP,LeConte's Sparrow
+SESP,Seaside Sparrow
+NESP,Nelson's Sparrow
+SALS,Saltmarsh Sparrow
+BAIS,Baird's Sparrow
+HESP,Henslow's Sparrow
+SAVS,Savannah Sparrow
+SOSP,Song Sparrow
+LISP,Lincoln's Sparrow
+SWSP,Swamp Sparrow
+CANT,Canyon Towhee
+ABTO,Abert's Towhee
+CALT,California Towhee
+RCSP,Rufous-crowned Sparrow
+GTTO,Green-tailed Towhee
+SPTO,Spotted Towhee
+EATO,Eastern Towhee
+WESP,Western Spindalis
+YBCH,Yellow-breasted Chat
+YHBL,Yellow-headed Blackbird
+BOBO,Bobolink
+CHME,Chihuahuan Meadowlark
+EAME,Eastern Meadowlark
+WEME,Western Meadowlark
+BVOR,Black-vented Oriole
+OROR,Orchard Oriole
+HOOR,Hooded Oriole
+SBAO,Streak-backed Oriole
+BUOR,Bullock's Oriole
+SBOR,Spot-breasted Oriole
+ALOR,Altamira Oriole
+AUOR,Audubon's Oriole
+BAOR,Baltimore Oriole
+BBOR,Black-backed Oriole
+SCOR,Scott's Oriole
+RWBL,Red-winged Blackbird
+TRBL,Tricolored Blackbird
+TSBL,Tawny-shouldered Blackbird
+SHCO,Shiny Cowbird
+BROC,Bronzed Cowbird
+BHCO,Brown-headed Cowbird
+RUBL,Rusty Blackbird
+BRBL,Brewer's Blackbird
+COGR,Common Grackle
+BTGR,Boat-tailed Grackle
+GTGR,Great-tailed Grackle
+OVEN,Ovenbird
+WEWA,Worm-eating Warbler
+LOWA,Louisiana Waterthrush
+NOWA,Northern Waterthrush
+BAWA,Bachman's Warbler
+GWWA,Golden-winged Warbler
+BWWA,Blue-winged Warbler
+BAWW,Black-and-white Warbler
+PROW,Prothonotary Warbler
+SWWA,Swainson's Warbler
+CCWA,Crescent-chested Warbler
+TEWA,Tennessee Warbler
+OCWA,Orange-crowned Warbler
+COLW,Colima Warbler
+LUWA,Lucy's Warbler
+NAWA,Nashville Warbler
+VIWA,Virginia's Warbler
+CONW,Connecticut Warbler
+GCYE,Gray-crowned Yellowthroat
+MGWA,MacGillivray's Warbler
+MOWA,Mourning Warbler
+KEWA,Kentucky Warbler
+COYE,Common Yellowthroat
+HOWA,Hooded Warbler
+AMRE,American Redstart
+KIWA,Kirtland's Warbler
+CMWA,Cape May Warbler
+CERW,Cerulean Warbler
+NOPA,Northern Parula
+TRPA,Tropical Parula
+MAWA,Magnolia Warbler
+BBWA,Bay-breasted Warbler
+BLBW,Blackburnian Warbler
+YEWA,Yellow Warbler
+CSWA,Chestnut-sided Warbler
+BLPW,Blackpoll Warbler
+BTBW,Black-throated Blue Warbler
+PAWA,Palm Warbler
+PIWA,Pine Warbler
+YRWA,Yellow-rumped Warbler
+YTWA,Yellow-throated Warbler
+PRAW,Prairie Warbler
+GRWA,Grace's Warbler
+BTYW,Black-throated Gray Warbler
+TOWA,Townsend's Warbler
+HEWA,Hermit Warbler
+GCWA,Golden-cheeked Warbler
+BTNW,Black-throated Green Warbler
+FTWA,Fan-tailed Warbler
+RCWA,Rufous-capped Warbler
+GCRW,Golden-crowned Warbler
+CAWA,Canada Warbler
+WIWA,Wilson's Warbler
+RFWA,Red-faced Warbler
+PARE,Painted Redstart
+STRE,Slate-throated Redstart
+HETA,Hepatic Tanager
+SUTA,Summer Tanager
+SCTA,Scarlet Tanager
+WETA,Western Tanager
+FCTA,Flame-colored Tanager
+CCGR,Crimson-collared Grosbeak
+NOCA,Northern Cardinal
+PYRR,Pyrrhuloxia
+YEGR,Yellow Grosbeak
+RBGR,Rose-breasted Grosbeak
+BHGR,Black-headed Grosbeak
+BLBU,Blue Bunting
+BLGR,Blue Grosbeak
+LAZB,Lazuli Bunting
+INBU,Indigo Bunting
+VABU,Varied Bunting
+PABU,Painted Bunting
+DICK,Dickcissel
+RCCA,Red-crested Cardinal
+YBCA,Yellow-billed Cardinal
+SAFI,Saffron Finch
+RLHO,Red-legged Honeycreeper
+BANA,Bananaquit
+YFGR,Yellow-faced Grassquit
+BFGR,Black-faced Grassquit
+MOSE,Morelet's Seedeater

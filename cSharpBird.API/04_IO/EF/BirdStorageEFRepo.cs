@@ -11,7 +11,7 @@ public class BirdStorageEFRepo : IBirdStorageEF
     {
         _context = contextFromBuilder;
     }
-    public List<Bird> GetFullBirdList()
+    /*public List<Bird> GetFullBirdList()
     {
         string bandCode = "";
         string speciesName = "";
@@ -26,21 +26,59 @@ public class BirdStorageEFRepo : IBirdStorageEF
             }).ToList();
 
         return birdList;
-    }
-    public async void WriteBirdsForChecklist(Checklist checklist)
+    }*/
+    public async Task<Checklist> WriteBirdsForChecklist(Checklist checklist)
     {
-
+        foreach (Bird bird in checklist.birds)
+        {
+            _context.Birds.Add(bird);
+        }
+        await _context.SaveChangesAsync();
+        return checklist;
     }
-    public void UpdateBirdsForChecklist(Checklist checklist)
+    public async Task<Checklist> UpdateBirdsForChecklist(Checklist checklist)
     {
-
+        foreach (var bird in checklist.birds)
+        {
+            _context.Birds.Update(bird);
+        }
+        await _context.SaveChangesAsync();
+        return checklist;
     }
     public Task<List<Bird>?> ReadBirdsForChecklist(Guid checklistID)
     {
-        return Task.FromResult(GetFullBirdList());
+        List<Bird> checklistBirds = new List<Bird>();
+        var cBirds = from c in _context.Birds select c;
+        cBirds = cBirds.Where(c => c.checklistId.Equals(checklistID));
+        checklistBirds = cBirds.ToList();
+        return Task.FromResult(checklistBirds);
     }
-    public void DeleteBirdsForChecklist(Checklist checklist)
+    public async Task<Checklist> DeleteBirdsForChecklist(Checklist checklist)
     {
-
+        foreach (Bird bird in checklist.birds)
+        {
+            _context.Remove(bird);
+        }
+        await _context.SaveChangesAsync();
+        return checklist;
+    }
+    public async Task<Bird> IndividualWriteBirdForChecklist (Bird bird)
+    {
+        _context.Birds.Add(bird);
+        await _context.SaveChangesAsync();
+        return bird;
+    }
+    public async Task<Bird> IndividualUpdateBirdForChecklist (BirdUpdate info)
+    {
+        Bird bird = await _context.Birds.FirstOrDefaultAsync(c => c.checklistId == info.checklistId && c.speciesName == info.speciesName); 
+        Console.WriteLine(bird.speciesName);
+        Console.WriteLine(bird.randomBirdId);
+        //_context.Update(bird); Why does _context.Update not properly track and update the bird object???
+        if (bird != null)
+        {
+            bird.numSeen = (int)info.numSeen;
+        }
+        await _context.SaveChangesAsync();
+        return bird;
     }
 }

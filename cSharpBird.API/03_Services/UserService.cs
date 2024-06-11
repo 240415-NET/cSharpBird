@@ -54,6 +54,22 @@ public class UserService : IUserService
             throw new Exception(e.Message);
         }
     }
+        public async Task<User> GetUserByGuidAsync(Guid userId)
+    {
+        try
+        {
+            User? foundUser = await _userStorage.GetUserFromDbGuid(userId);
+            if (foundUser == null)
+            {
+                throw new Exception("User not found");
+            }
+            return foundUser;
+        }
+        catch (Exception e)
+        {
+            throw new Exception(e.Message);
+        }
+    }
     public async Task<bool> UserExists(string userName)
     {
         Console.WriteLine("Successful call to UserExists");

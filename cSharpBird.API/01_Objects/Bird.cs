@@ -3,27 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 public class Bird
 {
     [Key]
-    public string bandCode {get; set;}
+    public Guid randomBirdId {get; set;}
     public string speciesName {get; set;}
-
     public int numSeen {get; set;}
-    public string? bbc {get;set;}
-    public string? bNotes {get;set;}
+    public Guid checklistId {get; set;}
     public Bird() {}
-    public Bird(string _bandCode, string _speciesName)
+    public Bird(string _speciesName, int _numSeen, Guid _checklistId)
     {
-        bandCode = _bandCode;
-        speciesName = _speciesName;
-    }
-    public Bird(string _bandCode, string _speciesName, int _numSeen, string _bbc, string _bNotes)
-    {
-        bandCode = _bandCode;
+        randomBirdId = new Guid();
         speciesName = _speciesName;
         numSeen = _numSeen;
-        bbc = _bbc;
-        bNotes = _bNotes;
+        checklistId = _checklistId;
     }
 }

@@ -1,3 +1,4 @@
+using cSharpBird.Api;
 using cSharpBird.API;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,9 +14,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserStorageEF, UserStorageEFRepo>();
 
+builder.Services.AddScoped<IChecklistService, ChecklistService>();
 builder.Services.AddScoped<IChecklistStorageEF, ChecklistStorageEFRepo>();
 
-string connectionString = File.ReadAllText(@"C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt");
+builder.Services.AddScoped<IBirdService, BirdService>();
+builder.Services.AddScoped<IBirdStorageEF, BirdStorageEFRepo>();
+
+string connectionString = ConnectionStringHelper.GetConnectionString();
 
 builder.Services.AddDbContext<cSharpBirdContext>(options => options.UseSqlServer(connectionString));
 
