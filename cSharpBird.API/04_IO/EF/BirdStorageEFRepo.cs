@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 public class BirdStorageEFRepo : IBirdStorageEF
 {
     private readonly cSharpBirdContext _context;
-    string _connectionstring = File.ReadAllText("C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt");
+    //string _connectionstring = ConnectionStringHelper.GetConnectionString();
     public BirdStorageEFRepo(cSharpBirdContext contextFromBuilder)
     {
         _context = contextFromBuilder;

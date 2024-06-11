@@ -6,7 +6,7 @@ namespace cSharpBird.API;
 public class UserStorageEFRepo : IUserStorageEF
 {
     private readonly cSharpBirdContext _context;
-    string _connectionstring = File.ReadAllText("C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt");
+    //string _connectionstring = ConnectionStringHelper.GetConnectionString();
     public UserStorageEFRepo(cSharpBirdContext contextFromBuilder)
     {
         _context = contextFromBuilder;
