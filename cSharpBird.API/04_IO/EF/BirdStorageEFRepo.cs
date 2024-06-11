@@ -73,7 +73,11 @@ public class BirdStorageEFRepo : IBirdStorageEF
         Bird bird = await _context.Birds.FirstOrDefaultAsync(c => c.checklistId == info.checklistId && c.speciesName == info.speciesName); 
         Console.WriteLine(bird.speciesName);
         Console.WriteLine(bird.randomBirdId);
-        _context.Update(bird);
+        //_context.Update(bird); Why does _context.Update not properly track and update the bird object???
+        if (bird != null)
+        {
+            bird.numSeen = (int)info.numSeen;
+        }
         await _context.SaveChangesAsync();
         return bird;
     }

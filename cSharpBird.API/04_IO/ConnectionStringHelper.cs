@@ -16,7 +16,7 @@ public static class ConnectionStringHelper
         {
             return File.ReadAllText(@"C:\\Users\\U0SA29\\Documents\\Revature\\bootcamp\\connstringBird.txt");
         }
-        else if (File.Exists(@"C:\\Users\\U1H007\\Revature Engineer Bootcamp\\FernandoCabrejo\\cSharpBirds\\ConnectioncSharpBirdsProject.txt"))
+        else if (File.Exists(@"C:\\Users\\U1H007\\Revature Engineer Bootcamp\\FernandoCabrejo\\cSharpBirds\\ConnectioncSharpBirdsProject.txt")) //Fernando
         {
             return File.ReadAllText(@"C:\\Users\\U1H007\\Revature Engineer Bootcamp\\FernandoCabrejo\\cSharpBirds\\ConnectioncSharpBirdsProject.txt");
         }
