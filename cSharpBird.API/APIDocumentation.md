@@ -29,7 +29,7 @@
 - /Users/{usernameToFind}
     - (string) usernameToFind
 
-## [Post]
+## [Get]
 - /Users/SignIn
     - (string) userName
     - (string) rawPassword

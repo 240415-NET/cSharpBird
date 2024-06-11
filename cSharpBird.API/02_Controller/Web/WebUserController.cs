@@ -42,7 +42,7 @@ public class WebUserController : ControllerBase
             return NotFound(e.Message);
         }
     }
-    [HttpPost("Users/SignIn")]
+    [HttpGet("Users/SignIn")]
     public async Task<ActionResult<User>> SignInUser (SignIn userSignIn)
     {
         try

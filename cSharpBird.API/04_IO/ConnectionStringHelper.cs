@@ -4,7 +4,7 @@ public static class ConnectionStringHelper
 {
     public static string GetConnectionString()
     {
-        if (File.Exists(@"C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt")) //Ron
+        if (File.Exists("C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt")) //Ron
         {
             return File.ReadAllText(@"C:\\Users\\U0LA19\\Documents\\cSharpBirdWeb_DataSource.txt");
         }
