@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitUserButton = document.getElementById('submit-user-button');
     const viewListButton = document.getElementById('view-list-button');
     const createListButton = document.getElementById('create-list-button');
+    const welcomeMessage = document.getElementById('welcome-message');
 
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
@@ -117,11 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         loginContainer.style.display = 'none';
         createUserContainer.style.display = 'none';
+        userContainer.style.display ='block';
 
         welcomeMessage.textContent = `Welcome ${user.userName}!`;
 
         createUserContainer.style.display = 'none';   
-        checklistContainer.style.display = 'block';
+        checklistContainer.style.display = 'none';
         checlistCreate.style.display = 'none';
         checlistView.style.display = 'none';
 
