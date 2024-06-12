@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             rawPassword: password
                         }),
                     headers: {
-                        'content-type': 'application/json'//; 'charset=utf-8 
+                        'content-type': 'application/json'
                     }
                 });
                    
@@ -57,11 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createUserButton.addEventListener('click', async () => {
 
+
+        updateUIForCreateUser();
+       submitUserButton.addEventListener('click', async() =>{
         const createEmail = document.getElementById('createEmail').value;
         const createUsername = document.getElementById('createUsername').value;
         const createPassword = document.getElementById('createPassword').value;
-        updateUIForCreateUser();
-       submitUserButton.addEventListener('click', async() =>{
         if (createUsername) {
             try {
                 //const response = await fetch(`http://localhost:5066/Users/Create/${createEmail},${createUsername},${createPassword}`);
