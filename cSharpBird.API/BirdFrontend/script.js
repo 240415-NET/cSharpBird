@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistContainer = document.getElementById('checklist-container');
     const checklistCreate = document.getElementById('checklist-create');
     const checklistView = document.getElementById('checklist-view');
-    
+    const birdView = document.getElementById('bird-view');
     const userManagement = document.getElementById('user-management-button');
     const checklistManagement = document.getElementById('checklist-management-button');
 
@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (storedUser) { //if storedUser is not empty
         updateUIForLoggedInUser(storedUser);
     }
+
+    const currChecklist = JSON.parse(localStorage.getItem('checklist'));
 
     /////////////Log-In User Functionality//////////////////
 
@@ -134,8 +136,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 const checklist = await response.json;
+                console.log(checklist.checklistID);
+                //localStorage.removeItem('currChecklist');
+                localStorage.setItem('currChecklist', JSON.stringify(checklist));
+                updateUIForBirdRecords(checklist);
             }
        
+    })
+
+    submitRecord.addEventListener('click',async() =>{
+        const _numSeen = document.getElementById('count').value;
+        const _bird = document.getElementById('select-bird').value;
+        const checklist = JSON.parse(localStorage.getItem('currChecklist'));
+        if(_numSeen && _bird)
+            {
+                const response = await fetch(`http://localhost:5066/Birds/AddBird`, 
+                {
+                    method: "POST",
+                    body: JSON.stringify({
+                        checklistID: checklist.checklistId,
+                        speciesName: _bird,
+                        numSeen: _numSeen
+                        }),
+                    headers: {
+                        'content-type': 'application/json'//; 'charset=utf-8 
+                    }
+                });
+                const bird = await response.json
+            }
     })
 
     //////View Checklist Functionality///////////
@@ -206,6 +234,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
 
     };//end updateUIForCreateChecklist
+    function updateUIForBirdRecords(checklist){
+        checklistCreate.style.display = 'none';
+        birdView.style.display = 'block';
+    }
     function updateUIForViewChecklist() {  //Not sure we need to include this function here again or just call it from above
 
         loginContainer.style.display = 'none';
