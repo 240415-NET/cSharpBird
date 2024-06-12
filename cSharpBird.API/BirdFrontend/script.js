@@ -3,14 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const createUserContainer = document.getElementById('create-user-container');
     const userContainer = document.getElementById('user-container');
     const checklistContainer = document.getElementById('checklist-container');
-    const checlistCreate = document.getElementById('checklist-create');
-    const checlistView = document.getElementById('checklist-view');
+    const checklistCreate = document.getElementById('checklist-create');
+    const checklistView = document.getElementById('checklist-view');
     
+    const userManagement = document.getElementById('user-management-button');
+    const checklistManagement = document.getElementById('checklist-management-button');
+
     const createUserButton = document.getElementById('create-user-button'); //Create User button on Login Screen
     const submitUserButton = document.getElementById('submit-user-button');
     const viewListButton = document.getElementById('view-list-button');
     const createListButton = document.getElementById('create-list-button');
     const welcomeMessage = document.getElementById('welcome-message');
+
+    const submitRecord = document.getElementById('bird-submit');
 
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
@@ -91,11 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }});//end submitUserClick
     });//end createUserClick
 
+    checklistManagement.addEventListener('click', async() =>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForChecklistManagement(user);
+    })
+
+    userManagement.addEventListener('click', async() =>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForUserManagement(user);
+    })
+
+    createListButton.addEventListener('click', async() =>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForCreateChecklist(user);
+    })
+
     //////View Checklist Functionality///////////
     viewListButton.addEventListener('click', async() =>{
         updateUIForViewChecklist();
 
-
+    
 
 
     });//end ViewlistClick
@@ -104,12 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         loginContainer.style.display = 'none';
 
-        //welcomeMessage.textContent = `Welcome ${user.userName}!`;
+        welcomeMessage.textContent = `Welcome ${user.displayName}!`;
 
         createUserContainer.style.display = 'block';   // What is this doing?
         checklistContainer.style.display = 'none';
-        checlistCreate.style.display = 'none';
-        checlistView.style.display = 'none';
+        checklistCreate.style.display = 'none';
+        checklistView.style.display = 'none';
 
         
 
@@ -120,26 +140,47 @@ document.addEventListener('DOMContentLoaded', () => {
         createUserContainer.style.display = 'none';
         userContainer.style.display ='block';
 
-        welcomeMessage.textContent = `Welcome ${user.userName}!`;
+        welcomeMessage.textContent = `Welcome ${user.displayName}!`;
 
         createUserContainer.style.display = 'none';   
         checklistContainer.style.display = 'none';
-        checlistCreate.style.display = 'none';
-        checlistView.style.display = 'none';
+        checklistCreate.style.display = 'none';
+        checklistView.style.display = 'none';
 
         
 
     };//end updateUIForLoggedInUser
+
+    function updateUIForUserManagement(user){
+        loginContainer.style.display = 'none';
+        userContainer.style.display ='none';
+        welcomeMessage.textContent = `Welcome ${user.displayName}!`;
+        createUserContainer.style.display = 'none';   
+        checklistContainer.style.display = 'none';
+        checklistCreate.style.display = 'none';
+        checklistView.style.display = 'none';    
+    }; //end updateUIForUserManagement
+
+    function updateUIForChecklistManagement(user){
+        loginContainer.style.display = 'none';
+        userContainer.style.display ='none';
+        welcomeMessage.textContent = `Welcome ${user.displayName}!`;
+        createUserContainer.style.display = 'none';   
+        checklistContainer.style.display = 'block';
+        checklistCreate.style.display = 'none';
+        checklistView.style.display = 'none';    
+    }; //end updateUIForChecklistManagement
+
     function updateUIForCreateChecklist(user) {  //Not sure we need to include this function here again or just call it from above
 
         loginContainer.style.display = 'none';
 
-        welcomeMessage.textContent = `Welcome ${user.userName}!`;
+        welcomeMessage.textContent = `Welcome ${user.displayName}!`;
 
         createUserContainer.style.display = 'none';   
         checklistContainer.style.display = 'none';
-        checlistCreate.style.display = 'block';
-        checlistView.style.display = 'none';
+        checklistCreate.style.display = 'block';
+        checklistView.style.display = 'none';
 
         
 
@@ -148,12 +189,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         loginContainer.style.display = 'none';
 
-        //welcomeMessage.textContent = `Welcome ${user.userName}!`;
+        //welcomeMessage.textContent = `Welcome ${user.displayName}!`;
 
         createUserContainer.style.display = 'none';   
         checklistContainer.style.display = 'none';
-        checlistCreate.style.display = 'none';
-        checlistView.style.display = 'block';
+        checklistCreate.style.display = 'none';
+        checklistView.style.display = 'block';
 
         
 
