@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateUIForLoggedInUser(user) {  //Not sure we need to include this function here again or just call it from above
 
         loginContainer.style.display = 'none';
+        createUserContainer.style.display = 'none';
 
         welcomeMessage.textContent = `Welcome ${user.userName}!`;
 
