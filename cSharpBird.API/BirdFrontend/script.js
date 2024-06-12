@@ -14,8 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewListButton = document.getElementById('view-list-button');
     const createListButton = document.getElementById('create-list-button');
     const welcomeMessage = document.getElementById('welcome-message');
-
+    //For checklist-create view
+    const checklistSubmit = document.getElementById('checklist-submit');
+    const backChecklistManagement = document.getElementById('back-checklist-management');
+    //For bird-view
     const submitRecord = document.getElementById('bird-submit');
+    const backChecklistManagement2 = document.getElementById('back-checklist-management2');
 
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
@@ -111,14 +115,34 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUIForCreateChecklist(user);
     })
 
+    checklistSubmit.addEventListener('click',async() =>{
+        const listDate = document.getElementById('date-seen').value;
+        const location = document.getElementById('where').value;
+        const user = JSON.parse(localStorage.getItem('user'));
+        if(listDate && location)
+            {
+                const response = await fetch(`http://localhost:5066/Checklists/Create`, 
+                {
+                    method: "POST",
+                    body: JSON.stringify({
+                            userId: user.userId,
+                            locationName: location,
+                            checklistDateTime: listDate
+                        }),
+                    headers: {
+                        'content-type': 'application/json'//; 'charset=utf-8 
+                    }
+                });
+                const checklist = await response.json;
+            }
+       
+    })
+
     //////View Checklist Functionality///////////
     viewListButton.addEventListener('click', async() =>{
         updateUIForViewChecklist();
-
-    
-
-
     });//end ViewlistClick
+
 
     function updateUIForCreateUser() {  //Not sure we need to include this function here again or just call it from above
 
@@ -174,9 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateUIForCreateChecklist(user) {  //Not sure we need to include this function here again or just call it from above
 
         loginContainer.style.display = 'none';
-
-        welcomeMessage.textContent = `Welcome ${user.displayName}!`;
-
         createUserContainer.style.display = 'none';   
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'block';
