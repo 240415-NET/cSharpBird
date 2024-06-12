@@ -30,41 +30,41 @@
 
     <!-- Had to create a new container for creating a user as user creation requires email address -->
 
-    <div id="create-user-container">
+    <div id="create-user-container" style="display: none;">
         <h1>Create User Account</h1>
-        <input type="email" id="email" placeholder="Enter your Email Address">
+        <input type="email" id="createEmail" placeholder="Enter your Email Address">
         <br>
         <input type="text" id="createUsername" placeholder="Username">
         <br>
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="createPassword" placeholder="Password">
         <br>
-        <button id="create-user-button">Create User</button>
+        <button id="submit-user-button">Create User</button>
     </div>
 
     <div id="user-container">
         <h1>What would you like to do?</h1>
         <h2 id="welcome-message"></h2>
 
-        <!--link to check lists-->
+        <!--link to checklists-->
 
     </div>
 
-    <div id="checklist-container">
+    <div id="checklist-container" style="display: none;">
 
-        <div id="checklist-container">
+        <!--<div id="checklist-container"> why the extra div?-->
             <table>
                 <tr>
                     <td><label>Document Sightings:</label></td>
-                    <td><button id="create-list">Create List</button></td>
+                    <td><button id="create-list-button">Create List</button></td>
                 </tr>
                 <br>
                 <tr>
                     <td><label>View My Sightings:</label></td>
-                    <td><button id="view-list">View List</button></td>
+                    <td><button id="view-list-button">View List</button></td>
                 </tr>
                 
             </table>
-        </div>
+        <!--</div>-->
         <!--<button id="user-maintance"> User Maintance</button>-->
         <br>
         <button id="logout-button">Logout</button>
@@ -73,7 +73,7 @@
 
     
 
-    <div id="checklist-create">
+    <div id="checklist-create" style="display: none;">
         <h1>Create list</h1>
 
         <h2>Sightings</h2>
@@ -1240,7 +1240,7 @@
 
         </table>
     </div>
-    <div id="checklist-view">
+    <div id="checklist-view" style="display: none;">
         <h1>Checklist view</h1>
         <br>
         <p>list of list will appear here</p>
