@@ -5,7 +5,19 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var myBadCorsPolicy = "_myBadCorsPolicy";
 
+builder.Services.AddCors(options => {
+
+    options.AddPolicy(name: myBadCorsPolicy,
+                       policy => 
+                       {
+                            policy.AllowAnyOrigin(); //This allows incoming requests from ANYWHERE
+                            policy.AllowAnyMethod(); //This allows any methods to be used 
+                            policy.AllowAnyHeader(); //this allows any headers
+                       });
+
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -37,7 +49,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(policy => policy.AllowAnyMethod());
+//app.UseCors(policy => policy.AllowAnyMethod());
+app.UseCors(myBadCorsPolicy);
 
 app.UseAuthorization();
 
