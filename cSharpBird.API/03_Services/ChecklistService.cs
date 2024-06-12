@@ -24,7 +24,12 @@ public class ChecklistService : IChecklistService
     }
     public async Task<List<Checklist>> GetChecklistsAsync (Guid userId)
     {
-        return await _checklistStorage.GetListsAsync(userId);
+        List<Checklist> userLists = await _checklistStorage.GetListsAsync(userId);
+        foreach (Checklist check in userLists)
+        {
+            check.birds = await _birdStorage.ReadBirdsForChecklist(check.checklistID);
+        }
+        return userLists;
     }
     public async Task<Checklist> WriteChecklistAsync (Checklist newList)
     {
