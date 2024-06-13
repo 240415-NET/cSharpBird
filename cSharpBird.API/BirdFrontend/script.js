@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userManagement = document.getElementById('user-management-button');
     const checklistManagement = document.getElementById('checklist-management-button');
 
+    const createPassword = document.getElementById('createPassword');
     const createUserButton = document.getElementById('create-user-button'); //Create User button on Login Screen
     const submitUserButton = document.getElementById('submit-user-button');
     const viewListButton = document.getElementById('view-list-button');
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistList = document.getElementById('checklist-list');
     const backChecklistManagement2 = document.getElementById('back-checklist-management2');
 
+    const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
 
@@ -36,6 +38,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
 
     /////////////Log-In User Functionality//////////////////
+
+    ////Event Listener for the Enter Key on the Password Field////
+
+    password.addEventListener('keyup', async (event) => {
+        if (event.key === 'Enter') {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                try {
+                    const response = await fetch(`http://localhost:5066/Users/Signin`, 
+                        {
+                            method: "POST",
+                            body: JSON.stringify({
+                                    userName: username,
+                                    rawPassword: password
+                                }),
+                            headers: {
+                                'content-type': 'application/json'
+                            }
+                        });
+                           
+                        const user = await response.json();
+        
+                        updateUIForLoggedInUser(user);
+        
+                        localStorage.setItem('user', JSON.stringify(user)); //Just adding that local storage piece in case we want to leverage it
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        }
+    });
 
     loginButton.addEventListener('click', async () => {
         const username = document.getElementById('username').value;
@@ -67,8 +102,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });//end loginclick
 
+    
+
 
     /////////////Create User Functionality//////////////////
+
+    //Event Listener for the Enter Key on the Create Password Field
+
+    createPassword.addEventListener('keyup', async (event) => {
+        if (event.key === 'Enter') {
+            const createUsername = document.getElementById('createUsername').value;
+            const createEmail = document.getElementById('createEmail').value;
+            const createPassword = document.getElementById('createPassword').value;
+            
+            if (createUsername && createEmail && createPassword) {
+                try {
+                    const response = await fetch(`http://localhost:5066/Users/Create`, 
+                        {
+                            method: "POST",
+                            body: JSON.stringify({
+                                    userEmail: createEmail,
+                                    displayName: createUsername,
+                                    rawPassword: createPassword
+                                }),
+                            headers: {
+                                'content-type': 'application/json'//; 'charset=utf-8 
+                            }
+                    });
+
+                    const user = await response.json();
+
+                    updateUIForLoggedInUser(user);
+
+                    localStorage.setItem('user', JSON.stringify(user));
+                } catch (error) {
+                    console.error('Error logging in:', error);
+                }
+            }
+        }
+    });
 
     createUserButton.addEventListener('click', async () => {
 
@@ -146,6 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
        
     })
+
+    
 
     submitRecord.addEventListener('click',async() =>{
         const _numSeen = document.getElementById('count').value;
