@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        if (username) {
+        if (username && password) {
             try {
                 const response = await fetch(`http://localhost:5066/Users/Signin`, 
                 {
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const createEmail = document.getElementById('createEmail').value;
         const createUsername = document.getElementById('createUsername').value;
         const createPassword = document.getElementById('createPassword').value;
-        if (createUsername) {
+        if (createUsername && createEmail && createPassword) {
             try {
                 //const response = await fetch(`http://localhost:5066/Users/Create/${createEmail},${createUsername},${createPassword}`);
                 const response = await fetch(`http://localhost:5066/Users/Create`, 

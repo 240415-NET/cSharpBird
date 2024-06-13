@@ -22,7 +22,7 @@ public static class ConnectionStringHelper
         }
         else //Josh
         {
-            return File.ReadAllText(@"C:\\Users\\U1C409\\Documents\\P1Extras\\ConnString.txt");
+            return File.ReadAllText(@"C:\\Users\\U1C409\\Documents\\P1Extras\\cSharpBirdWeb_DataSource.txt");
         }
     }
 }
