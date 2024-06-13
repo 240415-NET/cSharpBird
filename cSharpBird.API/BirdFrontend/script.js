@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const backChecklistManagement = document.getElementById('back-checklist-management');
     //For bird-view
     const submitRecord = document.getElementById('bird-submit');
+    
+    //For checklist-view
+    const checklistList = document.getElementById('checklist-list');
     const backChecklistManagement2 = document.getElementById('back-checklist-management2');
 
     const loginButton = document.getElementById('login-button');
@@ -287,14 +290,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderList(list){
         list.innerHTML = '';
-
+        
         list.forEach(list => {
             console.log("Attempting loop");
             const listItem = document.createElement('li');
             console.log(list.checklistDateTime);
+            console.log(list.locationName);
+            console.log(list.checklistID);
             listItem.textContent = `${list.checklistDateTime} - ${list.locationName}`;
 
-            //itemsList.appendChild(listItem);
+            checklistList.appendChild(listItem);
 
         });
     }
