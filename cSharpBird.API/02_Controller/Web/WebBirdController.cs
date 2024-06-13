@@ -18,13 +18,34 @@ public class WebBirdController : ControllerBase
     [HttpPost("Birds/AddBird")]
     public async Task<ActionResult<Bird>> AddBirdAsync (BirdUpdate info)
     {
-        Bird newBird = new Bird(info.speciesName,(int)info.numSeen,info.checklistId);
-        await _birdService.AddBirdToChecklistAsync(newBird);
-        return newBird;
+        try{
+            Console.WriteLine(info.checklistId);
+            Console.WriteLine(info.speciesName);
+            Console.WriteLine(info.numSeen);
+            Bird newBird = new Bird(info.speciesName,(int)info.numSeen,info.checklistId);
+            await _birdService.AddBirdToChecklistAsync(newBird);
+            Console.WriteLine(newBird.randomBirdId);
+            Console.WriteLine(newBird.checklistId);
+            Console.WriteLine(newBird.speciesName);
+            Console.WriteLine(newBird.numSeen);
+            return Ok(newBird); 
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
     [HttpPatch("Birds/ListChange")]
     public async Task<ActionResult<Bird>> UpdateBirdAsync (BirdUpdate info)
     {
-        return await _birdService.UpdateBirdOnChecklistAsync(info);
+
+        try{
+            Bird updateBird = await _birdService.UpdateBirdOnChecklistAsync(info);
+            return Ok(updateBird);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 }

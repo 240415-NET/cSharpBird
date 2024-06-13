@@ -30,7 +30,7 @@ public class WebChecklistController : ControllerBase
         }
     }
     [HttpPost("Checklists/Create")]
-    public async Task<ActionResult<Guid>> PostNewChecklistHistoric(ChecklistCreate checklistBits)
+    public async Task<ActionResult<Checklist>> PostNewChecklistHistoric(ChecklistCreate checklistBits)
     {
         try
         {
@@ -45,7 +45,7 @@ public class WebChecklistController : ControllerBase
             Console.WriteLine(newChecklist.locationName);
             Console.WriteLine(newChecklist.checklistDateTime);
             Console.WriteLine(newChecklist.userId);
-            return Ok(tempGuid);
+            return Ok(newChecklist);
         }
         catch (Exception e)
         {
