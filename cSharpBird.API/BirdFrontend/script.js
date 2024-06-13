@@ -224,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const _numSeen = document.getElementById('count').value;
         const _bird = document.getElementById('select-bird').value;
         const checklist = JSON.parse(localStorage.getItem('currChecklist'));
-        console.log(currChecklist.checklistID)
         if(_numSeen && _bird)
             {
                 const response = await fetch(`http://localhost:5066/Birds/AddBird`, 
@@ -240,8 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 const bird = await response.json();
-                console.log(bird.randomBirdId);
-                console.log(bird.numSeen);
             }
     })
     backChecklistManagement.addEventListener('click', async() =>{
