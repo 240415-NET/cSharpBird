@@ -67,7 +67,7 @@ public class WebChecklistController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    [HttpGet("Checklists/ListBirds")]
+    [HttpGet("Checklists/ListBirds/{checklistId}")]
     public async Task<ActionResult<List<Bird>>> ListChecklistBirds (Guid checklistId)
     {
         try
