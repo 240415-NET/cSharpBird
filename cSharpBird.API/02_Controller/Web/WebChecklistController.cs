@@ -30,17 +30,22 @@ public class WebChecklistController : ControllerBase
         }
     }
     [HttpPost("Checklists/Create")]
-    public async Task<ActionResult<Checklist>> PostNewChecklistHistoric(ChecklistCreate checklistBits)
+    public async Task<ActionResult<Guid>> PostNewChecklistHistoric(ChecklistCreate checklistBits)
     {
         try
         {
             Guid tempGuid = Guid.NewGuid();
+            Console.WriteLine(checklistBits.checklistDateTime);
+            Console.WriteLine(checklistBits.locationName);
+            Console.WriteLine(checklistBits.userId);
+            Console.WriteLine(tempGuid);
             Checklist newChecklist = new Checklist (checklistBits.userId, checklistBits.locationName, checklistBits.checklistDateTime,tempGuid);
             await _checklistService.WriteChecklistAsync(newChecklist);
             Console.WriteLine(newChecklist.checklistID);
             Console.WriteLine(newChecklist.locationName);
             Console.WriteLine(newChecklist.checklistDateTime);
-            return Ok(newChecklist);
+            Console.WriteLine(newChecklist.userId);
+            return Ok(tempGuid);
         }
         catch (Exception e)
         {
@@ -70,6 +75,19 @@ public class WebChecklistController : ControllerBase
             Checklist currChecklist = await _checklistService.ReadChecklistFromGuidAsync(checklistId);
             List<Bird> birdsChecklist = currChecklist.birds;
             return Ok(birdsChecklist);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+    [HttpGet("Checklists/GetChecklist")]
+    public async Task<ActionResult<Checklist>> ReadChecklistFromGuidAsync (Guid checklistId)
+    {
+        try
+        {
+            Checklist foundChecklist = await _checklistService.ReadChecklistFromGuidAsync(checklistId);
+            return Ok(foundChecklist);
         }
         catch (Exception e)
         {
