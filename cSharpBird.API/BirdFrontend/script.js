@@ -165,21 +165,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const bird = await response.json
             }
     })
+    backChecklistManagement.addEventListener('click', async() =>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForChecklistManagement(user);
+    })
+    backChecklistManagement2.addEventListener('click', async() =>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForChecklistManagement(user);
+    })
 
     //////View Checklist Functionality///////////
     viewListButton.addEventListener('click', async() =>{
         updateUIForViewChecklist();
-        const user = JSON.parse(localStorage.getItem('user'));
-        fetchUserLists(user.userId);
+
     });//end ViewlistClick
 
 
     function updateUIForCreateUser() {  //Not sure we need to include this function here again or just call it from above
 
         loginContainer.style.display = 'none';
-
-        welcomeMessage.textContent = `Welcome ${user.displayName}!`;
-
         createUserContainer.style.display = 'block';   // What is this doing?
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
@@ -250,7 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'block';
-
+        const user = JSON.parse(localStorage.getItem('user'));
+        fetchUserLists(user.userId);
         
 
     };//end updateUIForviewChecklist
@@ -280,12 +285,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };//end Fetchlist
 
-    async function renderList(list){
+    function renderList(list){
         list.innerHTML = '';
 
-        list.forEach(item => {
+        list.forEach(list => {
+            console.log("Attempting loop");
             const listItem = document.createElement('li');
-
+            console.log(list.checklistDateTime);
             listItem.textContent = `${list.checklistDateTime} - ${list.locationName}`;
 
             //itemsList.appendChild(listItem);
