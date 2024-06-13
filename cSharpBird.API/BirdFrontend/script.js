@@ -210,10 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         'content-type': 'application/json'//; 'charset=utf-8 
                     }
                 });
-                const currentChecklist = await response.json;
-                console.log(currentChecklist.checklistID);
-                //localStorage.removeItem('currChecklist');
+                const currentChecklist = await response.json();
                 localStorage.setItem('currChecklist', JSON.stringify(currentChecklist));
+                const check = JSON.parse(localStorage.getItem('currChecklist'));
                 updateUIForBirdRecords(currentChecklist);
             }
        
@@ -225,21 +224,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const _numSeen = document.getElementById('count').value;
         const _bird = document.getElementById('select-bird').value;
         const checklist = JSON.parse(localStorage.getItem('currChecklist'));
+        console.log(currChecklist.checklistID)
         if(_numSeen && _bird)
             {
                 const response = await fetch(`http://localhost:5066/Birds/AddBird`, 
                 {
                     method: "POST",
                     body: JSON.stringify({
-                        checklistID: checklist.checklistId,
                         speciesName: _bird,
-                        numSeen: _numSeen
+                        numSeen: _numSeen,
+                        checklistID: checklist.checklistID
                         }),
                     headers: {
                         'content-type': 'application/json'//; 'charset=utf-8 
                     }
                 });
-                const bird = await response.json
+                const bird = await response.json();
+                console.log(bird.randomBirdId);
+                console.log(bird.numSeen);
             }
     })
     backChecklistManagement.addEventListener('click', async() =>{
