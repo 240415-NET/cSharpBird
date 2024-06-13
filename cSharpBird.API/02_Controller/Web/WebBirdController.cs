@@ -15,7 +15,7 @@ public class WebBirdController : ControllerBase
     {
         _birdService = birdServiceFromBuilder;
     }
-    [HttpPut("Birds/AddBird")]
+    [HttpPost("Birds/AddBird")]
     public async Task<ActionResult<Bird>> AddBirdAsync (BirdUpdate info)
     {
         Bird newBird = new Bird(info.speciesName,(int)info.numSeen,info.checklistId);
