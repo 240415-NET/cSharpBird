@@ -27,6 +27,13 @@ public class Checklist
         locationName = _locationName;
         checklistDateTime = DateTime.Parse(_checklistDateTime);
     }
+        public Checklist(Guid _userId, string _locationName, string _checklistDateTime, Guid _newGuid)
+    {
+        checklistID = _newGuid;
+        userId = _userId;
+        locationName = _locationName;
+        checklistDateTime = DateTime.Parse(_checklistDateTime);
+    }
     /*
     public Checklist(Guid _checklistID, Guid _userId, string _locationName, DateTime _checklistDateTime, List<Bird> _birds, float _distance, int _duration, bool _stationary, string _cNotes)
     {

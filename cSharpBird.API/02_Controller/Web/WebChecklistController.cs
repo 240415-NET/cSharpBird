@@ -34,8 +34,12 @@ public class WebChecklistController : ControllerBase
     {
         try
         {
-            Checklist newChecklist = new Checklist (checklistBits.userId, checklistBits.locationName, checklistBits.checklistDateTime);
+            Guid tempGuid = Guid.NewGuid();
+            Checklist newChecklist = new Checklist (checklistBits.userId, checklistBits.locationName, checklistBits.checklistDateTime,tempGuid);
             await _checklistService.WriteChecklistAsync(newChecklist);
+            Console.WriteLine(newChecklist.checklistID);
+            Console.WriteLine(newChecklist.locationName);
+            Console.WriteLine(newChecklist.checklistDateTime);
             return Ok(newChecklist);
         }
         catch (Exception e)
@@ -43,7 +47,7 @@ public class WebChecklistController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    [HttpGet("Checklists/ListChecklist")]
+    [HttpGet("Checklists/ListChecklist/{userId}")]
     public async Task<ActionResult<List<Checklist>>> ListUserChecklists (Guid userId)
     {
         try

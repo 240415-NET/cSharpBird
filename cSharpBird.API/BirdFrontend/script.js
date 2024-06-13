@@ -135,11 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         'content-type': 'application/json'//; 'charset=utf-8 
                     }
                 });
-                const checklist = await response.json;
-                console.log(checklist.checklistID);
+                const currentChecklist = await response.json;
+                console.log(currentChecklist.checklistID);
                 //localStorage.removeItem('currChecklist');
-                localStorage.setItem('currChecklist', JSON.stringify(checklist));
-                updateUIForBirdRecords(checklist);
+                localStorage.setItem('currChecklist', JSON.stringify(currentChecklist));
+                updateUIForBirdRecords(currentChecklist);
             }
        
     })
@@ -169,6 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //////View Checklist Functionality///////////
     viewListButton.addEventListener('click', async() =>{
         updateUIForViewChecklist();
+        const user = JSON.parse(localStorage.getItem('user'));
+        fetchUserLists(user.userId);
     });//end ViewlistClick
 
 
@@ -266,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchUserLists(userId){
         //this will fetch the checklist from back end may need updating since list contains a list
         try{
-            const response = await fetch(`http://localhost:5066/Checklists/ListChecklist${userId}`);
+            const response = await fetch(`http://localhost:5066/Checklists/ListChecklist/${userId}`);
            
             const list = await response.json();
 
@@ -279,9 +281,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };//end Fetchlist
 
     async function renderList(list){
-        //this will take the list passed in by the fetch function 
-        //and display the information on it
+        list.innerHTML = '';
 
+        list.forEach(item => {
+            const listItem = document.createElement('li');
+
+            listItem.textContent = `${list.checklistDateTime} - ${list.locationName}`;
+
+            //itemsList.appendChild(listItem);
+
+        });
     }
 
 });//end DOMContentLoaded
