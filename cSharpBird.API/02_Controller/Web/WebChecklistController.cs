@@ -54,6 +54,7 @@ public class WebChecklistController : ControllerBase
         {
             List<Checklist> userChecklists = new List<Checklist>();
             userChecklists = await _checklistService.GetChecklistsAsync(userId);
+            userChecklists = userChecklists.OrderBy(x => x.checklistDateTime).ToList();
             return Ok(userChecklists);
         }
         catch (Exception e)
