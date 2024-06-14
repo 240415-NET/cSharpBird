@@ -44,10 +44,16 @@
     <div id="user-container" style="display: none;">
         <h1>What would you like to do?</h1>
         <h2 id="welcome-message"></h2>
-        <button id="user-management-button">User Management</button>
-        <button id="checklist-management-button">Checklist Management</button>
-        <br>
-        <center><button id="logout-button">Logout</button></center>
+        <table>
+            <tr>
+                <td><button id="user-management-button">User<br> Management</button></td>
+                <td><button id="checklist-management-button">Checklist Management</button></td>
+            </tr>
+            <tr>
+                <td rowspan="2"><center><button id="logout-button">Logout</button></center></td>
+            </tr>
+        </table>
+
         <!--link to checklists-->
 
     </div>

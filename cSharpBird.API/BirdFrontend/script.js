@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let checklistList = document.getElementById('checklist-list');
     const backChecklistManagement2 = document.getElementById('back-checklist-management2');
     const backChecklistManagement3 = document.getElementById('back-checklist-management3');
+    let mainMenuReturnChecklist = document.getElementById('main-menu-return-checklist');
 
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
@@ -258,6 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
     backChecklistManagement3.addEventListener('click', async() =>{
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
+    })
+    mainMenuReturnChecklist.addEventListener('click',async() =>{
+        user = JSON.parse(localStorage.getItem('user'));
+        updateUIForLoggedInUser(user);
     })
 
     //////View Checklist Functionality///////////
