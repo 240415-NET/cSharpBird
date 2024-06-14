@@ -60,7 +60,7 @@ public class WebUserController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    [HttpPost("Users/UpdateUser")]
+    [HttpPatch("Users/UpdateUser")]
     public async Task<ActionResult<User>> UpdateUser (UserChange UserChanges)
     {
         try
