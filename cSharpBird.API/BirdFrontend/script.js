@@ -320,6 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateUIForBirdRecords(checklist){
         checklistCreate.style.display = 'none';
         birdView.style.display = 'block';
+        checklistView.style.display = 'none';
     }
     function updateUIForViewChecklist() {  //Not sure we need to include this function here again or just call it from above
 
@@ -366,14 +367,18 @@ document.addEventListener('DOMContentLoaded', () => {
         list.innerHTML = '';
         
         list.forEach(list => {
-            console.log("Attempting loop");
+           
             const listItem = document.createElement('li');
-            console.log(list.checklistDateTime);
-            console.log(list.locationName);
-            console.log(list.checklistID);
+            const addBirdButton = document.createElement('button');
+            addBirdButton.innerHTML = "add bird"
+            
+            addBirdButton.className = "addToList";
+        
             listItem.textContent = `${list.checklistDateTime} - ${list.locationName}`;
 
             checklistList.appendChild(listItem);
+            checklistList.appendChild(addBirdButton);
+            addBirdButton.onclick = updateUIForBirdRecords;
 
         });
     }
