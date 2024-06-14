@@ -214,9 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 const currentChecklist = await response.json();
-                console.log(currentChecklist.checklistID);
-                //localStorage.removeItem('currChecklist');
                 localStorage.setItem('currChecklist', JSON.stringify(currentChecklist));
+                const check = JSON.parse(localStorage.getItem('currChecklist'));
                 updateUIForBirdRecords(currentChecklist);
             }
        
@@ -325,6 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateUIForBirdRecords(checklist){
         checklistCreate.style.display = 'none';
         birdView.style.display = 'block';
+        checklistView.style.display = 'none';
     }
     function updateUIForViewChecklist() {  //Not sure we need to include this function here again or just call it from above
 
@@ -371,13 +371,14 @@ document.addEventListener('DOMContentLoaded', () => {
         list.innerHTML = '';
         
         list.forEach(list => {
-            // console.log("Attempting loop");
+
+
             const listItem = document.createElement('li');
-            // console.log(list.checklistDateTime);
-            // console.log(list.locationName);
-            // console.log(list.checklistID);
-            // console.log(list.bird);
-            // console.log(list.numSeen);
+            const addBirdButton = document.createElement('button');
+            addBirdButton.innerHTML = "add bird"
+            
+            addBirdButton.className = "addToList";
+        
             if (list.birds.length > 0) {
               const date = new Date(list.checklistDateTime);
               const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -387,7 +388,10 @@ document.addEventListener('DOMContentLoaded', () => {
               listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
             }
 
+
             checklistList.appendChild(listItem);
+            checklistList.appendChild(addBirdButton);
+            addBirdButton.onclick = updateUIForBirdRecords;
 
         }); 
     }

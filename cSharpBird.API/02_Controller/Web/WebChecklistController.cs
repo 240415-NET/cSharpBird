@@ -35,11 +35,16 @@ public class WebChecklistController : ControllerBase
         try
         {
             Guid tempGuid = Guid.NewGuid();
+            Console.WriteLine(checklistBits.checklistDateTime);
+            Console.WriteLine(checklistBits.locationName);
+            Console.WriteLine(checklistBits.userId);
+            Console.WriteLine(tempGuid);
             Checklist newChecklist = new Checklist (checklistBits.userId, checklistBits.locationName, checklistBits.checklistDateTime,tempGuid);
             await _checklistService.WriteChecklistAsync(newChecklist);
             Console.WriteLine(newChecklist.checklistID);
             Console.WriteLine(newChecklist.locationName);
             Console.WriteLine(newChecklist.checklistDateTime);
+            Console.WriteLine(newChecklist.userId);
             return Ok(newChecklist);
         }
         catch (Exception e)
@@ -54,7 +59,7 @@ public class WebChecklistController : ControllerBase
         {
             List<Checklist> userChecklists = new List<Checklist>();
             userChecklists = await _checklistService.GetChecklistsAsync(userId);
-            userChecklists = userChecklists.OrderBy(x => x.checklistDateTime).ToList();
+            userChecklists = userChecklists.OrderByDescending(x => x.checklistDateTime).ToList();
             return Ok(userChecklists);
         }
         catch (Exception e)
@@ -62,7 +67,7 @@ public class WebChecklistController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    [HttpGet("Checklists/ListBirds")]
+    [HttpGet("Checklists/ListBirds/{checklistId}")]
     public async Task<ActionResult<List<Bird>>> ListChecklistBirds (Guid checklistId)
     {
         try
@@ -70,6 +75,19 @@ public class WebChecklistController : ControllerBase
             Checklist currChecklist = await _checklistService.ReadChecklistFromGuidAsync(checklistId);
             List<Bird> birdsChecklist = currChecklist.birds;
             return Ok(birdsChecklist);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+    [HttpGet("Checklists/GetChecklist/{checklistId}")]
+    public async Task<ActionResult<Checklist>> ReadChecklistFromGuidAsync (Guid checklistId)
+    {
+        try
+        {
+            Checklist foundChecklist = await _checklistService.ReadChecklistFromGuidAsync(checklistId);
+            return Ok(foundChecklist);
         }
         catch (Exception e)
         {
