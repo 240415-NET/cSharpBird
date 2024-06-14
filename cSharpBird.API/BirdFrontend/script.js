@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitRecord = document.getElementById('bird-submit');
     
     //For checklist-view
-    const checklistList = document.getElementById('checklist-list');
+    let checklistList = document.getElementById('checklist-list');
     const backChecklistManagement2 = document.getElementById('back-checklist-management2');
     const backChecklistManagement3 = document.getElementById('back-checklist-management3');
 
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'block';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
-        birdView.style.display= 'none;' 
+        birdView.style.display= 'none'; 
 
     }; //end updateUIForChecklistManagement
 
@@ -362,11 +362,11 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchUserLists(userId){
         //this will fetch the checklist from back end may need updating since list contains a list
         try{
-            const response = await fetch(`http://localhost:5066/Checklists/ListChecklist/${userId}`);
+            let response = await fetch(`http://localhost:5066/Checklists/ListChecklist/${userId}`);
            
-            const list = await response.json();
-
+            let list = await response.json();
             renderList(list);
+            //list = [];
         }
         catch (error){
             console.error('Error Fetching list: ', error)
@@ -375,8 +375,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };//end Fetchlist
 
     function renderList(list){
-        list.innerHTML = '';
-        
+        list.innerHTML = ``;
+        checklistList.innerHTML = ``;
+
         list.forEach(list => {
 
 
