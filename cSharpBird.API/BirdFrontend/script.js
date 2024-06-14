@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //For checklist-create view
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
+    
     //For bird-view
     const submitRecord = document.getElementById('bird-submit');
     
@@ -29,13 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
 
+    const currChecklist = JSON.parse(localStorage.getItem('checklist'));
+
     //Adding code to check to see if user is logged in 
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser) { //if storedUser is not empty
         updateUIForLoggedInUser(storedUser);
     }
 
-    const currChecklist = JSON.parse(localStorage.getItem('checklist'));
+    
 
     /////////////Log-In User Functionality//////////////////
 
@@ -193,10 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     checklistSubmit.addEventListener('click',async() =>{
-        const listDate = document.getElementById('date-seen').value;
-        const location = document.getElementById('where').value;
         const user = JSON.parse(localStorage.getItem('user'));
-        if(listDate && location)
+        const location = document.getElementById('where').value;
+        const listDate = document.getElementById('date-seen').value;
+        if(location && listDate)
             {
                 const response = await fetch(`http://localhost:5066/Checklists/Create`, 
                 {
@@ -210,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         'content-type': 'application/json'//; 'charset=utf-8 
                     }
                 });
-                const currentChecklist = await response.json;
+                const currentChecklist = await response.json();
                 console.log(currentChecklist.checklistID);
                 //localStorage.removeItem('currChecklist');
                 localStorage.setItem('currChecklist', JSON.stringify(currentChecklist));
@@ -231,22 +234,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     method: "POST",
                     body: JSON.stringify({
-                        checklistID: checklist.checklistId,
                         speciesName: _bird,
-                        numSeen: _numSeen
+                        numSeen: _numSeen,
+                        checklistID: checklist.checklistID
                         }),
                     headers: {
                         'content-type': 'application/json'//; 'charset=utf-8 
                     }
                 });
-                const bird = await response.json
+                const bird = await response.json();
             }
-    })
-    backChecklistManagement.addEventListener('click', async() =>{
+    }) 
+    backChecklistManagement.addEventListener('click', async() => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
-    })
-    backChecklistManagement2.addEventListener('click', async() =>{
+    });
+
+    //This is the Back to Checklist Management button on the checklist-view page
+    backChecklistManagement2.addEventListener('click', async() => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
     })
@@ -366,16 +371,25 @@ document.addEventListener('DOMContentLoaded', () => {
         list.innerHTML = '';
         
         list.forEach(list => {
-            console.log("Attempting loop");
+            // console.log("Attempting loop");
             const listItem = document.createElement('li');
-            console.log(list.checklistDateTime);
-            console.log(list.locationName);
-            console.log(list.checklistID);
-            listItem.textContent = `${list.checklistDateTime} - ${list.locationName}`;
+            // console.log(list.checklistDateTime);
+            // console.log(list.locationName);
+            // console.log(list.checklistID);
+            // console.log(list.bird);
+            // console.log(list.numSeen);
+            if (list.birds.length > 0) {
+              const date = new Date(list.checklistDateTime);
+              const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+              listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName};\nSpecies: ${list.birds[0].speciesName}; Number Seen: ${list.birds[0].numSeen}`;
+            } else {const date = new Date(list.checklistDateTime);
+                const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+              listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
+            }
 
             checklistList.appendChild(listItem);
 
-        });
+        }); 
     }
 
 });//end DOMContentLoaded
