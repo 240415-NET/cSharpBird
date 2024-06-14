@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //For checklist-create view
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
+    const mainMenuChecklistReturnButton = document.getElementById('main-menu-return-checklist');
     
     //For bird-view
     const submitRecord = document.getElementById('bird-submit');
@@ -259,6 +260,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
     })
+
+    //This is the Main Menu Return button on the main logged in user UI page
+    mainMenuChecklistReturnButton.addEventListener('click', async() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForLoggedInUser(user);
+    });
+
 
     //////View Checklist Functionality///////////
     viewListButton.addEventListener('click', async() =>{
