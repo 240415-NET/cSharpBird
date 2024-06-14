@@ -382,12 +382,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             const listItem = document.createElement('li');
-            const addBirdButton = document.createElement('button');
-            addBirdButton.innerHTML = "add bird"
-            addBirdButton.value = listItem.checklistID
             
-            addBirdButton.className = "addToList";
-        
+            
+            var addBirdButton = document.createElement('button');
+            addBirdButton.textContent = "add bird";
+            addBirdButton.value = list.checklistID;
+            addBirdButton.addEventListener('click', async()  =>
+                {
+                    ClickAddBird(list.checklistID);
+           
+            });
+                                
             if (list.birds.length > 0) {
               const date = new Date(list.checklistDateTime);
               const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -400,9 +405,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             checklistList.appendChild(listItem);
             checklistList.appendChild(addBirdButton);
-            addBirdButton.onclick = updateUIForBirdRecords;
-
+        
+            
         }); 
+    }// end RenderList
+
+    async function ClickAddBird(listId){
+                    
+        localStorage.removeItem('currChecklist');
+        let response = await fetch(`http://localhost:5066/Checklists/GetChecklist/${listId}`);        
+        let currentChecklist2 = await response.json();
+        localStorage.setItem('currChecklist', JSON.stringify(currentChecklist2));    
+        updateUIForBirdRecords();
+        
+
     }
 
 });//end DOMContentLoaded
