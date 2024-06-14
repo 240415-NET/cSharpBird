@@ -49,7 +49,7 @@
     - (string) userName
     - (string) rawPassword
 
-## [Post]: Users/UpdateUser (Should this be patch instead?)
+## [Patch]: Users/UpdateUser
 - Given a Guid for userId, will update the information for a user.
 ## [Patch]: Users/UpdateUser
 - Given a Guid for userId, will update the information for a user.
