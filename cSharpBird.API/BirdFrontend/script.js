@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //For checklist-view
     const checklistList = document.getElementById('checklist-list');
     const backChecklistManagement2 = document.getElementById('back-checklist-management2');
+    const backChecklistManagement3 = document.getElementById('back-checklist-management3');
 
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
@@ -249,6 +250,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
     })
+    backChecklistManagement3.addEventListener('click', async() =>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForChecklistManagement(user);
+    })
 
     //////View Checklist Functionality///////////
     viewListButton.addEventListener('click', async() =>{
@@ -302,7 +307,9 @@ document.addEventListener('DOMContentLoaded', () => {
         createUserContainer.style.display = 'none';   
         checklistContainer.style.display = 'block';
         checklistCreate.style.display = 'none';
-        checklistView.style.display = 'none';    
+        checklistView.style.display = 'none';
+        birdView.style.display= 'none;' 
+
     }; //end updateUIForChecklistManagement
 
     function updateUIForCreateChecklist(user) {  //Not sure we need to include this function here again or just call it from above
@@ -370,6 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const listItem = document.createElement('li');
             const addBirdButton = document.createElement('button');
             addBirdButton.innerHTML = "add bird"
+            addBirdButton.value = listItem.checklistID
             
             addBirdButton.className = "addToList";
         
