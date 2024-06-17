@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    /////////////Create User Functionality//////////////////
+/////////////Create User Functionality//////////////////
 
     //Event Listener for the Enter Key on the Create Password Field
 
