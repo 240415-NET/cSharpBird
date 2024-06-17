@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateUIForUserManagement(user){
         loginContainer.style.display = 'none';
         userContainer.style.display ='none';
-
+        userManagementContainer.style.display = 'block';
         welcomeMessage.textContent = `Welcome ${user.displayName}!`;
         createUserContainer.style.display = 'none';   
         checklistContainer.style.display = 'none';
