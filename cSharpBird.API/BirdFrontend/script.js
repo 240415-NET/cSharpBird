@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
     const noUserFoundOnLogin = document.getElementById('login-no-user-found'); //Used for No User Found on Login Message from HTML
+    const createUserEmailInUse = document.getElementById('create-user-email-in-use');
 
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
@@ -162,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('user', JSON.stringify(user));
                 } catch (error) {
                     console.error('Error logging in:', error);
+                    createUserEmailInUse.style.display = 'block';
                 }
             }
         }
@@ -198,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 } catch (error) {
                     console.error('Error Creating Account: ', error);
+                    createUserEmailInUse.style.display = 'block';
                 }
             }
         });//end submitUserClick
