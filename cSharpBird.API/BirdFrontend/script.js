@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const backChecklistManagement3 = document.getElementById('back-checklist-management3');
     let mainMenuReturnChecklist = document.getElementById('main-menu-return-checklist');
 
+    //For user-management view
+    let userManagementContainer = document.getElementById('user-management');
+    let updateUserButton = document.getElementById('update-user-button');
+    
+
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
@@ -303,6 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateUIForUserManagement(user){
         loginContainer.style.display = 'none';
         userContainer.style.display ='none';
+        userManagementContainer.style.display = 'block';
         welcomeMessage.textContent = `Welcome ${user.displayName}!`;
         createUserContainer.style.display = 'none';   
         checklistContainer.style.display = 'none';
