@@ -434,7 +434,7 @@ function renderList(list) {
 
 
         var addBirdButton = document.createElement('button');
-        addBirdButton.textContent = "add bird";
+        addBirdButton.textContent = "Update List";
         addBirdButton.value = list.checklistID;
         addBirdButton.addEventListener('click', async () => {
             ClickAddBird(list.checklistID);
