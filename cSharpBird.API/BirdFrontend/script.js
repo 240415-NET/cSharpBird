@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const noUserFoundOnLogin = document.getElementById('login-no-user-found'); //Used for No User Found on Login Message from HTML
     const createUserEmailInUse = document.getElementById('create-user-email-in-use');
     const createUserAllFieldsRequired = document.getElementById('create-user-all-fields-required');
-    const loginReturn = document.getElementById('login-return');
+    const loginReturn = document.getElementById('login-return');  //Return to Login Screen Button
 
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
@@ -175,9 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 createUserAllFieldsRequired.style.display = 'block';
             }
         };
-    });
+    });//end createPasswordEnter
+    
     createUserButton.addEventListener('click', async () => {
-
 
         updateUIForCreateUser();
         submitUserButton.addEventListener('click', async () => {
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     updateUIForLoggedInUser(user);
 
-                    localStorage.setItem('user', JSON.stringify(user)); //Again, adding that local storage piece in case we want to leverage it
+                    localStorage.setItem('user', JSON.stringify(user));
                     createUserEmailInUse.style.display = 'none';
                     createUserAllFieldsRequired.style.display = 'none';
 
@@ -254,6 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });//end updateUserClick
     //});//end updateUserClick
 
+
+    //return to login screen
     loginReturn.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
         loginUI(user);
@@ -348,6 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });//end ViewlistClick
 
+
+    //return to login page from create user page function
     function loginUI(user) {
 
         loginContainer.style.display = 'block';
