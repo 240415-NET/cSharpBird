@@ -43,10 +43,19 @@ public class ChecklistStorageEFRepo : IChecklistStorageEF
         Checklist? existingChecklist = await _context.Checklists.FirstOrDefaultAsync(c => c.checklistID == checklistId);
         return existingChecklist;
     }
-    public async Task<bool> DeleteChecklistAsync(Checklist deleteChecklist)
+    public async Task<bool> DeleteChecklistAsync(Guid checklistIdToDelete)
+
     {
         //Gonna wait for Jonathan to solve this one
-        Checklist toBeDeleted = deleteChecklist;
+        Checklist checklistToBeDeleted = await ReadChecklistFromGuidAsync(checklistIdToDelete);
+        if (checklistToBeDeleted ==null)
+        {
+            throw new Exception("thrown from DB layer, checklistToBeDeleted was null");
+        }
+        _context.Checklists.Remove(checklistToBeDeleted);
+
+        await _context.SaveChangesAsync();
+
         return true;
     }
 }
