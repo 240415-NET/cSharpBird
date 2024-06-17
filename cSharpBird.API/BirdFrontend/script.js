@@ -33,6 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const backChecklistManagement3 = document.getElementById('back-checklist-management3');
     let mainMenuReturnChecklist = document.getElementById('main-menu-return-checklist');
 
+    //For user-management view
+    let userManagementContainer = document.getElementById('user-management');
+    let updateUserButton = document.getElementById('update-user-button');
+    
+
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
@@ -263,6 +268,7 @@ checklistSubmit.addEventListener('click', async () => {
 
 
 
+
 submitRecord.addEventListener('click', async () => {
     const _numSeen = document.getElementById('count').value;
     const _bird = document.getElementById('select-bird').value;
@@ -281,6 +287,7 @@ submitRecord.addEventListener('click', async () => {
                 }
             });
         const bird = await response.json();
+
     }
 })
 backChecklistManagement.addEventListener('click', async () => {

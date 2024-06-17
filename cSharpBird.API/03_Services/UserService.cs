@@ -139,6 +139,7 @@ public class UserService : IUserService
             throw new Exception ("Invalid name");
         else
         {
+            user.displayName = newName;
             await WriteUpdatedUser(user);
         }
         return user;
