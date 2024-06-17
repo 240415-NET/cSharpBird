@@ -33,9 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const backChecklistManagement3 = document.getElementById('back-checklist-management3');
     let mainMenuReturnChecklist = document.getElementById('main-menu-return-checklist');
 
-    //For user-management view
-    let userManagementContainer = document.getElementById('user-management');
-    let updateUserButton = document.getElementById('update-user-button');
     
 
     const password = document.getElementById('password');
@@ -200,12 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const updateEmail = document.getElementById('updateEmail').value;
             const updateUsername = document.getElementById('updateUsername').value;
             const updatePassword = document.getElementById('updatePassword').value;
-            if (updateUsername && updateEmail && updatePassword) {
+            const userGuid = JSON.parse(localStorage.getItem('user'));
+            if (updateUsername || updateEmail || updatePassword) {
                 try { 
                     const response = await fetch(`http://localhost:5066/Users/UpdateUser`,
                     {
-                        method: "PATCH",
+                        method: "POST",
                         body: JSON.stringify({
+                            userId: userGuid.userId,
                             userEmail: updateEmail,
                             displayName: updateUsername,
                             rawPassword: updatePassword

@@ -1,6 +1,7 @@
 namespace cSharpBird.API;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
@@ -60,12 +61,16 @@ public class WebUserController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    [HttpPatch("Users/UpdateUser")]
+    [HttpPost("Users/UpdateUser")]
     public async Task<ActionResult<User>> UpdateUser (UserChange UserChanges)
     {
         try
         {
             Console.WriteLine("Running through User Updates!");
+            Console.WriteLine("Guid: "+UserChanges.userId);
+            Console.WriteLine("Email: "+UserChanges.email);
+            Console.WriteLine("Username: "+UserChanges.userName);
+            Console.WriteLine("RawPassword: "+UserChanges.rawPassword);
             User updatedUser = _userService.GetUserByGuidAsync(UserChanges.userId).Result;
             if (updatedUser != null)
             {
