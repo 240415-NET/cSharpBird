@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
-    const noUserFoundOnLogin = document.getElementById('login-no-user-found');
+    const noUserFoundOnLogin = document.getElementById('login-no-user-found'); //Used for No User Found on Login Message from HTML
 
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.key === 'Enter') {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-
+    
             if (username && password) {
                 try {
                     const response = await fetch(`http://localhost:5066/Users/Signin`, 
@@ -76,19 +76,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
                         updateUIForLoggedInUser(user);
         
-                        localStorage.setItem('user', JSON.stringify(user)); //Just adding that local storage piece in case we want to leverage it
+                        localStorage.setItem('user', JSON.stringify(user));
                 } catch (error) {
                     console.error(error);
-                    noUserFoundOnLogin.style.display = 'block';
+                    noUserFoundOnLogin.style.display = 'block'; //Display noUserFoundOnLogin if there is an error trying find existing user
                 }
+            } else {
+                // Display noUserFoundOnLogin if either username or password is left blank
+                noUserFoundOnLogin.style.display = 'block';
             }
         }
     });
-
+    
     loginButton.addEventListener('click', async () => {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-
+    
         if (username && password) {
             try {
                 const response = await fetch(`http://localhost:5066/Users/Signin`, 
@@ -104,15 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                    
                 const user = await response.json();
-
+    
                 updateUIForLoggedInUser(user);
-
-                localStorage.setItem('user', JSON.stringify(user)); //Just adding that local storage piece in case we want to leverage it
-
+    
+                localStorage.setItem('user', JSON.stringify(user));
+    
             } catch (error) {
                 console.error('Error logging in:', error);
                 noUserFoundOnLogin.style.display = 'block';
             }
+        } else {
+            // Display noUserFoundOnLogin if either username or password is blank
+            noUserFoundOnLogin.style.display = 'block';
         }
     });//end loginclick
 
