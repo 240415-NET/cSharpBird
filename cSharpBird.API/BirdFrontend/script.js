@@ -441,6 +441,17 @@ function renderList(list) {
 
         });
 
+        var deleteListButton = document.createElement('button');
+        deleteListButton.textContent = "Delete List";
+        deleteListButton.value = list.checklistID;
+        deleteListButton.addEventListener('click', async () => {
+            DeleteList(list.checklistID);
+
+        });
+      
+
+        
+
         if (list.birds.length > 0) {
             const date = new Date(list.checklistDateTime);
             const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -454,6 +465,8 @@ function renderList(list) {
 
         checklistList.appendChild(listItem);
         checklistList.appendChild(addBirdButton);
+        checklistList.appendChild(deleteListButton);
+        
 
 
     });
@@ -466,8 +479,16 @@ async function ClickAddBird(listId) {
     let currentChecklist2 = await response.json();
     localStorage.setItem('currChecklist', JSON.stringify(currentChecklist2));
     updateUIForBirdRecords();
+}
 
+async function DeleteList(listId){
+    await fetch(`http://localhost:5066/Checklists/Delete${listId}`,{
+        method: 'DELETE',
+});
+
+updateUIForViewChecklist();
 
 }
+
 
 });//end DOMContentLoaded
