@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
+    const noUserFoundOnLogin = document.getElementById('login-no-user-found');
+
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
 
@@ -77,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         localStorage.setItem('user', JSON.stringify(user)); //Just adding that local storage piece in case we want to leverage it
                 } catch (error) {
                     console.error(error);
+                    noUserFoundOnLogin.style.display = 'block';
                 }
             }
         }
@@ -108,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (error) {
                 console.error('Error logging in:', error);
+                noUserFoundOnLogin.style.display = 'block';
             }
         }
     });//end loginclick
