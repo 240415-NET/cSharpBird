@@ -94,4 +94,18 @@ public class WebChecklistController : ControllerBase
             return BadRequest(e.Message);
         }
     }
+ [HttpDelete("/Checklists/Delete{checklistId}")]
+    public async Task<ActionResult> DeleteCheckListByGuidAsync(Guid checklistId)
+    {
+        try
+        {
+            await _checklistService.DeleteChecklistAsync(checklistId);
+            return Ok();
+        }
+        catch( Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+   
 } 
