@@ -115,10 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateUIForLoggedInUser(user);
     
                 localStorage.setItem('user', JSON.stringify(user));
+                noUserFoundOnLogin.style.display= 'none';
     
             } catch (error) {
                 console.error('Error logging in:', error);
-                noUserFoundOnLogin.style.display = 'block';
+
             }
         } else {
             // Display noUserFoundOnLogin if either username or password is blank
@@ -217,8 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         method: "POST",
                         body: JSON.stringify({
                             userId: userGuid.userId,
-                            userEmail: updateEmail,
-                            displayName: updateUsername,
+                            email: updateEmail,
+                            userName: updateUsername,
                             rawPassword: updatePassword
                         }),
                         headers: {
