@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutButton = document.getElementById('logout-button');
     const noUserFoundOnLogin = document.getElementById('login-no-user-found'); //Used for No User Found on Login Message from HTML
     const createUserEmailInUse = document.getElementById('create-user-email-in-use');
+    const createUserAllFieldsRequired = document.getElementById('create-user-all-fields-required');
 
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    /////////////Create User Functionality//////////////////
+/////////////Create User Functionality//////////////////
 
     //Event Listener for the Enter Key on the Create Password Field
 
@@ -161,14 +162,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateUIForLoggedInUser(user);
 
                     localStorage.setItem('user', JSON.stringify(user));
+                    // createUserEmailInUse.style.display = 'none';
+                    // createUserAllFieldsRequired.style.display = 'none';
+
                 } catch (error) {
                     console.error('Error logging in:', error);
                     createUserEmailInUse.style.display = 'block';
                 }
             }
-        }
+            else {
+                createUserAllFieldsRequired.style.display = 'block';
+            }
+        };
     });
-
     createUserButton.addEventListener('click', async () => {
 
 
@@ -197,11 +203,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateUIForLoggedInUser(user);
 
                     localStorage.setItem('user', JSON.stringify(user)); //Again, adding that local storage piece in case we want to leverage it
+                    // createUserEmailInUse.style.display = 'none';
+                    // createUserAllFieldsRequired.style.display = 'none';
 
                 } catch (error) {
                     console.error('Error Creating Account: ', error);
                     createUserEmailInUse.style.display = 'block';
                 }
+            }
+            else {
+                createUserAllFieldsRequired.style.display = 'block';
             }
         });//end submitUserClick
     });//end createUserClick
