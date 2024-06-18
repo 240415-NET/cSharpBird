@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
 
-    const mainMenuChecklistReturnButton = document.getElementById('main-menu-return-checklist');
+    const mainMenuReturnChecklistButton = document.getElementById('main-menu-return-checklist');
 
     //For bird-view
     const submitRecord = document.getElementById('bird-submit');
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const createUserEmailInUse = document.getElementById('create-user-email-in-use');
     const createUserAllFieldsRequired = document.getElementById('create-user-all-fields-required');
     const loginReturn = document.getElementById('login-return');  //Return to Login Screen Button
+
 
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
@@ -341,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
     })
-    mainMenuReturnChecklist.addEventListener('click', async () => {
+    mainMenuReturnChecklistButton.addEventListener('click', async () => {
         user = JSON.parse(localStorage.getItem('user'));
         updateUIForLoggedInUser(user);
     })
@@ -365,11 +366,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     };//end updateUIForCreateUser
-    function updateUIForLoggedInUser(user) {  //Not sure we need to include this function here again or just call it from above
 
-        loginContainer.style.display = 'none';
-    }
 
+//This is the Back to Checklist Management button on the checklist-view page
 
     function updateUIForCreateUser() {  //Not sure we need to include this function here again or just call it from above
 
@@ -518,12 +517,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
             }
 
+            addBirdButton.innerHTML = "add bird"
+            addBirdButton.value = listItem.checklistID
+            
+            addBirdButton.className = "addToList";
 
-            checklistList.appendChild(listItem);
-            checklistList.appendChild(addBirdButton);
-            checklistList.appendChild(deleteListButton);
-
-
+        //next three lines were part of a merge conflict on main
+        checklistList.appendChild(listItem);
+        checklistList.appendChild(addBirdButton);
+        checklistList.appendChild(deleteListButton);
 
         });
     }// end RenderList
