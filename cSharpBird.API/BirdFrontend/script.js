@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
 
+    const mainMenuChecklistReturnButton = document.getElementById('main-menu-return-checklist');
+
     //For bird-view
     const submitRecord = document.getElementById('bird-submit');
 
@@ -31,9 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let checklistList = document.getElementById('checklist-list');
     const backChecklistManagement2 = document.getElementById('back-checklist-management2');
     const backChecklistManagement3 = document.getElementById('back-checklist-management3');
-    let mainMenuReturnChecklist = document.getElementById('main-menu-return-checklist');
 
-    
 
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
@@ -300,12 +300,14 @@ submitRecord.addEventListener('click', async () => {
             });
         const bird = await response.json();
 
+
     }
 })
 backChecklistManagement.addEventListener('click', async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     updateUIForChecklistManagement(user);
 });
+
 
 //This is the Back to Checklist Management button on the checklist-view page
 backChecklistManagement2.addEventListener('click', async () => {
@@ -346,14 +348,10 @@ function updateUIForLoggedInUser(user) {  //Not sure we need to include this fun
     userContainer.style.display = 'block';
 
     welcomeMessage.textContent = `Welcome ${user.displayName}!`;
-
     createUserContainer.style.display = 'none';
     checklistContainer.style.display = 'none';
     checklistCreate.style.display = 'none';
     checklistView.style.display = 'none';
-
-
-
 };//end updateUIForLoggedInUser
 
 function updateUIForUserManagement(user) {
@@ -476,9 +474,18 @@ function renderList(list) {
         }
 
 
+            const listItem = document.createElement('li');
+            const addBirdButton = document.createElement('button');
+            addBirdButton.innerHTML = "add bird"
+            addBirdButton.value = listItem.checklistID
+            
+            addBirdButton.className = "addToList";
+
+        //next three lines were part of a merge conflict on main
         checklistList.appendChild(listItem);
         checklistList.appendChild(addBirdButton);
         checklistList.appendChild(deleteListButton);
+
         
 
 
