@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //For checklist-create view
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
+    const checklistSubmitNothingEntered = document.getElementById('checklist-submit-nothing-entered');
 
     const mainMenuReturnChecklistButton = document.getElementById('main-menu-return-checklist');
 
@@ -303,6 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const location = document.getElementById('where').value;
         const listDate = document.getElementById('date-seen').value;
+        checklistSubmitNothingEntered.style.display = 'none';
+        
         if (location && listDate) {
             const response = await fetch(`http://localhost:5066/Checklists/Create`,
                 {
@@ -320,6 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('currChecklist', JSON.stringify(currentChecklist));
             const check = JSON.parse(localStorage.getItem('currChecklist'));
             updateUIForBirdRecords(currentChecklist);
+        }
+        else {
+            checklistSubmitNothingEntered.style.display = 'block';
         }
 
     })
