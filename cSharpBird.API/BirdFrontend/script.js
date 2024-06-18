@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
 
+    const mainMenuChecklistReturnButton = document.getElementById('main-menu-return-checklist');
+
     //For bird-view
     const submitRecord = document.getElementById('bird-submit');
 
@@ -31,10 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let checklistList = document.getElementById('checklist-list');
     const backChecklistManagement2 = document.getElementById('back-checklist-management2');
     const backChecklistManagement3 = document.getElementById('back-checklist-management3');
-    let mainMenuReturnChecklist = document.getElementById('main-menu-return-checklist');
-
-
-
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
@@ -351,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });//end ViewlistClick
 
 
+
     //return to login page from create user page function
     function loginUI(user) {
 
@@ -363,10 +362,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     };//end updateUIForCreateUser
-    function updateUIForLoggedInUser(user) {  //Not sure we need to include this function here again or just call it from above
 
-        loginContainer.style.display = 'none';
     }
+
+
+//This is the Back to Checklist Management button on the checklist-view page
+backChecklistManagement2.addEventListener('click', async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    updateUIForChecklistManagement(user);
+})
+backChecklistManagement3.addEventListener('click', async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    updateUIForChecklistManagement(user);
+})
+mainMenuReturnChecklist.addEventListener('click', async () => {
+    user = JSON.parse(localStorage.getItem('user'));
+    updateUIForLoggedInUser(user);
+})
 
 
     function updateUIForCreateUser() {  //Not sure we need to include this function here again or just call it from above
@@ -392,9 +404,6 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
-
-
-
     };//end updateUIForLoggedInUser
 
     function updateUIForUserManagement(user) {
@@ -419,6 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
         birdView.style.display = 'none';
 
     }; //end updateUIForChecklistManagement
+
 
     function updateUIForCreateChecklist(user) {  //Not sure we need to include this function here again or just call it from above
 
@@ -516,12 +526,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
             }
 
+            const listItem = document.createElement('li');
+            const addBirdButton = document.createElement('button');
+            addBirdButton.innerHTML = "add bird"
+            addBirdButton.value = listItem.checklistID
+            
+            addBirdButton.className = "addToList";
 
-            checklistList.appendChild(listItem);
-            checklistList.appendChild(addBirdButton);
-            checklistList.appendChild(deleteListButton);
-
-
+        //next three lines were part of a merge conflict on main
+        checklistList.appendChild(listItem);
+        checklistList.appendChild(addBirdButton);
+        checklistList.appendChild(deleteListButton);
 
         });
     }// end RenderList
