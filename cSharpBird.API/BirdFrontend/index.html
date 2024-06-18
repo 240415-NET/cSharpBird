@@ -48,11 +48,26 @@
         <h4 id="create-user-heading">Create User Account</h4>
         <input type="email" id="createEmail" placeholder="Enter your Email Address">
         <br>
+        <br>
         <input type="text" id="createUsername" placeholder="Username">
+        <br>
         <br>
         <input type="password" id="createPassword" placeholder="Password">
         <br>
+        <br>
+        <br>
         <button id="submit-user-button">Create User</button>
+        <button id="login-return">Return to Login </button>
+
+
+        <div id = "create-user-email-in-use" style="color: red;" hidden>
+            <strong>Email Address is already in use.  Please use a different one.</strong> 
+        </div>
+        <div id = "create-user-all-fields-required" style="color: red;" hidden>
+            <strong>All fields are required to create a new user!</strong>
+        </div>
+        
+
     </div>
 
     <div id="user-container" style="display: none;">
