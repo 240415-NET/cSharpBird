@@ -42,7 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const createUserAllFieldsRequired = document.getElementById('create-user-all-fields-required');
     const loginReturn = document.getElementById('login-return');  //Return to Login Screen Button
 
-
+    //for Bird list
+    let birdList = document.getElementById('bird-list');
+    const birdlistView = document.getElementById('bird-list-view');
+    const backChecklistManagement4 = document.getElementById('back-checklist-management4');
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
 
@@ -176,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
     });//end createPasswordEnter
-    
+
     createUserButton.addEventListener('click', async () => {
 
         updateUIForCreateUser();
@@ -254,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mainMenuReturnUpdateUser.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
-        updateUIForUpdateUser(user);                        
+        updateUIForUpdateUser(user);
     })
 
     function updateUIForUpdateUser(user) {
@@ -266,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
-    }; 
+    };
     //return to login screen
     loginReturn.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -351,6 +354,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
     })
+    backChecklistManagement4.addEventListener('click', async () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForChecklistManagement(user);
+    })
+    
+
     mainMenuReturnChecklistButton.addEventListener('click', async () => {
         user = JSON.parse(localStorage.getItem('user'));
         updateUIForLoggedInUser(user);
@@ -372,13 +381,14 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
 
 
 
     };//end updateUIForCreateUser
 
 
-//This is the Back to Checklist Management button on the checklist-view page
+    //This is the Back to Checklist Management button on the checklist-view page
 
     function updateUIForCreateUser() {  //Not sure we need to include this function here again or just call it from above
 
@@ -387,6 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
 
 
 
@@ -403,7 +414,11 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+
+        birdlistView.style.display = 'none';
+
         userManagementView.style.display = 'none';
+
     };//end updateUIForLoggedInUser
 
     function updateUIForUserManagement(user) {
@@ -415,6 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
     }; //end updateUIForUserManagement
 
     function updateUIForChecklistManagement(user) {
@@ -426,6 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
         birdView.style.display = 'none';
+        birdlistView.style.display = 'none';
 
     }; //end updateUIForChecklistManagement
 
@@ -437,6 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'block';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
 
 
 
@@ -445,6 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistCreate.style.display = 'none';
         birdView.style.display = 'block';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
     }
     function updateUIForViewChecklist() {  //Not sure we need to include this function here again or just call it from above
 
@@ -458,104 +477,142 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistView.style.display = 'block';
         const user = JSON.parse(localStorage.getItem('user'));
         fetchUserLists(user.userId);
+        birdlistView.style.display = 'none';
 
 
     };//end updateUIForviewChecklist
-    /////////////////////////Logout Handling/////////////
 
-    logoutButton.addEventListener('click', () => {
+    function updateUIForBirdview() {
+        checklistCreate.style.display = 'none';
+        birdView.style.display = 'none';
+        checklistView.style.display = 'none';
+        birdlistView.style.display = 'block';}
 
-        localStorage.removeItem('user');  //Deleting local storage of the 'user' object due to
+        /////////////////////////Logout Handling/////////////
 
-        loginContainer.style.display = 'block';  //Redisplay the login container
+        logoutButton.addEventListener('click', () => {
 
-        userContainer.style.display = 'none'; //Need to see if we have to call out each container that has the logout functionality available
-    });//end of the logoutButton event listener
-    /////fetch lists/////
-    async function fetchUserLists(userId) {
-        //this will fetch the checklist from back end may need updating since list contains a list
-        try {
-            let response = await fetch(`http://localhost:5066/Checklists/ListChecklist/${userId}`);
+            localStorage.removeItem('user');  //Deleting local storage of the 'user' object due to
 
-            let list = await response.json();
-            renderList(list);
-            //list = [];
-        }
-        catch (error) {
-            console.error('Error Fetching list: ', error)
-        }
+            loginContainer.style.display = 'block';  //Redisplay the login container
 
-    };//end Fetchlist
+            userContainer.style.display = 'none'; //Need to see if we have to call out each container that has the logout functionality available
+        });//end of the logoutButton event listener
+        /////fetch lists/////
+        async function fetchUserLists(userId) {
+            //this will fetch the checklist from back end may need updating since list contains a list
+            try {
+                let response = await fetch(`http://localhost:5066/Checklists/ListChecklist/${userId}`);
 
-    function renderList(list) {
-        list.innerHTML = ``;
-        checklistList.innerHTML = ``;
+                let list = await response.json();
+                renderList(list);
+                //list = [];
+            }
+            catch (error) {
+                console.error('Error Fetching list: ', error)
+            }
 
-        list.forEach(list => {
+        };//end Fetchlist
+
+        function renderList(list) {
+            list.innerHTML = ``;
+            checklistList.innerHTML = ``;
+
+            list.forEach(list => {
+
+
+                const listItem = document.createElement('li');
+
+
+                var addBirdButton = document.createElement('button');
+                addBirdButton.textContent = "Update List";
+                addBirdButton.value = list.checklistID;
+                addBirdButton.addEventListener('click', async () => {
+                    ClickAddBird(list.checklistID);
+
+                });
+
+                var deleteListButton = document.createElement('button');
+                deleteListButton.textContent = "Delete List";
+                deleteListButton.value = list.checklistID;
+                deleteListButton.addEventListener('click', async () => {
+                    DeleteList(list.checklistID);
+
+                });
+
+                var birdListButton = document.createElement('button');
+                birdListButton.textContent = "View List";
+                birdListButton.value = list.checklistID;
+                birdListButton.addEventListener('click', async () => {
+                    ShowThemBirds(list.birds);
+
+                });
+
+
+
+
+
+                if (list.birds.length > 0) {
+                    const date = new Date(list.checklistDateTime);
+                    const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+                    listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName};\nSpecies: ${list.birds[0].speciesName}; Number Seen: ${list.birds[0].numSeen}`;
+                } else {
+                    const date = new Date(list.checklistDateTime);
+                    const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+                    listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
+                }
+
+                checklistList.appendChild(listItem);
+                checklistList.appendChild(addBirdButton);
+                checklistList.appendChild(deleteListButton);
+                checklistList.appendChild(birdListButton);
+
+            });
+        }// end RenderList
+
+        async function ClickAddBird(listId) {
+
+            localStorage.removeItem('currChecklist');
+            let response = await fetch(`http://localhost:5066/Checklists/GetChecklist/${listId}`);
+            let currentChecklist2 = await response.json();
+            localStorage.setItem('currChecklist', JSON.stringify(currentChecklist2));
+            updateUIForBirdRecords();
+        }//end add bird
+
+        async function DeleteList(listId) {
+            await fetch(`http://localhost:5066/Checklists/Delete${listId}`, {
+                method: 'DELETE',
+            });
+
+            updateUIForViewChecklist();
+
+        }//end delete
+
+        function ShowThemBirds(bird){
+           updateUIForBirdview();
+            
+        
+       bird.innerHTML = ``;
+        birdList.innerHTML = ``;
+
+        bird.forEach(bird => {
 
 
             const listItem = document.createElement('li');
 
 
-            var addBirdButton = document.createElement('button');
-            addBirdButton.textContent = "Update List";
-            addBirdButton.value = list.checklistID;
-            addBirdButton.addEventListener('click', async () => {
-                ClickAddBird(list.checklistID);
+                    //if (bird.length > 0) {
+                        
+                listItem.textContent = `Species: ${bird.speciesName} -- Number Seen: ${bird.numSeen}`;
+           // } else {
+                
+              //  listItem.textContent = `No Birds Seen`;
+           // }
 
-            });
-
-            var deleteListButton = document.createElement('button');
-            deleteListButton.textContent = "Delete List";
-            deleteListButton.value = list.checklistID;
-            deleteListButton.addEventListener('click', async () => {
-                DeleteList(list.checklistID);
-
-            });
-
-
-
-
-            if (list.birds.length > 0) {
-                const date = new Date(list.checklistDateTime);
-                const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-                listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName};\nSpecies: ${list.birds[0].speciesName}; Number Seen: ${list.birds[0].numSeen}`;
-            } else {
-                const date = new Date(list.checklistDateTime);
-                const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-                listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
-            }
-
-            addBirdButton.innerHTML = "add bird"
-            addBirdButton.value = listItem.checklistID
-            
-            addBirdButton.className = "addToList";
-
-        //next three lines were part of a merge conflict on main
-        checklistList.appendChild(listItem);
-        checklistList.appendChild(addBirdButton);
-        checklistList.appendChild(deleteListButton);
-
-        });
-    }// end RenderList
-
-    async function ClickAddBird(listId) {
-
-        localStorage.removeItem('currChecklist');
-        let response = await fetch(`http://localhost:5066/Checklists/GetChecklist/${listId}`);
-        let currentChecklist2 = await response.json();
-        localStorage.setItem('currChecklist', JSON.stringify(currentChecklist2));
-        updateUIForBirdRecords();
-    }
-
-    async function DeleteList(listId) {
-        await fetch(`http://localhost:5066/Checklists/Delete${listId}`, {
-            method: 'DELETE',
-        });
-
-        updateUIForViewChecklist();
-
-    }
-
+           
+       
+        birdList.appendChild(listItem);}
+    );
+}
 
 });//end DOMContentLoaded
