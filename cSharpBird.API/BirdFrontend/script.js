@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //For Update User button
     const updateUserButton = document.getElementById('update-user-button');
+    const userManagementNothingEntered = document.getElementById('usermanagement-nothing-entered');
 
     //For checklist-create view
     const checklistSubmit = document.getElementById('checklist-submit');
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (error) {
                 console.error('Error logging in:', error);
+                noUserFoundOnLogin.style.display = 'block';
 
             }
         } else {
@@ -169,14 +171,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error logging in:', error);
                     createUserEmailInUse.style.display = 'block';
+                    createUserAllFieldsRequired.style.display = 'none';
                 }
             }
             else {
                 createUserAllFieldsRequired.style.display = 'block';
+                createUserEmailInUse.style.display = 'none';
             }
         };
     });//end createPasswordEnter
-    
+
     createUserButton.addEventListener('click', async () => {
 
         updateUIForCreateUser();
@@ -210,10 +214,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error Creating Account: ', error);
                     createUserEmailInUse.style.display = 'block';
+                    createUserAllFieldsRequired.style.display = 'none';
                 }
             }
             else {
                 createUserAllFieldsRequired.style.display = 'block';
+                createUserEmailInUse.style.display = 'none';
             }
         });//end submitUserClick
     });//end createUserClick
@@ -244,17 +250,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateUIForLoggedInUser(user);
 
                 localStorage.setItem('user', JSON.stringify(user)); //Again, adding that local storage piece in case we want to leverage it
+                userManagementNothingEntered.style.display = 'none';
 
             } catch (error) {
                 console.error('Error updating Account: ', error);
+                userManagementNothingEntered.style.display = 'block';
             }
+        }
+        else {
+            userManagementNothingEntered.style.display = 'block';
         }
     });//end updateUserClick
     //});//end updateUserClick
 
     mainMenuReturnUpdateUser.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
-        updateUIForUpdateUser(user);                        
+        updateUIForUpdateUser(user);
     })
 
     function updateUIForUpdateUser(user) {
@@ -266,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
-    }; 
+    };
     //return to login screen
     loginReturn.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -378,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };//end updateUIForCreateUser
 
 
-//This is the Back to Checklist Management button on the checklist-view page
+    //This is the Back to Checklist Management button on the checklist-view page
 
     function updateUIForCreateUser() {  //Not sure we need to include this function here again or just call it from above
 
@@ -528,13 +539,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             addBirdButton.innerHTML = "add bird"
             addBirdButton.value = listItem.checklistID
-            
+
             addBirdButton.className = "addToList";
 
-        //next three lines were part of a merge conflict on main
-        checklistList.appendChild(listItem);
-        checklistList.appendChild(addBirdButton);
-        checklistList.appendChild(deleteListButton);
+            //next three lines were part of a merge conflict on main
+            checklistList.appendChild(listItem);
+            checklistList.appendChild(addBirdButton);
+            checklistList.appendChild(deleteListButton);
 
         });
     }// end RenderList
