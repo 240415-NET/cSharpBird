@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
 
-    const mainMenuChecklistReturnButton = document.getElementById('main-menu-return-checklist');
+    const mainMenuReturnChecklistButton = document.getElementById('main-menu-return-checklist');
 
     //For bird-view
     const submitRecord = document.getElementById('bird-submit');
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const createUserEmailInUse = document.getElementById('create-user-email-in-use');
     const createUserAllFieldsRequired = document.getElementById('create-user-all-fields-required');
     const loginReturn = document.getElementById('login-return');  //Return to Login Screen Button
+
 
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
@@ -337,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
     })
-    mainMenuReturnChecklist.addEventListener('click', async () => {
+    mainMenuReturnChecklistButton.addEventListener('click', async () => {
         user = JSON.parse(localStorage.getItem('user'));
         updateUIForLoggedInUser(user);
     })
@@ -363,23 +364,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };//end updateUIForCreateUser
 
-    }
-
 
 //This is the Back to Checklist Management button on the checklist-view page
-backChecklistManagement2.addEventListener('click', async () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    updateUIForChecklistManagement(user);
-})
-backChecklistManagement3.addEventListener('click', async () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    updateUIForChecklistManagement(user);
-})
-mainMenuReturnChecklist.addEventListener('click', async () => {
-    user = JSON.parse(localStorage.getItem('user'));
-    updateUIForLoggedInUser(user);
-})
-
 
     function updateUIForCreateUser() {  //Not sure we need to include this function here again or just call it from above
 
@@ -526,8 +512,6 @@ mainMenuReturnChecklist.addEventListener('click', async () => {
                 listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
             }
 
-            const listItem = document.createElement('li');
-            const addBirdButton = document.createElement('button');
             addBirdButton.innerHTML = "add bird"
             addBirdButton.value = listItem.checklistID
             
