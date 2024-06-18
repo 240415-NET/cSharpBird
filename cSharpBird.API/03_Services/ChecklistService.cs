@@ -48,10 +48,12 @@ public class ChecklistService : IChecklistService
         foundChecklist.birds = await _birdStorage.ReadBirdsForChecklist(checklistId);
         return foundChecklist;        
     }
-    public async Task<bool> DeleteChecklistAsync (Checklist deleteChecklist)
+    public async Task<bool> DeleteChecklistAsync (Guid deleteChecklistId)
     {
-        await _checklistStorage.DeleteChecklistAsync(deleteChecklist);
-        await _birdStorage.DeleteBirdsForChecklist(deleteChecklist);
+        
+        Checklist checklistToDelete = await _checklistStorage.ReadChecklistFromGuidAsync(deleteChecklistId);
+        await _checklistStorage.DeleteChecklistAsync(deleteChecklistId);
+        await _birdStorage.DeleteBirdsForChecklist(checklistToDelete);
         return true;
     }
 }

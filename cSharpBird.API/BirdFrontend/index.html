@@ -23,12 +23,21 @@
         <h4 id="login-heading">Login Here</h4>
         <input type="text" id="username" placeholder="Email">
         <br>
+        <br>
         <input type="password" id="password" placeholder="Password">
+        <br>
         <br>
         <button id="login-button"> Login</button>
         <br>
         <br>
-        <label>Create a New Account Here:</label>
+        <br>
+        <div id = "login-no-user-found" style="color: red;" hidden>
+            <strong>No user found with that username and password. Please re-enter or Create New User!</strong> 
+        </div>
+        <br>
+
+
+        <label><strong>Create a New Account Here:</strong></label>
         
         <button id="create-user-button">Create User</button>
     </div>
@@ -47,6 +56,7 @@
     </div>
 
     <div id="user-container" style="display: none;">
+
         <br>
         <style>
             @keyframes flash {
@@ -60,15 +70,22 @@
         </style> 
         <h3 class="flashing" id="welcome-message"></h3>
         <h4>What would you like to do?</h4>
-        
-        <button id="user-management-button">User Management</button>
-        <button id="checklist-management-button">Checklist Management</button>
-        <br>
-        <center><button id="logout-button">Logout</button></center>
+        <table>
+            <tr>
+                <td><button id="user-management-button">User<br> Management</button></td>
+                <td><button id="checklist-management-button">Checklist Management</button></td>
+            </tr>
+            <tr>
+                <td rowspan="2"><center><button id="logout-button">Logout</button></center></td>
+            </tr>
+        </table>
+
         <!--link to checklists-->
 
     </div>
+<!-- // User management add new code FC -->
     <div id="user-management" style="display: none;">
+
         <br>
         <style>
             @keyframes flash {
@@ -82,14 +99,21 @@
         </style> 
         <h3 class="flashing" id="welcome-message"></h3>
         <h4>What would you like to do?</h4>
-        <button id="user-management-button">User Management</button>
-        <button id="checklist-management-button">Checklist Management</button>
+        <h1>Update Your User Account</h1>
+
+        <input type="email" id="updateEmail" placeholder="Email Address">
         <br>
-        <center><button id="main-menu-return-user">Main Menu</button></center>
-        <!--link to checklists-->
+        <input type="text" id="updateUsername" placeholder="Username">
+        <br>
+        <input type="password" id="updatePassword" placeholder="Password">
+
+        <br>
+
+        <button id="update-user-button">Update User</button> 
 
     </div>
-
+<!-- end of FC  -->
+ 
     <div id="checklist-container" style="display: none;">
 
         <!--<div id="checklist-container"> why the extra div?-->

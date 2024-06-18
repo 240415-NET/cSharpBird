@@ -1,6 +1,7 @@
 namespace cSharpBird.API;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
@@ -65,15 +66,32 @@ public class WebUserController : ControllerBase
     {
         try
         {
+            Console.WriteLine("Running through User Updates!");
+            Console.WriteLine("Guid: "+UserChanges.userId);
+            Console.WriteLine("Email: "+UserChanges.email);
+            Console.WriteLine("Username: "+UserChanges.userName);
+            Console.WriteLine("RawPassword: "+UserChanges.rawPassword);
             User updatedUser = _userService.GetUserByGuidAsync(UserChanges.userId).Result;
             if (updatedUser != null)
             {
-                if (UserChanges.email != null || UserChanges.email != "")
+                if ((UserChanges.email != null || UserChanges.email != "") && _userService.ValidEmail(UserChanges.email))
+                {
+                    Console.WriteLine("User needs email changed");
                     await _userService.changeEmail(updatedUser,UserChanges.email);
-                if (UserChanges.userName != null || UserChanges.userName != "")
+                }
+                    
+                if (!String.IsNullOrEmpty(UserChanges.userName))
+                {
+                    Console.WriteLine("User needs to change username");
                     await _userService.changeName(updatedUser,UserChanges.userName);
-                if (UserChanges.rawPassword != null || UserChanges.rawPassword != "")
+                }
+                    
+                if (!String.IsNullOrEmpty(UserChanges.rawPassword))
+                {
+                    Console.WriteLine("User needs a password change");
                     await _userService.UpdatePassword(UserChanges.rawPassword,updatedUser);
+                }
+                    
             }
             return Ok(updatedUser);
         }
