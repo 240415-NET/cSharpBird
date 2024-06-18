@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
     const checklistSubmitNothingEntered = document.getElementById('checklist-submit-nothing-entered');
+    const recordAddedToChecklist = document.getElementById('record-added-to-checklist');
 
     const mainMenuReturnChecklistButton = document.getElementById('main-menu-return-checklist');
 
@@ -92,10 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error(error);
                     noUserFoundOnLogin.style.display = 'block'; //Display noUserFoundOnLogin if there is an error trying find existing user
+                    setTimeout(() => noUserFoundOnLogin.style.display = 'none', 5000); //Hide noUserFoundOnLogin after 5 seconds
                 }
             } else {
                 // Display noUserFoundOnLogin if either username or password is left blank
                 noUserFoundOnLogin.style.display = 'block';
+                setTimeout(() => noUserFoundOnLogin.style.display = 'none', 5000);
             }
         }
     });
@@ -124,15 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 localStorage.setItem('user', JSON.stringify(user));
                 noUserFoundOnLogin.style.display = 'none';
-
+               
             } catch (error) {
                 console.error('Error logging in:', error);
                 noUserFoundOnLogin.style.display = 'block';
-
+                setTimeout(() => noUserFoundOnLogin.style.display = 'none', 5000);
             }
         } else {
             // Display noUserFoundOnLogin if either username or password is blank
             noUserFoundOnLogin.style.display = 'block';
+            setTimeout(() => noUserFoundOnLogin.style.display = 'none', 5000);
         }
     });//end loginclick
 
@@ -175,11 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error logging in:', error);
                     createUserEmailInUse.style.display = 'block';
+                    setTimeout(() => createUserEmailInUse.style.display = 'none', 5000);
                     createUserAllFieldsRequired.style.display = 'none';
                 }
             }
             else {
                 createUserAllFieldsRequired.style.display = 'block';
+                setTimeout(() => createUserAllFieldsRequired.style.display = 'none', 5000);
                 createUserEmailInUse.style.display = 'none';
             }
         };
@@ -218,11 +224,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error Creating Account: ', error);
                     createUserEmailInUse.style.display = 'block';
+                    setTimeout(() => createUserEmailInUse.style.display = 'none', 5000);
                     createUserAllFieldsRequired.style.display = 'none';
                 }
             }
             else {
                 createUserAllFieldsRequired.style.display = 'block';
+                setTimeout(() => createUserAllFieldsRequired.style.display = 'none', 5000);
                 createUserEmailInUse.style.display = 'none';
             }
         });//end submitUserClick
@@ -259,10 +267,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Error updating Account: ', error);
                 userManagementNothingEntered.style.display = 'block';
+                setTimeout(() => userManagementNothingEntered.style.display = 'none', 5000);
             }
         }
         else {
             userManagementNothingEntered.style.display = 'block';
+            setTimeout(() => userManagementNothingEntered.style.display = 'none', 5000);
         }
     });//end updateUserClick
     //});//end updateUserClick
@@ -308,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const location = document.getElementById('where').value;
         const listDate = document.getElementById('date-seen').value;
         checklistSubmitNothingEntered.style.display = 'none';
-        
+
         if (location && listDate) {
             const response = await fetch(`http://localhost:5066/Checklists/Create`,
                 {
@@ -329,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else {
             checklistSubmitNothingEntered.style.display = 'block';
+            setTimeout(() => checklistSubmitNothingEntered.style.display = 'none', 5000);
         }
 
     })
@@ -354,9 +365,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             const bird = await response.json();
-
+            recordAddedToChecklist.style.display = 'block';
+            setTimeout(() => recordAddedToChecklist.style.display = 'none', 5000);
         }
-    })
+    });
+
     backChecklistManagement.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
@@ -375,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
     })
-    
+
 
     mainMenuReturnChecklistButton.addEventListener('click', async () => {
         user = JSON.parse(localStorage.getItem('user'));
@@ -503,110 +516,111 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistCreate.style.display = 'none';
         birdView.style.display = 'none';
         checklistView.style.display = 'none';
-        birdlistView.style.display = 'block';}
+        birdlistView.style.display = 'block';
+    }
 
-        /////////////////////////Logout Handling/////////////
+    /////////////////////////Logout Handling/////////////
 
-        logoutButton.addEventListener('click', () => {
+    logoutButton.addEventListener('click', () => {
 
-            localStorage.removeItem('user');  //Deleting local storage of the 'user' object due to
+        localStorage.removeItem('user');  //Deleting local storage of the 'user' object due to
 
-            loginContainer.style.display = 'block';  //Redisplay the login container
+        loginContainer.style.display = 'block';  //Redisplay the login container
 
-            userContainer.style.display = 'none'; //Need to see if we have to call out each container that has the logout functionality available
-        });//end of the logoutButton event listener
-        /////fetch lists/////
-        async function fetchUserLists(userId) {
-            //this will fetch the checklist from back end may need updating since list contains a list
-            try {
-                let response = await fetch(`http://localhost:5066/Checklists/ListChecklist/${userId}`);
+        userContainer.style.display = 'none'; //Need to see if we have to call out each container that has the logout functionality available
+    });//end of the logoutButton event listener
+    /////fetch lists/////
+    async function fetchUserLists(userId) {
+        //this will fetch the checklist from back end may need updating since list contains a list
+        try {
+            let response = await fetch(`http://localhost:5066/Checklists/ListChecklist/${userId}`);
 
-                let list = await response.json();
-                renderList(list);
-                //list = [];
-            }
-            catch (error) {
-                console.error('Error Fetching list: ', error)
-            }
+            let list = await response.json();
+            renderList(list);
+            //list = [];
+        }
+        catch (error) {
+            console.error('Error Fetching list: ', error)
+        }
 
-        };//end Fetchlist
+    };//end Fetchlist
 
-        function renderList(list) {
-            list.innerHTML = ``;
-            checklistList.innerHTML = ``;
+    function renderList(list) {
+        list.innerHTML = ``;
+        checklistList.innerHTML = ``;
 
-            list.forEach(list => {
-
-
-                const listItem = document.createElement('li');
+        list.forEach(list => {
 
 
-                var addBirdButton = document.createElement('button');
-                addBirdButton.textContent = "Update List";
-                addBirdButton.value = list.checklistID;
-                addBirdButton.addEventListener('click', async () => {
-                    ClickAddBird(list.checklistID);
-
-                });
-
-                var deleteListButton = document.createElement('button');
-                deleteListButton.textContent = "Delete List";
-                deleteListButton.value = list.checklistID;
-                deleteListButton.addEventListener('click', async () => {
-                    DeleteList(list.checklistID);
-
-                });
-
-                var birdListButton = document.createElement('button');
-                birdListButton.textContent = "View List";
-                birdListButton.value = list.checklistID;
-                birdListButton.addEventListener('click', async () => {
-                    ShowThemBirds(list.birds);
-
-                });
+            const listItem = document.createElement('li');
 
 
-                if (list.birds.length > 0) {
-                    const date = new Date(list.checklistDateTime);
-                    const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-                    listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName};\nSpecies: ${list.birds[0].speciesName}; Number Seen: ${list.birds[0].numSeen}`;
-                } else {
-                    const date = new Date(list.checklistDateTime);
-                    const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-                    listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
-                }
-
-                checklistList.appendChild(listItem);
-                checklistList.appendChild(addBirdButton);
-                checklistList.appendChild(deleteListButton);
-                checklistList.appendChild(birdListButton);
+            var addBirdButton = document.createElement('button');
+            addBirdButton.textContent = "Update List";
+            addBirdButton.value = list.checklistID;
+            addBirdButton.addEventListener('click', async () => {
+                ClickAddBird(list.checklistID);
 
             });
-        }// end RenderList
 
-        async function ClickAddBird(listId) {
+            var deleteListButton = document.createElement('button');
+            deleteListButton.textContent = "Delete List";
+            deleteListButton.value = list.checklistID;
+            deleteListButton.addEventListener('click', async () => {
+                DeleteList(list.checklistID);
 
-            localStorage.removeItem('currChecklist');
-            let response = await fetch(`http://localhost:5066/Checklists/GetChecklist/${listId}`);
-            let currentChecklist2 = await response.json();
-            localStorage.setItem('currChecklist', JSON.stringify(currentChecklist2));
-            updateUIForBirdRecords();
-        }//end add bird
-
-        async function DeleteList(listId) {
-            await fetch(`http://localhost:5066/Checklists/Delete${listId}`, {
-                method: 'DELETE',
             });
 
-            updateUIForViewChecklist();
+            var birdListButton = document.createElement('button');
+            birdListButton.textContent = "View List";
+            birdListButton.value = list.checklistID;
+            birdListButton.addEventListener('click', async () => {
+                ShowThemBirds(list.birds);
 
-        }//end delete
+            });
 
-        function ShowThemBirds(bird){
-           updateUIForBirdview();
-            
-        
-       bird.innerHTML = ``;
+
+            if (list.birds.length > 0) {
+                const date = new Date(list.checklistDateTime);
+                const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+                listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName};\nSpecies: ${list.birds[0].speciesName}; Number Seen: ${list.birds[0].numSeen}`;
+            } else {
+                const date = new Date(list.checklistDateTime);
+                const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+                listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
+            }
+
+            checklistList.appendChild(listItem);
+            checklistList.appendChild(addBirdButton);
+            checklistList.appendChild(deleteListButton);
+            checklistList.appendChild(birdListButton);
+
+        });
+    }// end RenderList
+
+    async function ClickAddBird(listId) {
+
+        localStorage.removeItem('currChecklist');
+        let response = await fetch(`http://localhost:5066/Checklists/GetChecklist/${listId}`);
+        let currentChecklist2 = await response.json();
+        localStorage.setItem('currChecklist', JSON.stringify(currentChecklist2));
+        updateUIForBirdRecords();
+    }//end add bird
+
+    async function DeleteList(listId) {
+        await fetch(`http://localhost:5066/Checklists/Delete${listId}`, {
+            method: 'DELETE',
+        });
+
+        updateUIForViewChecklist();
+
+    }//end delete
+
+    function ShowThemBirds(bird) {
+        updateUIForBirdview();
+
+
+        bird.innerHTML = ``;
         birdList.innerHTML = ``;
 
         bird.forEach(bird => {
@@ -615,18 +629,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const listItem = document.createElement('li');
 
 
-                    //if (bird.length > 0) {
-                        
-                listItem.textContent = `Species: ${bird.speciesName} -- Number Seen: ${bird.numSeen}`;
-           // } else {
-                
-              //  listItem.textContent = `No Birds Seen`;
-           // }
+            //if (bird.length > 0) {
 
-           
-       
-        birdList.appendChild(listItem);}
-    );
-}
+            listItem.textContent = `Species: ${bird.speciesName} -- Number Seen: ${bird.numSeen}`;
+            // } else {
+
+            //  listItem.textContent = `No Birds Seen`;
+            // }
+
+
+
+            birdList.appendChild(listItem);
+        }
+        );
+    }
 
 });//end DOMContentLoaded
