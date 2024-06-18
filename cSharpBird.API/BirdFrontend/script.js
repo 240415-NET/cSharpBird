@@ -414,7 +414,11 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+
         birdlistView.style.display = 'none';
+
+        userManagementView.style.display = 'none';
+
     };//end updateUIForLoggedInUser
 
     function updateUIForUserManagement(user) {
