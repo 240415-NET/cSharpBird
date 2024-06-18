@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
     const checklistSubmitNothingEntered = document.getElementById('checklist-submit-nothing-entered');
+    const checklistsubmitnothingentered2 = document.getElementById('checklist-submit-nothing-entered2');
     const recordAddedToChecklist = document.getElementById('record-added-to-checklist');
 
     const mainMenuReturnChecklistButton = document.getElementById('main-menu-return-checklist');
@@ -127,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 localStorage.setItem('user', JSON.stringify(user));
                 noUserFoundOnLogin.style.display = 'none';
-               
+
             } catch (error) {
                 console.error('Error logging in:', error);
                 noUserFoundOnLogin.style.display = 'block';
@@ -367,6 +368,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const bird = await response.json();
             recordAddedToChecklist.style.display = 'block';
             setTimeout(() => recordAddedToChecklist.style.display = 'none', 5000);
+        }
+        else {
+            checklistsubmitnothingentered2.style.display = 'block';
+            setTimeout(() => checklistsubmitnothingentered2.style.display = 'none', 5000);
         }
     });
 
