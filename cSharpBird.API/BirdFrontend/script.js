@@ -20,10 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //For Update User button
     const updateUserButton = document.getElementById('update-user-button');
+    const userManagementNothingEntered = document.getElementById('usermanagement-nothing-entered');
 
     //For checklist-create view
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
+    const checklistSubmitNothingEntered = document.getElementById('checklist-submit-nothing-entered');
 
     const mainMenuReturnChecklistButton = document.getElementById('main-menu-return-checklist');
 
@@ -125,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (error) {
                 console.error('Error logging in:', error);
+                noUserFoundOnLogin.style.display = 'block';
 
             }
         } else {
@@ -172,10 +175,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error logging in:', error);
                     createUserEmailInUse.style.display = 'block';
+                    createUserAllFieldsRequired.style.display = 'none';
                 }
             }
             else {
                 createUserAllFieldsRequired.style.display = 'block';
+                createUserEmailInUse.style.display = 'none';
             }
         };
     });//end createPasswordEnter
@@ -213,10 +218,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error Creating Account: ', error);
                     createUserEmailInUse.style.display = 'block';
+                    createUserAllFieldsRequired.style.display = 'none';
                 }
             }
             else {
                 createUserAllFieldsRequired.style.display = 'block';
+                createUserEmailInUse.style.display = 'none';
             }
         });//end submitUserClick
     });//end createUserClick
@@ -247,10 +254,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateUIForLoggedInUser(user);
 
                 localStorage.setItem('user', JSON.stringify(user)); //Again, adding that local storage piece in case we want to leverage it
+                userManagementNothingEntered.style.display = 'none';
 
             } catch (error) {
                 console.error('Error updating Account: ', error);
+                userManagementNothingEntered.style.display = 'block';
             }
+        }
+        else {
+            userManagementNothingEntered.style.display = 'block';
         }
     });//end updateUserClick
     //});//end updateUserClick
@@ -295,6 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const location = document.getElementById('where').value;
         const listDate = document.getElementById('date-seen').value;
+        checklistSubmitNothingEntered.style.display = 'none';
+        
         if (location && listDate) {
             const response = await fetch(`http://localhost:5066/Checklists/Create`,
                 {
@@ -312,6 +326,9 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('currChecklist', JSON.stringify(currentChecklist));
             const check = JSON.parse(localStorage.getItem('currChecklist'));
             updateUIForBirdRecords(currentChecklist);
+        }
+        else {
+            checklistSubmitNothingEntered.style.display = 'block';
         }
 
     })
@@ -547,9 +564,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ShowThemBirds(list.birds);
 
                 });
-
-
-
 
 
                 if (list.birds.length > 0) {
