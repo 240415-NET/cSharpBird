@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userManagement = document.getElementById('user-management-button');
     const userManagementView = document.getElementById('user-management');
     const checklistManagement = document.getElementById('checklist-management-button');
+    let mainMenuReturnUpdateUser = document.getElementById('main-menu-return-update-user');  //adding for return to main
 
     const createPassword = document.getElementById('createPassword');
     const createUserButton = document.getElementById('create-user-button'); //Create User button on Login Screen
@@ -219,8 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // update user button FC
     updateUserButton.addEventListener('click', async () => {
-
-        //     updateUIForUpdateUser();
         const updateEmail = document.getElementById('updateEmail').value;
         const updateUsername = document.getElementById('updateUsername').value;
         const updatePassword = document.getElementById('updatePassword').value;
@@ -253,7 +252,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });//end updateUserClick
     //});//end updateUserClick
 
+    mainMenuReturnUpdateUser.addEventListener('click', async () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForUpdateUser(user);                        
+    })
 
+    function updateUIForUpdateUser(user) {
+        userManagementView.style.display = 'none';
+        loginContainer.style.display = 'none';
+        userContainer.style.display = 'block';
+        welcomeMessage.textContent = `Welcome ${user.displayName}!`;
+        createUserContainer.style.display = 'none';
+        checklistContainer.style.display = 'none';
+        checklistCreate.style.display = 'none';
+        checklistView.style.display = 'none';
+    }; 
     //return to login screen
     loginReturn.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
