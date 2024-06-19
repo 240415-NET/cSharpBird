@@ -37,6 +37,7 @@
         
         <div id = "login-no-user-found" style="color: red; padding-bottom: 10px" hidden>
             <strong>No user found with that username and password. Please re-enter or Create New User!</strong> 
+
         </div>
         
         <table>
@@ -53,6 +54,7 @@
         <h5 id="create-user-heading" style="padding-bottom: 10px">Create User Account</h5>
         <input type="email" id="createEmail" placeholder="Enter your Email Address" style="margin-left: 45px; margin-bottom: 10px;">
         <br>
+
         <input type="text" id="createUsername" placeholder="Username" style="margin-left: 45px; margin-bottom: 10px;">
         <br>
         <input type="password" id="createPassword" placeholder="Password" style="margin-left: 45px">
@@ -61,6 +63,7 @@
         <button id="submit-user-button" style="margin-left: 225px;">Create User</button>
         <hr>
         <button id="login-return" style="margin-left: 225px; margin-bottom: 10px;">Back to Login </button>
+
 
 
         <div id = "create-user-email-in-use" style="color: red;" hidden>
@@ -129,6 +132,7 @@
         <br>
         <input type="email" id="updateEmail" placeholder="Email Address" style="margin-left: 45px; margin-bottom: 10px;">
         <br>
+
         <input type="text" id="updateUsername" placeholder="Username" style="margin-left: 45px; margin-bottom: 10px;">
         <br>
         <input type="password" id="updatePassword" placeholder="Password" style="margin-left: 45px; margin-bottom: 10px;">
@@ -138,6 +142,10 @@
         <hr>
         <br>
         <button id="main-menu-return-update-user" style="margin-left: 400px;">Main Menu</button>
+        <div id = "usermanagement-nothing-entered" style="color: red;" hidden>
+            <strong>Please enter at least one field to update, or click Main Menu to return!</strong> 
+        </div>
+
 
     </div>
 <!-- end of FC  -->
@@ -191,6 +199,9 @@
             </tr>
 
         </table>
+        <div id = "checklist-submit-nothing-entered" style="color: red;" hidden>
+            <strong>Please create an entry, or click to return to Checklist Management for more options!</strong> 
+        </div>
     </div>
     <div id="bird-view" style="display: none;">
         <h1>Add Sightings</h1>
@@ -1344,6 +1355,13 @@
                 <td><button id="back-checklist-management2">Back to Checklist Management</button></td>
             </tr>
         </table>
+        <div id = "record-added-to-checklist" style="color: red;" hidden>
+            <strong>Your Record has been added.  Please enter another or click to return to Checklist Management for more options!</strong> 
+        </div>
+        <div id = "checklist-submit-nothing-entered2" style="color: red;" hidden>
+            <strong>Please enter total number seen and type of bird, or return to Checklist Management for more options!</strong> 
+        </div>
+
     </div>
 
     <div id="checklist-view" style="display: none;">
@@ -1352,6 +1370,14 @@
         <p>Sightings List</p>
         <ol id="checklist-list"></ol>
         <button id="back-checklist-management3">Return to Checklist Admin</button>
+
+    </div>
+    <div id="bird-list-view" style="display: none;">
+        <h1>Birds</h1>
+        <br>
+        <p>Birds</p>
+        <ol id="bird-list"></ol>
+        <button id="back-checklist-management4">Back to Checklist Management</button>
 
     </div>
 

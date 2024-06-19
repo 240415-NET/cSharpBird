@@ -20,10 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //For Update User button
     const updateUserButton = document.getElementById('update-user-button');
+    const userManagementNothingEntered = document.getElementById('usermanagement-nothing-entered');
 
     //For checklist-create view
     const checklistSubmit = document.getElementById('checklist-submit');
     const backChecklistManagement = document.getElementById('back-checklist-management');
+    const checklistSubmitNothingEntered = document.getElementById('checklist-submit-nothing-entered');
+    const checklistsubmitnothingentered2 = document.getElementById('checklist-submit-nothing-entered2');
+    const recordAddedToChecklist = document.getElementById('record-added-to-checklist');
 
     const mainMenuReturnChecklistButton = document.getElementById('main-menu-return-checklist');
 
@@ -34,10 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let checklistList = document.getElementById('checklist-list');
     const backChecklistManagement2 = document.getElementById('back-checklist-management2');
     const backChecklistManagement3 = document.getElementById('back-checklist-management3');
-    let mainMenuReturnChecklist = document.getElementById('main-menu-return-checklist');
-
-
-
     const password = document.getElementById('password');
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
@@ -46,7 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const createUserAllFieldsRequired = document.getElementById('create-user-all-fields-required');
     const loginReturn = document.getElementById('login-return');  //Return to Login Screen Button
 
-
+    //for Bird list
+    let birdList = document.getElementById('bird-list');
+    const birdlistView = document.getElementById('bird-list-view');
+    const backChecklistManagement4 = document.getElementById('back-checklist-management4');
 
     const currChecklist = JSON.parse(localStorage.getItem('checklist'));
 
@@ -91,10 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error(error);
                     noUserFoundOnLogin.style.display = 'block'; //Display noUserFoundOnLogin if there is an error trying find existing user
+                    setTimeout(() => noUserFoundOnLogin.style.display = 'none', 5000); //Hide noUserFoundOnLogin after 5 seconds
                 }
             } else {
                 // Display noUserFoundOnLogin if either username or password is left blank
                 noUserFoundOnLogin.style.display = 'block';
+                setTimeout(() => noUserFoundOnLogin.style.display = 'none', 5000);
             }
         }
     });
@@ -126,11 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (error) {
                 console.error('Error logging in:', error);
-
+                noUserFoundOnLogin.style.display = 'block';
+                setTimeout(() => noUserFoundOnLogin.style.display = 'none', 5000);
             }
         } else {
             // Display noUserFoundOnLogin if either username or password is blank
             noUserFoundOnLogin.style.display = 'block';
+            setTimeout(() => noUserFoundOnLogin.style.display = 'none', 5000);
         }
     });//end loginclick
 
@@ -173,14 +180,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error logging in:', error);
                     createUserEmailInUse.style.display = 'block';
+                    setTimeout(() => createUserEmailInUse.style.display = 'none', 5000);
+                    createUserAllFieldsRequired.style.display = 'none';
                 }
             }
             else {
                 createUserAllFieldsRequired.style.display = 'block';
+                setTimeout(() => createUserAllFieldsRequired.style.display = 'none', 5000);
+                createUserEmailInUse.style.display = 'none';
             }
         };
     });//end createPasswordEnter
-    
+
     createUserButton.addEventListener('click', async () => {
 
         updateUIForCreateUser();
@@ -214,10 +225,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error Creating Account: ', error);
                     createUserEmailInUse.style.display = 'block';
+                    setTimeout(() => createUserEmailInUse.style.display = 'none', 5000);
+                    createUserAllFieldsRequired.style.display = 'none';
                 }
             }
             else {
                 createUserAllFieldsRequired.style.display = 'block';
+                setTimeout(() => createUserAllFieldsRequired.style.display = 'none', 5000);
+                createUserEmailInUse.style.display = 'none';
             }
         });//end submitUserClick
     });//end createUserClick
@@ -248,17 +263,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateUIForLoggedInUser(user);
 
                 localStorage.setItem('user', JSON.stringify(user)); //Again, adding that local storage piece in case we want to leverage it
+                userManagementNothingEntered.style.display = 'none';
 
             } catch (error) {
                 console.error('Error updating Account: ', error);
+                userManagementNothingEntered.style.display = 'block';
+                setTimeout(() => userManagementNothingEntered.style.display = 'none', 5000);
             }
+        }
+        else {
+            userManagementNothingEntered.style.display = 'block';
+            setTimeout(() => userManagementNothingEntered.style.display = 'none', 5000);
         }
     });//end updateUserClick
     //});//end updateUserClick
 
     mainMenuReturnUpdateUser.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
-        updateUIForUpdateUser(user);                        
+        updateUIForUpdateUser(user);
     })
 
     function updateUIForUpdateUser(user) {
@@ -270,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
-    }; 
+    };
     //return to login screen
     loginReturn.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -296,6 +318,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const location = document.getElementById('where').value;
         const listDate = document.getElementById('date-seen').value;
+        checklistSubmitNothingEntered.style.display = 'none';
+
         if (location && listDate) {
             const response = await fetch(`http://localhost:5066/Checklists/Create`,
                 {
@@ -313,6 +337,10 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('currChecklist', JSON.stringify(currentChecklist));
             const check = JSON.parse(localStorage.getItem('currChecklist'));
             updateUIForBirdRecords(currentChecklist);
+        }
+        else {
+            checklistSubmitNothingEntered.style.display = 'block';
+            setTimeout(() => checklistSubmitNothingEntered.style.display = 'none', 5000);
         }
 
     })
@@ -338,9 +366,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             const bird = await response.json();
-
+            recordAddedToChecklist.style.display = 'block';
+            setTimeout(() => recordAddedToChecklist.style.display = 'none', 5000);
         }
-    })
+        else {
+            checklistsubmitnothingentered2.style.display = 'block';
+            setTimeout(() => checklistsubmitnothingentered2.style.display = 'none', 5000);
+        }
+    });
+
     backChecklistManagement.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
@@ -355,6 +389,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         updateUIForChecklistManagement(user);
     })
+    backChecklistManagement4.addEventListener('click', async () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        updateUIForChecklistManagement(user);
+    })
+
+
     mainMenuReturnChecklistButton.addEventListener('click', async () => {
         user = JSON.parse(localStorage.getItem('user'));
         updateUIForLoggedInUser(user);
@@ -367,6 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });//end ViewlistClick
 
 
+
     //return to login page from create user page function
     function loginUI(user) {
 
@@ -375,13 +416,14 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
 
 
 
     };//end updateUIForCreateUser
 
 
-//This is the Back to Checklist Management button on the checklist-view page
+    //This is the Back to Checklist Management button on the checklist-view page
 
     function updateUIForCreateUser() {  //Not sure we need to include this function here again or just call it from above
 
@@ -390,6 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
 
 
 
@@ -406,7 +449,11 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+
+        birdlistView.style.display = 'none';
+
         userManagementView.style.display = 'none';
+
     };//end updateUIForLoggedInUser
 
     function updateUIForUserManagement(user) {
@@ -418,6 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
     }; //end updateUIForUserManagement
 
     function updateUIForChecklistManagement(user) {
@@ -429,8 +477,10 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistCreate.style.display = 'none';
         checklistView.style.display = 'none';
         birdView.style.display = 'none';
+        birdlistView.style.display = 'none';
 
     }; //end updateUIForChecklistManagement
+
 
     function updateUIForCreateChecklist(user) {  //Not sure we need to include this function here again or just call it from above
 
@@ -439,6 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistContainer.style.display = 'none';
         checklistCreate.style.display = 'block';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
 
 
 
@@ -447,6 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistCreate.style.display = 'none';
         birdView.style.display = 'block';
         checklistView.style.display = 'none';
+        birdlistView.style.display = 'none';
     }
     function updateUIForViewChecklist() {  //Not sure we need to include this function here again or just call it from above
 
@@ -460,9 +512,18 @@ document.addEventListener('DOMContentLoaded', () => {
         checklistView.style.display = 'block';
         const user = JSON.parse(localStorage.getItem('user'));
         fetchUserLists(user.userId);
+        birdlistView.style.display = 'none';
 
 
     };//end updateUIForviewChecklist
+
+    function updateUIForBirdview() {
+        checklistCreate.style.display = 'none';
+        birdView.style.display = 'none';
+        checklistView.style.display = 'none';
+        birdlistView.style.display = 'block';
+    }
+
     /////////////////////////Logout Handling/////////////
 
     logoutButton.addEventListener('click', () => {
@@ -515,7 +576,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             });
 
+            var birdListButton = document.createElement('button');
+            birdListButton.textContent = "View List";
+            birdListButton.value = list.checklistID;
+            birdListButton.addEventListener('click', async () => {
+                ShowThemBirds(list.birds);
 
+            });
 
 
             if (list.birds.length > 0) {
@@ -528,15 +595,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
             }
 
-            addBirdButton.innerHTML = "Add Bird"
-            addBirdButton.value = listItem.checklistID
-            
-            addBirdButton.className = "addToList";
-
-        //next three lines were part of a merge conflict on main
-        checklistList.appendChild(listItem);
-        checklistList.appendChild(addBirdButton);
-        checklistList.appendChild(deleteListButton);
+            checklistList.appendChild(listItem);
+            checklistList.appendChild(addBirdButton);
+            checklistList.appendChild(deleteListButton);
+            checklistList.appendChild(birdListButton);
 
         });
     }// end RenderList
@@ -548,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentChecklist2 = await response.json();
         localStorage.setItem('currChecklist', JSON.stringify(currentChecklist2));
         updateUIForBirdRecords();
-    }
+    }//end add bird
 
     async function DeleteList(listId) {
         await fetch(`http://localhost:5066/Checklists/Delete${listId}`, {
@@ -557,7 +619,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateUIForViewChecklist();
 
-    }
+    }//end delete
 
+    function ShowThemBirds(bird) {
+        updateUIForBirdview();
+
+
+        bird.innerHTML = ``;
+        birdList.innerHTML = ``;
+
+        bird.forEach(bird => {
+
+
+            const listItem = document.createElement('li');
+
+
+            //if (bird.length > 0) {
+
+            listItem.textContent = `Species: ${bird.speciesName} -- Number Seen: ${bird.numSeen}`;
+            // } else {
+
+            //  listItem.textContent = `No Birds Seen`;
+            // }
+
+
+
+            birdList.appendChild(listItem);
+        }
+        );
+    }
 
 });//end DOMContentLoaded
