@@ -54,6 +54,10 @@
     - (string) speciesName
     - (int?) numSeen -- this MUST be converted explicitly or VS Code has a fit
 
+## [Delete]: /Checklists/Delete{checklistId}
+- Removes a checklist and associated birds from the table
+    - (Guid) checklistId
+
 # Pending Implementation
 
 ## [Delete] Checklist
