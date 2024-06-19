@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="frontEnd.css">
 <head>
+    <link rel="stylesheet" href="frontEnd.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIRDEMIC</title>
     <style>
         button {
             width: 150px;
         }
     </style>
 </head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIRDEMIC</title>
-</head>
-<header id="page-header">
-    <h1 id="page-title">WINGWatch</h1><br>
-    <h6 id="page-subtitle">(Wildlife Identification and Nature Gathering Watch)</h6>
-</header>
-</header>
-
 <body>
+    <header id="page-header">
+        <h1 id="page-title">WINGWatch</h1><br>
+        <h6 id="page-subtitle" style="color: green">(Wildlife Identification and Nature Gathering Watch)</h6>
+        <hr class="rounded">
+    </header>
+    <!-- Your body content continues here -->
+</body>
+</html>
+<body>
+    
     <div id="login-container">
-        <h4 id="login-heading">Login Here</h4>
-        <input type="text" id="username" placeholder="Email">
+        <h5 id="login-heading" style="padding-bottom: 10px">Log-In Here:</h5>
+        <input type="email" id="username" placeholder="Email" style="margin-left: 45px; margin-bottom: 10px;">
+        <br>
+   
+        <input type="password" id="password" placeholder="Password" style="margin-left: 45px">
         <br>
         <br>
-        <input type="password" id="password" placeholder="Password">
+        <button id="login-button" style="margin-left: 225px;">Login</button>
         <br>
         <br>
-        <button id="login-button"> Login</button>
-        <br>
-        <br>
-        <br>
-        <div id = "login-no-user-found" style="color: red;" hidden>
+        <hr>
+        
+        <div id = "login-no-user-found" style="color: red; padding-bottom: 10px" hidden>
             <strong>No user found with that username and password. Please re-enter or Create New User!</strong> 
         </div>
-        <br>
-
-
-        <label><strong>Create a New Account Here:</strong></label>
         
-        <button id="create-user-button">Create User</button>
+        <table>
+            <tr>
+                <h5 id="login-heading" style="padding-bottom: 5px;">Create a New Account Here:</h5>
+                <button id="create-user-button" style="margin-left: 225px;">Create User</button>
+            </tr>
+        </table>
     </div>
 
     <!-- Had to create a new container for creating a user as user creation requires email address -->
 
     <div id="create-user-container" style="display: none;">
-        <h4 id="create-user-heading">Create User Account</h4>
-        <input type="email" id="createEmail" placeholder="Enter your Email Address">
+        <h5 id="create-user-heading" style="padding-bottom: 10px">Create User Account</h5>
+        <input type="email" id="createEmail" placeholder="Enter your Email Address" style="margin-left: 45px; margin-bottom: 10px;">
+        <br>
+        <input type="text" id="createUsername" placeholder="Username" style="margin-left: 45px; margin-bottom: 10px;">
+        <br>
+        <input type="password" id="createPassword" placeholder="Password" style="margin-left: 45px">
         <br>
         <br>
-        <input type="text" id="createUsername" placeholder="Username">
-        <br>
-        <br>
-        <input type="password" id="createPassword" placeholder="Password">
-        <br>
-        <br>
-        <br>
-        <button id="submit-user-button">Create User</button>
-        <button id="login-return">Return to Login </button>
+        <button id="submit-user-button" style="margin-left: 225px;">Create User</button>
+        <hr>
+        <button id="login-return" style="margin-left: 225px; margin-bottom: 10px;">Back to Login </button>
 
 
         <div id = "create-user-email-in-use" style="color: red;" hidden>
@@ -72,7 +75,7 @@
 
     <div id="user-container" style="display: none;">
 
-        <br>
+        
         <style>
             @keyframes flash {
                 0% {opacity: 1;}
@@ -83,15 +86,24 @@
                 animation: flash 2s linear infinite;
             }
         </style> 
-        <h3 class="flashing" id="welcome-message"></h3>
-        <h4>What would you like to do?</h4>
+        <h4 class="flashing" id="welcome-message" style="margin-left:250px"></h4>
+        <h4>What would you like to do?</h4><hr>
         <table>
             <tr>
-                <td><button id="user-management-button">User<br> Management</button></td>
-                <td><button id="checklist-management-button">Checklist Management</button></td>
+                <td>
+                    <h5 style="display: inline-block; vertical-align: middle; margin-top: 0;">Manage My Users:</h5><button id="user-management-button" style="margin-left: 75px; font-size: 15px">User Admin</button></td>
             </tr>
             <tr>
-                <td rowspan="2"><center><button id="logout-button">Logout</button></center></td>
+                <td>
+                    <h5 style="display: inline-block; vertical-align: middle; margin-top: 0;">Manage My Checklists:</h5>
+                    <button id="checklist-management-button" style="margin-left: 35px; font-size: 15px; vertical-align: middle;">Checklist Admin</button>
+                </td>
+            </tr>
+        </table>
+        <hr><br>
+        <table>
+            <tr>
+                <td rowspan="2"><center><button id="logout-button" style="margin-left: 400px;">Logout</button></center></td>
             </tr>
         </table>
 
@@ -112,19 +124,20 @@
                 animation: flash 2s linear infinite;
             }
         </style> 
-        <h3 class="flashing" id="welcome-message"></h3>
-        <h4>What would you like to do?</h4>
-        <h1>Update Your User Account</h1>
-
-        <input type="email" id="updateEmail" placeholder="Email Address">
+        <h4 class="flashing" id="welcome-message"></h4>
+        <h4>What would you like to update?</h4>
         <br>
-        <input type="text" id="updateUsername" placeholder="Username">
+        <input type="email" id="updateEmail" placeholder="Email Address" style="margin-left: 45px; margin-bottom: 10px;">
         <br>
-        <input type="password" id="updatePassword" placeholder="Password">
+        <input type="text" id="updateUsername" placeholder="Username" style="margin-left: 45px; margin-bottom: 10px;">
         <br>
-        <button id="update-user-button">Update User</button> 
+        <input type="password" id="updatePassword" placeholder="Password" style="margin-left: 45px; margin-bottom: 10px;">
         <br>
-        <button id="main-menu-return-update-user">Main Menu</button>
+        <button id="update-user-button" style="margin-left: 225px;">Update User</button> 
+        <br>
+        <hr>
+        <br>
+        <button id="main-menu-return-update-user" style="margin-left: 400px;">Main Menu</button>
 
     </div>
 <!-- end of FC  -->
@@ -147,7 +160,7 @@
         <!--</div>-->
         <!--<button id="user-maintance"> User Maintance</button>-->
         <br>
-        <button id="main-menu-return-checklist">Main Menu</button>
+        <button id="main-menu-return-checklist" style="margin-left: 400px;">Main Menu</button>
 
     </div>
 
@@ -1334,16 +1347,16 @@
     </div>
 
     <div id="checklist-view" style="display: none;">
-        <h1>View Your Sightings</h1>
+        <h4>View Your Sightings:</h4>
         <br>
         <p>Sightings List</p>
         <ol id="checklist-list"></ol>
-        <button id="back-checklist-management3">Back to Checklist Management</button>
+        <button id="back-checklist-management3">Return to Checklist Admin</button>
 
     </div>
 
-
     <script src="script.js"></script>
+
 </body>
 
 </html>

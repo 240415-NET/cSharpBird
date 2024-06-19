@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 listItem.textContent = `Date: ${formattedDate} - Location: ${list.locationName}; No Birds Seen`;
             }
 
-            addBirdButton.innerHTML = "add bird"
+            addBirdButton.innerHTML = "Add Bird"
             addBirdButton.value = listItem.checklistID
             
             addBirdButton.className = "addToList";
