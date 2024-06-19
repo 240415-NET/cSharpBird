@@ -43,11 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutButton = document.getElementById('logout-button');
     const noUserFoundOnLogin = document.getElementById('login-no-user-found'); //Used for No User Found on Login Message from HTML
     const createUserEmailInUse = document.getElementById('create-user-email-in-use');
-<<<<<<< HEAD
     const createUserAllFieldsRequired = document.getElementById('create-user-all-fields-required');
     const loginReturn = document.getElementById('login-return');  //Return to Login Screen Button
-=======
->>>>>>> 16d3093 (Create New User Validations)
 
     //for Bird list
     let birdList = document.getElementById('bird-list');
@@ -183,11 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error logging in:', error);
                     createUserEmailInUse.style.display = 'block';
-<<<<<<< HEAD
                     setTimeout(() => createUserEmailInUse.style.display = 'none', 5000);
                     createUserAllFieldsRequired.style.display = 'none';
-=======
->>>>>>> 16d3093 (Create New User Validations)
                 }
             }
             else {
@@ -231,11 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (error) {
                     console.error('Error Creating Account: ', error);
                     createUserEmailInUse.style.display = 'block';
-<<<<<<< HEAD
                     setTimeout(() => createUserEmailInUse.style.display = 'none', 5000);
                     createUserAllFieldsRequired.style.display = 'none';
-=======
->>>>>>> 16d3093 (Create New User Validations)
                 }
             }
             else {
