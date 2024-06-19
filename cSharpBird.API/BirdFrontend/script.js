@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     backChecklistManagement4.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));
-        updateUIForChecklistManagement(user);
+        updateUIForViewChecklist(user);
     })
 
 
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             var addBirdButton = document.createElement('button');
-            addBirdButton.textContent = "Update List";
+            addBirdButton.textContent = "Update Bird List";
             addBirdButton.value = list.checklistID;
             addBirdButton.addEventListener('click', async () => {
                 ClickAddBird(list.checklistID);
@@ -569,15 +569,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             var deleteListButton = document.createElement('button');
-            deleteListButton.textContent = "Delete List";
+            deleteListButton.textContent = "Delete Bird List";
             deleteListButton.value = list.checklistID;
             deleteListButton.addEventListener('click', async () => {
                 DeleteList(list.checklistID);
-
             });
+            //deleteListButton.classList({"justify-content" : "right"})
 
             var birdListButton = document.createElement('button');
-            birdListButton.textContent = "View List";
+            birdListButton.textContent = "View Bird List";
             birdListButton.value = list.checklistID;
             birdListButton.addEventListener('click', async () => {
                 ShowThemBirds(list.birds);
@@ -596,9 +596,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             checklistList.appendChild(listItem);
-            checklistList.appendChild(addBirdButton);
-            checklistList.appendChild(deleteListButton);
+            checklistList.appendChild(addBirdButton);            
             checklistList.appendChild(birdListButton);
+            checklistList.appendChild(deleteListButton);
 
         });
     }// end RenderList
